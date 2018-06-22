@@ -1,0 +1,12 @@
+language: node_js
+node_js: node
+cache:
+  directories:
+  - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: PsxRTaTQJfhNv+dgLBNBaShdzWvjjGnF+lbfzpxjrXJPr/uvJJqlKp5XEMv0AX4YYKxt2OisXdPkbNetOu6UA06LpYRll/RrVfwgCzdSbH+ellySeP5rx/XgyY+cLFx+ZYqE8IRRSuTO1/GjnHWOJe9mPEWkJZuoeqAS4wIu3hc9jJkHB60xs5EjZTYoroUOMhzTNwDDE6CPJEU6Eb1XgbJ+Rr4KF15046OHjxGTm4EtFdIM+zx0d9BRjJogOUNzK5bi5Av8LDYBYG5mU9hDe1B7NI135PJvZO7tbErAFAaeQBXKLWebj5cSiPUIYAazVkjJ0TcoKDTfZoTbAlhr6I9XwEMWhiK882AWhB9QHnXcHNt4xNsN8pi9xzQwS258muF3s8l9sGha5xpoW2QLCXd0e0Kkg7asKtxkXujt5f/1ubgjxQgG8D/IfrOERmmnYiCOT4CrZmnECwfd6sYsd1lA7ew5rfSq5G2jQJt+T02TuTuhLPQz2K3r+P7JFKV7wmkOjyntW0gjczKJ73/9R1P1vZcaojCC0AYiqUQulFvaCShnkltkLPsvyvDjaERKUyDKV/uXbivQm+dchJlyYiKzL/hyYJwqc9kcFBxaBbCD26f7xDOJs6jgcIapFIqbp0Hh/3TNgtd10C3l/m04oSptrlb4tAB8kWByoOAWsac=
+  app: fast-harbor-17490
+  on:
+    repo: Quanda/noushackr-client
