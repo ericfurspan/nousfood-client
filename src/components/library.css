@@ -1,0 +1,17 @@
+.library {
+    padding-top: 50px;
+}
+
+.library h2 {
+    font-style: italic;
+}
+
+.lib-item {
+    border: 1px solid #222;
+    border-radius: 5px;
+}
+
+.lib-item:hover {
+    cursor: pointer;
+}
+
