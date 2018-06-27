@@ -1,3 +1,14 @@
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Open Sans", sans-serif; 
+  font-size: 20px;
+  color: #444;
+}
+
 .App {
   text-align: center;
 }
@@ -20,6 +31,11 @@
 
 .App-intro {
   font-size: large;
+}
+
+section {
+  min-height: 200px;
+  padding: 5% 0;
 }
 
 @keyframes App-logo-spin {
