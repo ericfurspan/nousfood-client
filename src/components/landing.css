@@ -1,0 +1,66 @@
+.landing {
+    height: 95vh;
+    display: grid;
+}
+
+.landing li {
+    list-style-type: none;
+    margin: 0 0 25px 0px;
+}
+
+.landing-left {
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+    grid-column: 1;
+    color: #fff;
+    background-color: #46b0f0;
+}
+
+.landing-left section {
+    margin-top: 75px;
+    text-align: left;
+}
+
+.landing-right {
+    position: relative;
+    top: 50%;
+    transform: translate(0, -50%);
+    grid-column: 2;
+    color: black;
+}
+
+.landing-right header {
+    margin-top: 50px;
+}
+
+.landing-login{
+    margin: 50px 0px 50px 0px;
+}
+
+.landing-signup {
+    margin: 100px 0px 100px 0px; 
+}
+
+section p {
+    max-width: 75%;
+    margin: auto;
+}
+
+.icon {
+    margin-right: 20px;
+}
+
+@media screen and (max-width: 850px) {
+    .landing {
+        height: auto;
+        display: block;
+    }
+    .landing-left, .landing-right {
+        width: 100%;
+        float: left;
+        position: static;
+        top: auto;
+        transform: none;
+    }
+}

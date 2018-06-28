@@ -1,4 +1,5 @@
 import React from 'react';
+import AddBtn from '../assets/images/glyphicons-433-plus.png';
 
 export class SavedNootropics extends React.Component {
 
@@ -14,7 +15,7 @@ export class SavedNootropics extends React.Component {
                     <header>
                         <h2>nootropics</h2>
                     </header>
-                    <img src="../assets/images/glyphicons-433-plus.png"/>
+                    <img src={AddBtn}/>
                     {savedNootropics}
                 </section> 
             </div>
