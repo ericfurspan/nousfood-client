@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { SavedNootropics } from './saved-nootropics';
 import { UserWelcome } from './user-welcome';
 import { SavedStacks } from './saved-stacks';
+import NavBar from './navbar';
 import './grid.css';
 import './user-home.css'
 import { Footer } from './footer';
@@ -13,6 +14,7 @@ export class UserHome extends React.Component {
     render(props) {
         return (
             <div className="home">
+                <NavBar />
                 <UserWelcome firstname={this.props.firstname}/>
                 <SavedNootropics savedNootropics={this.props.savedNootropics}/>
                 <SavedStacks savedStacks={this.props.savedStacks}/>

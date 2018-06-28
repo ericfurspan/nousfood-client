@@ -16,9 +16,6 @@ export class NavBar extends React.Component {
                         <Link to="/nootropic-library">Nootropics</Link>
                     </li>
                     <li>
-                        <Link to="/home">Home</Link>
-                    </li>
-                    <li>
                         <Link to="/">Login/Logout</Link>
                     </li>
                 </ul>

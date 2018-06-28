@@ -1,4 +1,5 @@
 import React from 'react';
+import AddBtn from '../assets/images/glyphicons-433-plus.png';
 
 export class SavedStacks extends React.Component {
     render() {
@@ -13,7 +14,7 @@ export class SavedStacks extends React.Component {
                     <header>
                         <h2>stacks</h2>
                     </header>
-                    <img src="../assets/images/glyphicons-433-plus.png"/>
+                    <img src={AddBtn}/>
                     {savedStacks}
                 </section>
             </div>
