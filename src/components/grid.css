@@ -1,13 +1,14 @@
 
 .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-gap: .5em;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 1em;
     grid-auto-rows: minmax(150px, auto);
 }
 
 @media screen and (max-width: 850px) {
     .grid {
         grid-template-columns: 1fr 1fr;
+        grid-gap: 1em;
     }
 }

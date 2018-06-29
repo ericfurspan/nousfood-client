@@ -1,11 +1,13 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import './navbar.css';
 import logo from '../assets/images/blue-brain.png'
+import UserWelcome from './user-welcome';
 
 export class NavBar extends React.Component {
 
-    render() {
+    render(props) {
         return (
             <nav className="navbar">
                 <ul>
@@ -19,9 +21,14 @@ export class NavBar extends React.Component {
                         <Link to="/">Login/Logout</Link>
                     </li>
                 </ul>
+                <UserWelcome firstname={this.props.firstname}/>
             </nav>
         );
     }
 }
 
-export default NavBar;
+const mapStateToProps = state => ({
+    firstname: state.user_data.user.userInfo.firstname
+});
+
+export default withRouter(connect(mapStateToProps)(NavBar));

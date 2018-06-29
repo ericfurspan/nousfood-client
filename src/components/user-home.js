@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { SavedNootropics } from './saved-nootropics';
 import { UserWelcome } from './user-welcome';
 import { SavedStacks } from './saved-stacks';
+import { Library } from './library';
 import NavBar from './navbar';
 import './grid.css';
 import './user-home.css'
@@ -15,7 +16,6 @@ export class UserHome extends React.Component {
         return (
             <div className="home">
                 <NavBar />
-                <UserWelcome firstname={this.props.firstname}/>
                 <SavedNootropics savedNootropics={this.props.savedNootropics}/>
                 <SavedStacks savedStacks={this.props.savedStacks}/>
                 <Footer />
@@ -25,9 +25,9 @@ export class UserHome extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    firstname: state.user.userInfo.firstname,
-    savedNootropics: state.user.saved.nootropics,
-    savedStacks: state.user.saved.stacks
+    firstname: state.user_data.user.userInfo.firstname,
+    savedNootropics: state.user_data.user.saved.nootropics,
+    savedStacks: state.user_data.user.saved.stacks
 });
 
 export default withRouter(connect(mapStateToProps)(UserHome));

@@ -2,16 +2,8 @@
     padding-top: 50px;
 }
 
-.library h2 {
+.library header {
+    color: #46b0f0;
+    height: 110px;
     font-style: italic;
 }
-
-.lib-item {
-    border: 1px solid #222;
-    border-radius: 5px;
-}
-
-.lib-item:hover {
-    cursor: pointer;
-}
-
