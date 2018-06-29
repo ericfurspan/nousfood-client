@@ -14,12 +14,14 @@ const initialState = {
         saved: {
             nootropics: [
                 {
+                    code: "gnko",
                     name: "Ginkgo Biloba",
                     substance: "Plant",
                     suggested_dosage: "",
-                    personal_dosage: "",
+                    personal_dosage: ""
                 },
                 {
+                    code: "panx",
                     name: "Panax Ginseng",
                     substance: "Plant",
                     suggested_dosage: "",
@@ -28,7 +30,7 @@ const initialState = {
             ],
             stacks: [
                 {
-                   title: "Morning focus",
+                   title: "Monday morning jump",
                    contents: [
                        "L-Theanine",
                        "Caffeine",

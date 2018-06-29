@@ -1,4 +1,5 @@
 .user-welcome {
-    position: fixed;
+    position: absolute;
     right: 20px;
+    bottom: 5px;
 }

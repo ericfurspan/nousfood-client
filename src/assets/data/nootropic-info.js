@@ -1,6 +1,7 @@
 export const NootropicInfo = 
 [
     {
+        "code": 'moda',
         "name": "Modafinil",
         "substance": "pharmaceutical",
         "how_to_take": "Standard dosages are 100-200mg, or perhaps 4mg/kg bodyweight, either taken in a sleep deprived state (if the user desires to not fall asleep) or taken first thing in the morning if the user does not wish to impair sleep.",
@@ -13,6 +14,7 @@ export const NootropicInfo =
         ]
     },
     {
+        "code": "panx",
         "name": "Panax Ginseng",
         "substance": "spice or herb",
         "how_to_take": "200 to 400mg daily for general 'preventative' medicine. The 400mg dose appears to confer most cognitive benefit.",
@@ -27,6 +29,7 @@ export const NootropicInfo =
         ]
     },
     {
+        "code": "gnko",        
         "name": "Ginkgo Biloba",
         "substance": "spice or herb",
         "how_to_take": "For cognitive enhancement, take 120-240mg, one to four hours before performance",
@@ -40,6 +43,7 @@ export const NootropicInfo =
         ]
     },
     {
+        "code": "chol",        
         "name": "Choline",
         "substance": "vitamin",
         "how_to_take": "Doses for choline vary significantly. Typically a dose of 250mg to 500mg is used for general health purposes once daily. Doses should be titrated to suit the individual, as too high of a dose at any given time may give the user a headache. It is suggested that doses start out at 50-100mg daily and that users adjust upwards in accordance with their tolerance",
@@ -53,6 +57,7 @@ export const NootropicInfo =
         ]
     },
     {
+        "code": "pira",
         "name": "Piracetam",
         "substance": "pharmaceutical",
         "how_to_take": "The standard piracetam dose for adults is between 1,200-4,800mg a day. The largest effective dose is 1,600mg, taken three times a day for a total of 4,800mg.",
@@ -67,6 +72,7 @@ export const NootropicInfo =
         ]
     },
     {
+        "code": "anra",
         "name": "Aniracetam",
         "substance": "pharmaceutical",
         "how_to_take": "Limited human evidence finds that oral doses in the 1,000-1,500 mg range (over the course of a day) tend to be effective",
@@ -84,6 +90,7 @@ export const NootropicInfo =
         ]
     },
     {
+        "code": "phos",
         "name": "Phosphatidylserine",
         "substance": "amino acid",
         "how_to_take": "A standard dose is 100mg, taken 3 times a day to total 300mg daily. This dose seems to be effective as a daily preventative against cognitive decline, and 100mg once daily may provide some degree of benefit (but may be lesser than 300mg)",
@@ -97,6 +104,7 @@ export const NootropicInfo =
         ]
     },
     {
+        "code": "brmi",
         "name": "Bacopa monnieri",
         "substance": "spice or herb",
         "how_to_take": "The standard dose is 300mg, assuming that the total bacoside content (the active compound) is 55% of the extract, by weight",
@@ -112,6 +120,7 @@ export const NootropicInfo =
         ]
     },
     {
+        "code": "agpc",
         "name": "Alpha-GPC",
         "substance": "fatty acid",
         "how_to_take": "A standard dosage of alpha-GPC is 300-600 mg, according to the most common label doses. For the usage of alpha-GPC in attenuating symptoms of cognitive decline, almost all studies use a dosage of 1,200 mg daily, divided into three doses of 400 mg.",
@@ -125,6 +134,7 @@ export const NootropicInfo =
         ]
     },
     {
+        "code": "hupz",
         "name": "Huperzine-A",
         "substance": "Phytochemical",
         "how_to_take": "Supplementation of huperzine-A tends to be in the range of 50-200mcg daily, and while this can be divided into multiple dosages throughout the day it tends to be taken at a single dose",
@@ -137,6 +147,7 @@ export const NootropicInfo =
         ]
     },
     {
+        "code": "",
         "name": "",
         "substance": "",
         "how_to_take": "",
