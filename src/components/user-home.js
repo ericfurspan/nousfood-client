@@ -28,7 +28,6 @@ export class UserHome extends React.Component {
 
 const mapStateToProps = state => ({
     firstname: state.user_data.user.userInfo.firstname,
-    savedNootropics: state.user_data.user.saved.nootropics,
     savedStacks: state.user_data.user.saved.stacks,
     trendingStacks: state.global_data.trendingStacks
 });
