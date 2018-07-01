@@ -24,7 +24,7 @@ export class LandingPage extends React.Component {
                             <li>
                                 <span>
                                 <svg className="icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 8 8"><path fill="#fff" d="M0 0v8l2-2 2 2v-8h-4z" transform="translate(2)" /></svg>
-                                    Save favorites and curate stacks.
+                                    Save and curate stacks.
                                 </span>
                             </li>
                             <li>
