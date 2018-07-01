@@ -1,26 +1,26 @@
 import React from 'react';
 import Card from './flipcard';
 
-export class SavedStacks extends React.Component {
+export class TrendingStacks extends React.Component {
     render() {
-        const savedStacks = this.props.savedStacks.map((savedStack, index) => (
+        const trendingStacks = this.props.trendingStacks.map((trendingStack, index) => (
             <Card 
-            stack={savedStack}
+            stack={trendingStack}
             type="stack"
             key={index}
             />
         ))
         return (
-            <div className="saved-stacks">
+            <div className="trending-stacks">
                 <header>
-                    <h2>Saved Stacks</h2>
+                    <h2>Trending Stacks</h2>
                 </header>
                 <section className="grid">
-                    {savedStacks}
+                    {trendingStacks}
                 </section>
             </div>
         );
     }
 }
 
-export default SavedStacks;
+export default TrendingStacks;

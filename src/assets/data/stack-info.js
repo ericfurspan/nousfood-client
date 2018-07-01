@@ -1,7 +1,7 @@
 export const StackInfo = 
 [
     {
-        "code": "ab12",
+        "code": "mmj",
         "name": "Monday morning jump",
         "contents": [
             "L-Theanine",
@@ -10,7 +10,7 @@ export const StackInfo =
         ]
      },
      {
-        "code": "cd34",
+        "code": "calm",
         "name": "Evening calm",
         "contents": [
             "L-Theanine"

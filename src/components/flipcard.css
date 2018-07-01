@@ -1,0 +1,30 @@
+.card-item {
+    background-color: #4c4c4c0d;
+    border-radius: 5px;
+    color: black;
+    height: 120px;
+    margin: auto;
+}
+
+.card-item h4 {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.rcf-container {
+    margin: auto;
+}
+
+
+@media screen and (max-width: 850px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    .rcf-front {
+        margin: 0 auto 0 auto;
+    }
+    .rcf-container {
+
+    }
+}

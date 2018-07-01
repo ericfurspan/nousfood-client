@@ -145,29 +145,6 @@ export const NootropicInfo =
             "Huperzine-A is a cognitive enhancer that inhibits an enzyme that degrades the learning neurotransmitter, acetylcholine; due to this, a relative increase occurs",
             "Cycling of huperzine-A tends to be used since it can remain in the body for quite some time (half-life of 10-14 hours), and although a 'cycle' of huperzine-A tends to last 2-4 weeks followed by a break the optimal cycle length is not yet known"
         ]
-    },
-    {
-        "code": "",
-        "name": "",
-        "substance": "",
-        "how_to_take": "",
-        "supports": [
-            ""
-        ],
-        "notes": [
-            "",
-        ]
-    },
-    {
-        "name": "",
-        "substance": "",
-        "how_to_take": "",
-        "supports": [
-            ""
-        ],
-        "notes": [
-            "",
-        ]
     }
 
 ]
