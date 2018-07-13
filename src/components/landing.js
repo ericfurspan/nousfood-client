@@ -1,15 +1,19 @@
 import React from 'react';
 import { LoginForm } from './login-form';
 import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
 import RegistrationForm from './registration-form';
 import { Footer } from './footer';
 import logo from '../assets/images/blue-brain.png';
-import magnifyingGlass from '../assets/images/magnifying-glass.svg';
-import './landing.css';
+import './styles/landing.css';
 
 export class LandingPage extends React.Component {
 
     render() {
+        console.log(this.props)
+        if (this.props.loggedIn) {
+            return <Redirect to="/dashboard" />;
+        }
         return (
             <div className="landing">
                 <div className="landing-left">
@@ -39,7 +43,7 @@ export class LandingPage extends React.Component {
                 <div className="landing-right">
                     <header>
                         <img src={logo} alt="logo"/>
-                        <h2>Noustrition</h2>
+                        <h2>NousFood</h2>
                     </header>
                     <div className="landing-login">
                         <LoginForm />
@@ -55,8 +59,7 @@ export class LandingPage extends React.Component {
 }
 
 const mapStateToProps = state => ({
-
+    loggedIn: state.auth.currentUser !== null
 });
 
 export default connect(mapStateToProps)(LandingPage);
-

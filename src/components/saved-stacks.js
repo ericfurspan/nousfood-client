@@ -1,13 +1,28 @@
 import React from 'react';
-import Card from './flipcard';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import Card from './card';
+import NavBar from './navbar';
+import CreateStack from './create-stack';
 
 export class SavedStacks extends React.Component {
+
+    deleteStack(code) {
+        console.log(`deleting ${code}`)
+        // dispatch action to delete stack from user
+    }
     render() {
+        if (!this.props.loggedIn) {
+            //return <Redirect to="/login" />;
+        }
         const savedStacks = this.props.savedStacks.map((savedStack, index) => (
-            <Card 
-            stack={savedStack}
-            type="stack"
-            key={index}
+            <Card
+                type="stack"
+                data={savedStack}
+                key={index}
+                saveable={true}
+                isSaved={true}
+                onDelete={(code) => {this.deleteStack(code)}}
             />
         ))
         return (
@@ -22,5 +37,8 @@ export class SavedStacks extends React.Component {
         );
     }
 }
+const mapStateToProps = state => ({
+    savedStacks: state.user.user.saved.stacks
+});
 
-export default SavedStacks;
+export default connect(mapStateToProps)(SavedStacks);

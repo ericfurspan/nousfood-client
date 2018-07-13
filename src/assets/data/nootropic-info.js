@@ -100,7 +100,8 @@ export const NootropicInfo =
         "notes": [
             "Phosphatidylserine is non-stimulatory",
             "Goes well with fatty acids",
-            "It is vital for cognitive function, but is not necessarily needed as the body synthesizes it. However supplementation in older individuals seems to improve memory and cognitive capacity"
+            "It is vital for cognitive function, but is not necessarily needed as the body synthesizes it",
+            "Supplementation in older individuals seems to improve memory and cognitive capacity"
         ]
     },
     {
@@ -144,6 +145,79 @@ export const NootropicInfo =
         "notes": [
             "Huperzine-A is a cognitive enhancer that inhibits an enzyme that degrades the learning neurotransmitter, acetylcholine; due to this, a relative increase occurs",
             "Cycling of huperzine-A tends to be used since it can remain in the body for quite some time (half-life of 10-14 hours), and although a 'cycle' of huperzine-A tends to last 2-4 weeks followed by a break the optimal cycle length is not yet known"
+        ]
+    },
+    {
+        "code": "oxir",
+        "name": "Oxiracetam",
+        "substance": "pharmaceutical",
+        "how_to_take": "Supplementation of Oxiracetam tends to be in the dosage range of 1,200-2,400mg taken over the course of a day, either in two to three evenly spread dosing periods (such as three doses of 400mg or 800mg)",
+        "supports": [
+            "cognitive function and brain health"
+        ],
+        "notes": [
+            "Should be taken approximately one hour prior to a learning activity.",
+            "Oxiracetam is one of the racetams and is used for nootropic purposes such as enhancing learning in students or preventing against cognitive decline",
+            "There is currently no evidence to support cognitive enhancement of oxiracetam in young humans with no cognitive impairment looking to increase memory formation"
+        ]
+    },
+    {
+        "code": "caff",
+        "name": "Caffeine",
+        "substance": "pharmaceutical",
+        "how_to_take": "Caffeine dosages should be tailored to individuals. If you are new to caffeine supplements, start with a 100mg dose. Typically, 200mg of caffeine is used for fat-burning supplementation, while acute strength increases occur at higher doses, 500mg and above",
+        "supports": [
+            "energy and stimulation",
+            "cognitive function and brain health"
+        ],
+        "notes": [
+            "Caffeine comes from coffee beans, but it can also be synthesized in a laboratory",
+            "Caffeine is a powerful stimulant, and it can be used to improve physical strength and endurance. It is classified as a nootropic because it sensitizes neurons and provides mental stimulation.",
+            "Caffeine’s main mechanism concerns antagonizing adenosine receptors. Adenosine causes sedation and relaxation when it acts upon its receptors, located in the brain. Caffeine prevents this action and causes alertness and wakefulness. This inhibition of adenosine can influence the dopamine, serotonin, acetylcholine, and adrenaline systems"
+        ]
+    },
+    {
+        "code": "rhod",
+        "name": "Rhodiola Rosea",
+        "substance": "spice or herb",
+        "how_to_take": "Acute usage of rhodiola for fatigue and anti-stress has been noted to be taken in the 288-680mg range",
+        "supports": [
+            "cognitive function and brain health",
+            "mood"
+        ],
+        "notes": [
+            "Rhodiola can improve cognitive functioning in persons who experience a reduction in fatigue, but there is insufficient evidence to support an outright increase in cognition (which should occur in non-fatigued persons) and not enough studies have assessed cognitive decline for conclusions to be made.",
+        ]
+    },
+    {
+        "code": "ashw",
+        "name": "Ashwagandha",
+        "substance": "spice or herb",
+        "how_to_take": "The lowest effective dose for acute usage of ashwagandha, and perhaps the most cost-effective dose, is 300-500mg. The optimal dose is 6,000mg a day usually divided into three doses (2,000mg)",
+        "supports": [
+            "cognitive function and brain health",
+            "mood",
+            "muscle gain and exercise"
+        ],
+        "notes": [
+            "Ashwagandha is popularly known as the king of Ayurvedic herbs",
+            "Ashwagandha means ‘Smell of Horse,’ which refers to the fresh root’s distinct horsey smell, and the traditional belief that ingesting the herb will confer the strength and virility of a horse",
+            "Ashwagandha can improve the formation of memories, and may be able to treat Alzheimer’s disease, though more human evidence is needed before supplementation can be recommended specifically for Alzheimer’s."
+
+        ]
+    },
+    {
+        "code": "adra",
+        "name": "Adrafinil",
+        "substance": "pharmaceutical",
+        "how_to_take": "The standard dosage for adrafinil is reported to be 600-1,200mg, which for the purpose of treating narcolepsy was either 600mg twice daily (morning and midday) or 600-900mg taken once daily upon waking. Adrafinil should not be taken in the afternoon and evening, since supplementation would impair sleep. Adrafinil tends to be taken three times a week, for no longer than five months",
+        "supports": [
+            "energy and stimulation",
+            "cognitive function and brain health"
+        ],
+        "notes": [
+            "Adrafinil supplementation increases alertness and wakefulness, but does not cause hyperactivity. Instead, it fights sleepiness",
+            "Taking adrafinil may also improve memory, but further research is needed to confirm this effect.",
         ]
     }
 

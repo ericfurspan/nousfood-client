@@ -1,11 +1,11 @@
 import React from 'react';
-import './footer.css';
+import './styles/footer.css';
 
 export class Footer extends React.Component {
 
     render() {
         return (
-            <footer>lorem ipsum</footer>
+            <footer>© 2011 - 2016 Examine.com Inc.</footer>
         );
     }
 }

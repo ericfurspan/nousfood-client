@@ -1,0 +1,56 @@
+.card-item {
+    background-color: #46b0f01f;
+    border-radius: 10px;
+    color: black;
+    height: 120px;
+    margin: auto;
+    border: 2px solid #18181814;
+}
+
+.card-back {
+    position: relative;
+    background-color: #fff
+}
+.view-noop-btn {
+    margin-top: 25px;
+    font-style: italic;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+.view-noop-btn:hover {
+    text-decoration: underline;
+}
+.select-noop-btn {
+    background-color: green;
+    color: #fff;
+    bottom: 0%;
+    width: 100%;
+}
+.deselect-noop-btn {
+    background-color: red;
+    color: #fff;
+    bottom: 0%;
+    width: 100%;
+}
+
+.card-item h4 {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%)
+}
+
+.rcf-container {
+    margin: auto;
+}
+
+
+@media screen and (max-width: 850px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    .rcf-front {
+        margin: 0 auto 0 auto;
+    }
+  
+}
