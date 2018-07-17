@@ -28,10 +28,11 @@
     transform: translate(0, -50%);
     grid-column: 2;
     color: black;
+    background-color: #FAFAFA;
 }
 
 .landing-right header {
-    margin-top: 50px;
+    margin-top: 75px;
 }
 
 .landing-login{
@@ -39,7 +40,10 @@
 }
 
 .landing-signup {
-    margin: 100px 0px 100px 0px; 
+    margin: 75px 0px 75px 0px; 
+}
+.landing-signup h3 {
+    margin-bottom: 20px
 }
 
 section p {

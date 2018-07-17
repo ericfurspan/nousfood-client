@@ -1,22 +1,15 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Logo from './logo';
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import Home from '@material-ui/icons/Home';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import { DrawerItems_auth, DrawerItems_noauth } from './drawer-items';
 import List from '@material-ui/core/List';
 import './styles/navbar.css';
-
-const styles = {
-    list: {
-      width: 300,
-    },
-    fullList: {
-      width: 'auto'
-    },
-  };
 
 class NavBar extends React.Component {
     state = {
@@ -55,6 +48,16 @@ class NavBar extends React.Component {
                   onKeyDown={this.toggleDrawer(false)}
                 >
                     {drawerList}
+                </div>
+                <div className="nav-home">
+                    <Link to={`/`}>
+                        <ListItem button>
+                        <ListItemIcon>
+                            <Home />
+                        </ListItemIcon>
+                        <ListItemText primary="NousFood" />
+                        </ListItem>
+                    </Link>
                 </div>
                 </SwipeableDrawer>
             </nav>

@@ -20,17 +20,18 @@
 }
 .view-noop-btn:hover {
     text-decoration: underline;
+    color: #7A00A5;
 }
 .select-noop-btn {
-    background-color: green;
-    color: #fff;
-    bottom: 0%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
     width: 100%;
 }
 .deselect-noop-btn {
     background-color: red;
     color: #fff;
-    bottom: 0%;
+    bottom: 0;
     width: 100%;
 }
 
@@ -38,6 +39,9 @@
     position: relative;
     top: 50%;
     transform: translateY(-50%)
+}
+.card-item button {
+    color: black;
 }
 
 .rcf-container {

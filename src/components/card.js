@@ -15,7 +15,6 @@ class Card extends React.Component {
         this.setState({ open: false });
     }
     render() {
-        console.log(this.props)
         const { isSaved, selectable, selected } = this.props;
         let selectBtn, deselectBtn;
         if(selectable) {

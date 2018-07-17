@@ -24,7 +24,7 @@ export class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => ({
-    user: state.user_data.user
+    user: state.user
     
 });
 

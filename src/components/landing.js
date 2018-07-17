@@ -1,9 +1,8 @@
 import React from 'react';
-import { LoginForm } from './login-form';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import LoginForm from './login-form';
 import RegistrationForm from './registration-form';
-import { Footer } from './footer';
 import logo from '../assets/images/blue-brain.png';
 import './styles/landing.css';
 

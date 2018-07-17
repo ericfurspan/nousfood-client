@@ -6,40 +6,38 @@ import {
 } from '../actions/user';
 
 const initialState = {
-    user: {
-        account: {
-            username: "Quanda",
-            firstname: "Eric",
-            lastname: "Furspan",
-            email: "eric.furspan@gmail.com",
-            password: "wqejqnwejn1j3414"
-        },
-        saved: {
-            stacks: [
-                {
-                   code: "mmj",
-                   name: "Monday morning jump",
-                   contents: [
-                       "L-Theanine",
-                       "Caffeine",
-                       "Adrafinil"
-                   ]
-                },
-                {
-                    code: "calm",
-                    name: "Evening calm",
-                    contents: [
-                        "L-Theanine"
-                    ]
-                 }
-            ]
-        },
-        tempStack: {
-            name: "",
-            contents: [
+    account: {
+        username: "Quanda",
+        firstname: "Eric",
+        lastname: "Furspan",
+        email: "eric.furspan@gmail.com",
+        password: "wqejqnwejn1j3414"
+    },
+    saved: {
+        stacks: [
+            {
+                code: "mmj",
+                name: "Monday morning jump",
+                contents: [
+                    "L-Theanine",
+                    "Caffeine",
+                    "Adrafinil"
+                ]
+            },
+            {
+                code: "calm",
+                name: "Evening calm",
+                contents: [
+                    "L-Theanine"
+                ]
+            }
+        ]
+    },
+    tempStack: {
+        name: "",
+        contents: [
 
-            ]
-        }
+        ]
     },
     error: null
 };

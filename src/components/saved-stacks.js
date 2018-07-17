@@ -1,9 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+//import { Redirect } from 'react-router-dom';
 import Card from './card';
-import NavBar from './navbar';
-import CreateStack from './create-stack';
 
 export class SavedStacks extends React.Component {
 
@@ -38,7 +36,7 @@ export class SavedStacks extends React.Component {
     }
 }
 const mapStateToProps = state => ({
-    savedStacks: state.user.user.saved.stacks
+    savedStacks: state.user.saved.stacks
 });
 
 export default connect(mapStateToProps)(SavedStacks);

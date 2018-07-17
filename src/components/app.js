@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, Route, Redirect, Switch } from 'react-router-dom';
+import { withRouter, Route, Switch } from 'react-router-dom';
 import {connect} from 'react-redux';
 import LandingPage from './landing';
 import Footer from './footer';
@@ -8,8 +8,8 @@ import NootropicLibrary from './nootropic-library';
 import SavedStacks from './saved-stacks';
 import TrendingStacks from './trending-stacks';
 import NavBar from './navbar';
-import CreateStack from './create-stack';
 import LoginPage from './login-page';
+import CreateStackPage from './create-stack-page';
 import About from './about';
 import NotFound from './notfound';
 import './styles/form-fields.css';
@@ -23,7 +23,7 @@ export class App extends Component {
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/user/:id/create-stack" component={CreateStack} />
+          <Route exact path="/user/:id/create-stack" component={CreateStackPage} />
           <Route exact path="/user/:id/saved" component={SavedStacks}/>
           <Route exact path="/dashboard" component={Dashboard} />
           <Route exact path="/stacks" component={TrendingStacks} />
