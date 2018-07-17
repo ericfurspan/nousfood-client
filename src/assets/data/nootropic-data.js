@@ -1,4 +1,4 @@
-export const NootropicInfo = 
+export const NootropicData = 
 [
     {
         "code": 'moda',
@@ -129,6 +129,7 @@ export const NootropicInfo =
             "cognitive function and brain health"
         ],
         "notes": [
+            "Seems to increase acetylcholine, and important chemical for memory and learning functions",
             "Oral supplementation of alpha-GPC is of interest for nootropic purposes, as it appears to have cognitive-enhancing properties (no human evidence exists to support this in otherwise-healthy youth, but it does have support in rodents) and attenuate the rate of cognitive decline in the elderly.",
             "Alpha-GPC is mostly marketed due to it conferring dietary choline to the body following oral ingestion, and being the most efficient choline prodrug at doing so",
             "Alpha-glycerophosphocholine (Alpha-GPC or α-GPC) is a cholinergic compound that is used for its cognitive-promoting properties, and to enhance power output in athletes"

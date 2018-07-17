@@ -1,18 +1,16 @@
 import React from 'react';
-import { NootropicInfo } from '../assets/data/nootropic-info';
-import NavBar from './navbar';
 import Card from './card';
+import { connect } from 'react-redux';
 import './styles/grid.css';
 
-export class Library extends React.Component {
+export class NootropicLibrary extends React.Component {
 
     clickSave(type, code) {
         // dispatch clickSave action 
         console.log(`clicked save ${type} ${code}`);
     }
     render() {
-        console.log(this.props)
-        const nootropics = NootropicInfo.map((nootropic, index) => (
+        const nootropics = this.props.nootropicLibrary.map((nootropic, index) => (
             <Card 
               data={nootropic}
               type="nootropic"
@@ -35,4 +33,8 @@ export class Library extends React.Component {
     }
 }
 
-export default Library;
+const mapStateToProps = state => ({
+    nootropicLibrary: state.global.nootropicLibrary
+});
+
+export default connect(mapStateToProps)(NootropicLibrary);

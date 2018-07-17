@@ -9,7 +9,7 @@ import LocalLibrary from '@material-ui/icons/LocalLibrary';
 import Backspace from '@material-ui/icons/Backspace';
 import Add from '@material-ui/icons/Add';
 import Info from '@material-ui/icons/Info';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export const DrawerItems_noauth = (
   <div className="drawer-items">

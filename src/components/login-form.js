@@ -1,34 +1,39 @@
 import React from 'react';
-//import {Field, reduxForm, focus} from 'redux-form';
-import {required, nonEmpty} from '../validators';
+import { Field, reduxForm, focus } from 'redux-form';
+import { required, nonEmpty, isTrimmed } from '../validators';
+import Input from './input';
 
 export class LoginForm extends React.Component {
 
     render() {
         return (
             <form className="login-form">
-                <label htmlFor="email"></label>
-                <input
-                    type="text"
+                <Field
+                    component={Input}
+                    type="email"
                     name="email"
-                    id="email"
-                    placeholder="email"
-                    validate={[required, nonEmpty]}
+                    placeholder="Email"
+                    validate={[required, isTrimmed, nonEmpty]}
                 />
-                <label htmlFor="password"></label>
-                <input
+                <Field
+                    component={Input}
                     type="password"
                     name="password"
-                    id="password"
-                    placeholder="password"
-                    validate={[required, nonEmpty]}
+                    placeholder="Password"
+                    validate={[required, isTrimmed, nonEmpty]}
                 />
-                <button disabled={this.props.pristine || this.props.submitting}>
-                    Log in
-                </button>
+                <div className="center">
+                    <button disabled={this.props.pristine || this.props.submitting}>
+                        Log in
+                    </button>
+                </div>
             </form>
         );
     }
 }
 
-export default LoginForm;
+export default reduxForm({
+    form: 'login',
+    onSubmitFail: (errors, dispatch) =>
+        dispatch(focus('login', Object.keys(errors)[0]))
+})(LoginForm);

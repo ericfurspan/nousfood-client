@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Card from './card';
-import { Redirect } from 'react-router-dom';
 
 export class TrendingStacks extends React.Component {
     

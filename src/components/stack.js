@@ -20,12 +20,16 @@ class Stack extends React.Component {
             <div className="stack">
                 <h3>{this.props.data.name}</h3><br/>
                 <div className="stack-contents">
-                    <h5 className="stack-header">Contents:</h5>
+                    <h4 className="stack-header">Description:</h4>
+                        <p>{this.props.data.description}</p><br/>
+                    <h4 className="stack-header">Recommendation:</h4>
+                        <p>{this.props.data.directive}</p><br/>
+                    <h4 className="stack-header">Contents:</h4>
                     <ul>
                         {this.props.data.contents.map( (element, index) => 
                             <li key={index}>{element}</li>
                         )}
-                    </ul>
+                    </ul>   
                 </div>
                 {deleteButton}
                 {saveButton}
