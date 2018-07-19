@@ -11,4 +11,6 @@ deploy:
   on:
     repo: Quanda/noushackr-client
     branches:
-      all_branches: true
+      only:
+      - gh-pages
+      - /.*/
