@@ -12,6 +12,7 @@ import LoginPage from './login-page';
 import CreateStackPage from './create-stack-page';
 import About from './about';
 import NotFound from './notfound';
+import Feedback from './feedback';
 import './styles/form-fields.css';
 import './styles/app.css';
 
@@ -26,18 +27,22 @@ export class App extends Component {
           <Route exact path="/user/:id/create-stack" component={CreateStackPage} />
           <Route exact path="/user/:id/saved" component={SavedStacks}/>
           <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/stacks" component={TrendingStacks} />
+          <Route exact path="/stacks" 
+                 render={(props) => <TrendingStacks {...props} savedStacks={this.props.savedStacks} stackLibrary={this.props.stackLibrary}/>} />
           <Route exact path="/nootropics" component={NootropicLibrary} />
           <Route exact path="/about" component={About} />
           <Route path="*" component={NotFound} />
         </Switch>
         <Footer />
+        <Feedback feedback={this.props.feedback}/>
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
+  feedback: state.user.feedback,
+  savedStacks: state.user.savedStacks,
   stackLibrary: state.global.stackLibrary,
   hasAuthToken: state.auth.authToken !== null,
   loggedIn: state.auth.currentUser !== null

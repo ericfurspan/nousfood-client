@@ -3,25 +3,35 @@ import StackNameInput from './stack-name-input';
 import StackDescInput from './stack-desc-input';
 import StackDirectiveInput from './stack-directive-input';
 import NootropicLibrary from '../nootropic-library';
+import StackContentsSelector from './stack-contents-selector';
+import ConfirmAndSubmit from './confirm-submit';
+import { addNoopToTempStack, saveValues } from '../../actions/user';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import '../styles/build-stack.css';
 
 let fieldValues = {
-    stackName: null,
-    stackDesc: null,
-    stackDirective: null,
+    name: null,
+    description: null,
+    directive: null,
     contents: []
 }
 
-export class CreateStackForm extends React.Component {
+export class BuildStackForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             step: 1
         }
     }
-    saveValues(fields) {
+    saveValues = (fields) => {
+        // update fieldValues object
         fieldValues = Object.assign({}, fieldValues, fields)
+
+        //dispatch action to save fieldValues to tempStack
+        this.props.dispatch(saveValues(fieldValues))
     }
-    nextStep = () => {
+    nextStep = () => { 
         this.setState({
             step: this.state.step + 1
         })
@@ -31,20 +41,23 @@ export class CreateStackForm extends React.Component {
             step: this.state.step - 1
         })
     }
-    addNoopToTempStack(code) {
+    addNoopToTempStack = (code) => {
+        // add nootropic code to 'contents' array
         console.log(`adding ${code} to temp stack`);
         fieldValues.contents.push(code);
-        console.log(fieldValues)
-        // add nootropic code to 'create-stack-contents' array
-        // highlight nootropic card green to show as selected
-        //this.props.dispatch(this.addNoopToTempStack(code))
+        this.setState({
+            tempStack: fieldValues
+        })
     }
-    removeNoopFromTempStack(code) {
+    removeNoopFromTempStack = (code) => {
         console.log(`removed ${code} from temp stack`);
-        
+        fieldValues.contents = fieldValues.contents.filter(e => e !== code);
+        this.setState({
+            tempStack: fieldValues
+        })
     }
     render() {
-        console.log(fieldValues)
+        console.log(this.props.tempStack)
         switch(this.state.step) {
             case 1 :
                 return (
@@ -80,20 +93,42 @@ export class CreateStackForm extends React.Component {
                 )
             case 4 :
                 return (
-                    <NootropicLibrary 
-                        selectable={true} 
-                        selectNoop={(code) => {this.addNoopToTempStack(code)}} 
-                        deSelectNoop={(code) => {this.removeNoopFromTempStack(code)}}
+                    <StackContentsSelector
+                        tempStack={this.props.tempStack}
+                        addNoopToTempStack={this.addNoopToTempStack}
+                        removeNoopFromTempStack={this.removeNoopFromTempStack}
+                        previousStep={this.previousStep}
+                        nextStep={this.nextStep}
+                        saveValues={this.saveValues}
                     />
+                )
+            case 5 :
+                return (
+                    <div>
+                        <ConfirmAndSubmit 
+                            tempStack={this.props.tempStack}
+                            nextStep={this.nextStep}
+                            previousStep={this.previousStep}
+                            saveValues={this.saveValues}                            
+                        />
+                    </div>
+                )
+            case 6 :
+                return (
+                    // redirect to dashboard
+                    <Redirect to="/dashboard" />
                 )
             default : 
                 return (null)
         }
     }
 }
+    
+const mapStateToProps = state => ({
+    tempStack: state.user.tempStack
+});
 
-  
-export default CreateStackForm;
+export default connect(mapStateToProps)(BuildStackForm);
 
 
 

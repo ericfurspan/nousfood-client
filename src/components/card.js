@@ -14,13 +14,14 @@ class Card extends React.Component {
     onCloseModal = () => {
         this.setState({ open: false });
     }
+    
     render() {
-        const { isSaved, selectable, selected } = this.props;
         let selectBtn, deselectBtn;
-        if(selectable) {
-            if(selected) {
+
+        if(this.props.selectable) {
+            if(this.propsisSelected) {
                 deselectBtn = <button
-                className="deselect-noop-btn" 
+                className= "deselect-noop-btn" 
                 onClick={() => this.props.onDeSelectNoop(code)}>
                 remove from stack
             </button>
@@ -29,9 +30,10 @@ class Card extends React.Component {
                 className="select-noop-btn" 
                 onClick={() => this.props.onSelectNoop(code)}>
                 add to stack
-              </button>
+                </button>
             }
         }
+
         let name, code, data, type, saveable;
         if (this.props.type === 'nootropic') {
             code = this.props.data.code;
@@ -46,7 +48,7 @@ class Card extends React.Component {
         }
         return (
             <ReactCardFlipper width="200px" height="200px" levitate={true} behavior="click">
-                <div className="card-item card-front">
+                <div className={this.props.isSelected ? 'card-item card-front selected-card': 'card-item card-front'}>
                     <h4>{name}</h4>
                 </div>
                 <div className="card-item card-back" type={this.props.type}>
@@ -61,7 +63,8 @@ class Card extends React.Component {
                             type={type}
                             data={data}
                             onDelete={this.props.onDelete}
-                            onSave={this.props.onSave}>
+                            onSave={this.props.onSave}
+                        >
                         </ModalContent>
                     </Modal>
                 </div>

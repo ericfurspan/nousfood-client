@@ -2,27 +2,30 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Card from './card';
 
+// RENAME TO POPULAR STACKS
+
 export class TrendingStacks extends React.Component {
-    
-    saveStack(code) {
-        console.log(`saving ${code}`)
-        // dispatch action to save stack to user
+    isSaved = (code) => {
+        const isSaved = this.props.savedStacks.find( stack => stack.code === code);
+        return isSaved ? true : false
     }
     render() {
+        console.log(this.props)
         const stack = this.props.stackLibrary.map( (stack, index) => {
             return (
                 <Card
+                  isSaved={this.isSaved(stack.code)}
                   data={stack}
                   type="stack"
+                  feedback={this.props.feedback}
                   key={index}
-                  onSave={(code) => {this.saveStack(code)}}                  
                 />
             )
         })
         return (
             <div className="trending-stacks">
                 <header>
-                    <h2>Trending Stacks</h2>
+                    <h2>Popular Stacks</h2>
                 </header>
                 <section className="grid">
                     {stack}
@@ -31,8 +34,5 @@ export class TrendingStacks extends React.Component {
         );
     }
 }
-const mapStateToProps = state => ({
-    stackLibrary: state.global.stackLibrary
-});
 
-export default connect(mapStateToProps)(TrendingStacks);
+export default TrendingStacks;
