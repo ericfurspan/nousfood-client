@@ -21,6 +21,14 @@ export class About extends React.Component {
                 <h3>What's a 'stack'?</h3>
                 <p>The term stack refers to compounding multiple nootropics which work together to enhance the overall cognitive effects.
                     NousFood helps you create, rate, and share stack blends.</p>
+                <section className="addl-resources">
+                    <header>
+                        <h2>Helpful resources</h2>
+                    </header>
+                    <p><a href="https://www.reddit.com/r/nootropics/wiki/beginners">https://www.reddit.com/r/nootropics/wiki/beginners</a></p>
+                    <p><a href="https://darktka.github.io">https://darktka.github.io</a></p>
+                    <p><a href="https://examine.com/supplements/cognitive-function/">https://examine.com/supplements/cognitive-function/</a></p>
+                </section>
             </div>
         );
     }

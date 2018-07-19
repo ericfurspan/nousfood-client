@@ -5,7 +5,7 @@ import './styles/modal-content.css';
 
 class ModalContent extends React.Component {
 
-    render(props) {
+    render() {
         if(this.props.type === 'nootropic') {
             return (
                 <div className="modal-content nootropic">
@@ -16,11 +16,9 @@ class ModalContent extends React.Component {
         else if (this.props.type === 'stack') {
             return (
                 <div className="modal-content stack">
-                    <Stack 
+                    <Stack
                       data={this.props.data}
                       saved={this.props.saved}
-                      onDelete={this.props.onDelete}
-                      onSave={this.props.onSave}
                     />
                 </div> 
             )

@@ -5,7 +5,7 @@ import {
 
 const initialState = {
     appDrawer: {
-        right: false
+        right: true
     }
 }
 

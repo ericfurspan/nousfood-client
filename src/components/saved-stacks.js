@@ -5,12 +5,9 @@ import Card from './card';
 
 export class SavedStacks extends React.Component {
 
-    deleteStack(code) {
-        console.log(`deleting ${code}`)
-        // dispatch action to delete stack from user
-    }
     render() {
-        if (!this.props.loggedIn) {
+        console.log(this.props)
+        if (!this.props.loggedIn) { // flip this bool after adding auth
             //return <Redirect to="/login" />;
         }
         const savedStacks = this.props.savedStacks.map((savedStack, index) => (
@@ -20,14 +17,10 @@ export class SavedStacks extends React.Component {
                 key={index}
                 saveable={true}
                 isSaved={true}
-                onDelete={(code) => {this.deleteStack(code)}}
             />
         ))
         return (
             <div className="saved-stacks">
-                <header>
-                    <h2>Saved Stacks</h2>
-                </header>
                 <section className="grid">
                     {savedStacks}
                 </section>
@@ -36,7 +29,7 @@ export class SavedStacks extends React.Component {
     }
 }
 const mapStateToProps = state => ({
-    savedStacks: state.user.saved.stacks
+    savedStacks: state.user.savedStacks
 });
 
 export default connect(mapStateToProps)(SavedStacks);

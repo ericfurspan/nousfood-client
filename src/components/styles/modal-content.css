@@ -15,13 +15,17 @@
 #save-stack-btn {
     background-color: #49cf49;
 }
-.delete-stack-btn {
+#delete-stack-btn {
     background-color: red;
 
 }
 .styles_overlayCenter__YHoO7 {
     background: rgba(0, 0, 0, 0.5);
     align-items: baseline;
+}
+
+.stack-contents ul {
+    list-style-type: none;
 }
 
 @media screen and (max-width: 850px) {

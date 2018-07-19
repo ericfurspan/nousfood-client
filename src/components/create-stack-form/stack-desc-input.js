@@ -2,18 +2,18 @@ import React from 'react';
 import { required, nonEmpty } from '../../validators';
 
 class StackDescInput extends React.Component {
-    saveAndContinue(e) {
-        const stackDesc = this.state && this.state.stackDesc ? this.state.stackDesc : this.props.fieldValues.stackDesc || '';
-        let data = { stackDesc }
+    saveAndContinue = () => {
+        const description = this.state && this.state.description ? this.state.description : this.props.fieldValues.description || '';
+        let data = { description }
         this.props.saveValues(data)
         this.props.nextStep()
     }
-    goBack(e) {
+    goBack = () => {
         this.props.previousStep()
     }
-    handleChange(e) {
+    handleChange = (e) => {
         this.setState({
-            stackDesc: e.target.value
+            description: e.target.value
         })
     }
     render() {
@@ -23,19 +23,19 @@ class StackDescInput extends React.Component {
                     type="text" 
                     name="stackDescription"
                     placeholder="Brief description"
-                    defaultValue={this.props.fieldValues.stackDesc}
-                    onChange={this.handleChange.bind(this)}
+                    defaultValue={this.props.fieldValues.description}
+                    onChange={this.handleChange}
                     validate={[required, nonEmpty]}
                 /><br/>
                 <button
                     type="button"
-                    onClick={this.goBack.bind(this)}
+                    onClick={this.goBack}
                 >   Back
                 </button>
                 <button
                     type="button"
                     disabled={this.props.pristine || this.props.submitting}
-                    onClick={this.saveAndContinue.bind(this)}
+                    onClick={this.saveAndContinue}
                 >   Continue
                 </button>
             </div>

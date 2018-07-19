@@ -25,6 +25,22 @@ section {
   cursor: pointer;
 }
 
+.feedback {
+  position: fixed;
+  bottom: 0;
+  height: 10vh;
+  width: 100%;
+  z-index: 1001;
+  color: #fff;
+}
+.success {
+  background-color: #49cf49;
+
+}
+.error {
+  background-color: red;
+
+}
 header {
   margin-bottom: 25px;
 }

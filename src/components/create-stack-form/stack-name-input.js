@@ -2,15 +2,16 @@ import React from 'react';
 import { required, nonEmpty } from '../../validators';
 
 class StackNameInput extends React.Component {
-    saveAndContinue(e) {
-        const stackName = this.state && this.state.stackName ? this.state.stackName : this.props.fieldValues.stackName || '';
-        let data = { stackName }
+    saveAndContinue = () => {
+        console.log(this.props)
+        const name = this.state && this.state.name ? this.state.name : this.props.fieldValues.name || '';
+        let data = { name }
         this.props.saveValues(data)
         this.props.nextStep()
     }
-    handleChange(e) {
+    handleChange = (e) => {
         this.setState({
-            stackName: e.target.value
+            name: e.target.value
         })
     }
     render() {
@@ -20,21 +21,19 @@ class StackNameInput extends React.Component {
                     type="text" 
                     name="stackName"
                     placeholder="Stack name"
-                    defaultValue={this.props.fieldValues.stackName}
-                    onChange={this.handleChange.bind(this)}
+                    defaultValue={this.props.fieldValues.name}
+                    onChange={this.handleChange}
                     validate={[required, nonEmpty]}
                 /><br/>
                 <button
                     type="button"
-                    disabled={this.props.pristine || this.props.submitting}
-                    onClick={this.saveAndContinue.bind(this)}
+                    onClick={this.saveAndContinue}
                 >   Continue
                 </button>
             </div>
         )
     }
 }
-      
 
 export default StackNameInput;
 
