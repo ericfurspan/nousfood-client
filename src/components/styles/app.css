@@ -18,7 +18,7 @@ body {
 
 section {
   min-height: 200px;
-  padding: 5% 0;
+  padding: 4% 0;
 }
 
 .logo img {
@@ -34,15 +34,16 @@ section {
   color: #fff;
 }
 .success {
-  background-color: #49cf49;
+  background-color: #30da30;
 
 }
 .error {
   background-color: red;
 
 }
-header {
-  margin-bottom: 25px;
+
+.dashboard-username {
+  margin-bottom: 50px
 }
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

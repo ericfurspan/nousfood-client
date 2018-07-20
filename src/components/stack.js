@@ -26,7 +26,7 @@ class Stack extends React.Component {
         return (
             <div className="stack">
                 <h3>{this.props.data.name}</h3><br/>
-                <div className="stack-contents">
+                <div className="stack-container">
                     <p><span className="stack-header">Author:</span> {this.props.data.author}</p><br/>
                     <p><span className="stack-header">Description:</span> {this.props.data.description}</p><br/>
                     <p><span className="stack-header">Recommendation:</span> {this.props.data.directive}</p><br/>

@@ -1,43 +1,49 @@
 import React from 'react';
-import { required, nonEmpty } from '../../validators';
+import ArrowForward from '../../assets/images/arrow-forward.svg';
+import ArrowBack from '../../assets/images/arrow-back.svg';
 
 class StackDescInput extends React.Component {
-    saveAndContinue = () => {
+    handleNext = () => {
         const description = this.state && this.state.description ? this.state.description : this.props.fieldValues.description || '';
         let data = { description }
-        this.props.saveValues(data)
-        this.props.nextStep()
-    }
-    goBack = () => {
-        this.props.previousStep()
+        this.props.saveAndContinue(data)
     }
     handleChange = (e) => {
+        if (e.key === 'Enter') {
+            this.handleNext();
+        }
         this.setState({
             description: e.target.value
         })
     }
+    goBack = () => {
+        this.props.previousStep()
+    }
     render() {
         return (
             <div>
-                <input 
+                <input
+                    tabIndex="1"
                     type="text" 
                     name="stackDescription"
                     placeholder="Brief description"
                     defaultValue={this.props.fieldValues.description}
                     onChange={this.handleChange}
-                    validate={[required, nonEmpty]}
+                    onKeyPress={this.handleChange}
                 /><br/>
-                <button
-                    type="button"
-                    onClick={this.goBack}
-                >   Back
-                </button>
-                <button
-                    type="button"
-                    disabled={this.props.pristine || this.props.submitting}
-                    onClick={this.saveAndContinue}
-                >   Continue
-                </button>
+                <div className="nav-item">
+                    <img 
+                        onClick={this.goBack}
+                        src={ArrowBack} alt="arrow-back" 
+                    />Back
+                </div>
+                <div className="nav-item">
+                    <img 
+                        onClick={this.handleNext}
+                        src={ArrowForward} alt="arrow-forward" 
+                    />Next
+                </div>
+
             </div>
         )
     }

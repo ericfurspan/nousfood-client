@@ -1,7 +1,11 @@
 .stack-confirm {
-    background-color: #fff;
-    width: 50%;
-    margin: auto;
+    padding: 50px;
     color: black;
     text-align: left;
+    border: 1px solid black;
+    margin: 15px
+}
+
+.confirmed-value {
+    font-style: italic;
 }
