@@ -23,14 +23,24 @@
     background: rgba(0, 0, 0, 0.5);
     align-items: baseline;
 }
+.styles_modal__gNwvD {
+    margin-top: 25px;
+}
 
-.stack-contents ul {
+.stack-container ul {
     list-style-type: none;
 }
 
 @media screen and (max-width: 850px) {
     .modal-content {
-        min-width: 400px;
-        min-height: 350px;
+        min-width: 650px;
+        min-height: 420px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .modal-content {
+        min-width: 330px;
+        min-height: 420px;
     }
 }

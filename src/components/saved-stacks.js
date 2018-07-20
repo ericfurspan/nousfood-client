@@ -21,6 +21,9 @@ export class SavedStacks extends React.Component {
         ))
         return (
             <div className="saved-stacks">
+                <header>
+                    <h2>Saved stacks</h2>
+                </header>
                 <section className="grid">
                     {savedStacks}
                 </section>

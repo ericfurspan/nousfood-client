@@ -41,6 +41,10 @@ export class BuildStackForm extends React.Component {
             step: this.state.step - 1
         })
     }
+    saveAndContinue = (data) => {
+        this.saveValues(data)
+        this.nextStep()
+    }
     addNoopToTempStack = (code) => {
         // add nootropic code to 'contents' array
         console.log(`adding ${code} to temp stack`);
@@ -56,13 +60,14 @@ export class BuildStackForm extends React.Component {
             tempStack: fieldValues
         })
     }
+    
     render() {
-        console.log(this.props.tempStack)
         switch(this.state.step) {
             case 1 :
                 return (
                     <form className="stack-name-form">
                         <StackNameInput 
+                            saveAndContinue={this.saveAndContinue}
                             fieldValues={fieldValues}
                             nextStep={this.nextStep}
                             saveValues={this.saveValues}
@@ -72,7 +77,8 @@ export class BuildStackForm extends React.Component {
             case 2: 
                 return (
                     <form className="stack-desc-form">
-                        <StackDescInput 
+                        <StackDescInput
+                            saveAndContinue={this.saveAndContinue}  
                             fieldValues={fieldValues}
                             nextStep={this.nextStep}
                             previousStep={this.previousStep}
@@ -83,7 +89,8 @@ export class BuildStackForm extends React.Component {
             case 3 :
                 return (
                     <form className="stack-directive-form">
-                        <StackDirectiveInput 
+                        <StackDirectiveInput
+                            saveAndContinue={this.saveAndContinue}
                             fieldValues={fieldValues}
                             nextStep={this.nextStep}
                             previousStep={this.previousStep}
@@ -94,6 +101,7 @@ export class BuildStackForm extends React.Component {
             case 4 :
                 return (
                     <StackContentsSelector
+                        saveAndContinue={this.saveAndContinue}
                         tempStack={this.props.tempStack}
                         addNoopToTempStack={this.addNoopToTempStack}
                         removeNoopFromTempStack={this.removeNoopFromTempStack}

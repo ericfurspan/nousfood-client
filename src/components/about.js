@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles/about.css';
+import Link from 'react-router-dom';
 
 export class About extends React.Component {
 
@@ -25,9 +26,9 @@ export class About extends React.Component {
                     <header>
                         <h2>Helpful resources</h2>
                     </header>
-                    <p><a href="https://www.reddit.com/r/nootropics/wiki/beginners">https://www.reddit.com/r/nootropics/wiki/beginners</a></p>
-                    <p><a href="https://darktka.github.io">https://darktka.github.io</a></p>
-                    <p><a href="https://examine.com/supplements/cognitive-function/">https://examine.com/supplements/cognitive-function/</a></p>
+                    <p><a href="https://www.reddit.com/r/nootropics/wiki/beginners" target="_blank">https://www.reddit.com/r/nootropics/wiki/beginners</a></p>
+                    <p><a href="https://darktka.github.io" target="_blank">https://darktka.github.io</a></p>
+                    <p><a href="https://examine.com/supplements/cognitive-function/" target="_blank">https://examine.com/supplements/cognitive-function/</a></p>
                 </section>
             </div>
         );

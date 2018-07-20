@@ -56,9 +56,16 @@ button {
     border-radius: .25rem;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     background-color: #46b0f0;
-    min-width: 50px;
+    min-width: 35px;
 }
 form button:hover {
     transform: scale(1.02);
     cursor: pointer;
+}
+
+.nav-item {
+    width: 100px;
+    margin: auto;
+    display: inline-block;
+    margin: 20px 0px 30px 0px;
 }
