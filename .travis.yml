@@ -7,7 +7,7 @@ deploy:
   provider: heroku
   api_key:
     secure: KlSo7DdIlq404XpyetCP7RaXpPKlkaZLrNZNYbXYQl/2o+r0YTuIO+f4qmb3+wAgUVdtNUxOg6wVGAWfs+kl5gNboYlrGwyoEeCfTg5VbwsQFybBjDo28TDeCuKKuG9/eLUsMuUA4wgJGvVgAF64KTcITiQrGfoBLKBcKSHw/vqUxSMuZWo8o8xhcfFMZ4QATgd/S9G5F0K4/HtLzA9gfW2+q/DclPwAra5YrMh9wRW+PBd0V16CgM1JndwYkIK2ee4HdJCQMkdCpCB1jqioNf6zEutrfvy0PYWd9ua5ZuC/Ulmsks7lnw2nbctHdIg2aWl5ROuX5dRB7ltdNbpLS2sbi2bq0FZ8YNpFZqO4ifdjJy1toktb6d5IQkdFgcSXfouqueRAHQ1BVQ61h55vxKyYhAKRXOaG3Hwa+OjUaq/oTAvQ8/0d/BOyR4UoMsDBKpOfGmBrfsX+KOqspiIUVY5Gn6rI5g85vctnKUI/9fXZBuHOPJanPlzN7f6EUrPymnlnTqba2gKZhIrzrtaLIsDIZRn0gmWCQ19JjrC48aC1L3e24qWVhHskuwNy6GD0CDzm1zNWIMjwJ4X4rVY2WkT8VwR6jtSPQipWgbnelHaxX5sodfU6a9bp8/8D9abYepT29dt+zQ0ofDiFJjMj0mhyyc3ufNoz1wxjdAs5FrA=
-  app: flannel-drake-85884
+  app: nousfood-client
   on:
     repo: Quanda/noushackr-client
     branch: master
