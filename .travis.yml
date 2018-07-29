@@ -10,3 +10,4 @@ deploy:
   app: flannel-drake-85884
   on:
     repo: Quanda/noushackr-client
+    branch: master
