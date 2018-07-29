@@ -7,11 +7,12 @@ export class SavedStacks extends React.Component {
         return isPublic ? true : false
     }
     render() {
+        console.log(this.props)
         if(this.props.hidden) {
             return null
         }
-        if(!this.props.savedStacks) {
-            return <p>You have no saved stacks</p>
+        if(this.props.savedStacks.length === 0) {
+            return <div><p>You have no saved stacks</p><br/><br/></div>
         }
         const savedStacks = this.props.savedStacks.map((savedStack, index) => (
             <Card
