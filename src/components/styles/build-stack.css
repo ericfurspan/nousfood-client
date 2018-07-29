@@ -1,11 +1,22 @@
 .stack-confirm {
-    padding: 50px;
+    padding: 30px;
     color: black;
     text-align: left;
-    border: 1px solid black;
-    margin: 15px
+    border: 2px dashed black;
+    margin: 10px
 }
 
 .confirmed-value {
     font-style: italic;
+}
+
+.create-stack input {
+    width: 75%;
+    height: 75px;
+}
+.stack-desc-form p {
+    margin-bottom: 20px
+}
+.stack-btn-container button {
+    min-width: 150px;
 }

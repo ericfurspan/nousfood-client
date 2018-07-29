@@ -5,9 +5,9 @@ import { normalizeResponseErrors } from './utils';
 import { saveAuthToken, clearAuthToken } from '../local-storage';
 
 export const SET_AUTH_TOKEN = 'SET_AUTH_TOKEN';
-export const setAuthToken = authToken => ({
+export const setAuthToken = token => ({
     type: SET_AUTH_TOKEN,
-    authToken
+    token
 });
 
 export const CLEAR_AUTH = 'CLEAR_AUTH';
@@ -34,11 +34,11 @@ export const authError = error => ({
 
 // Stores the auth token in state and localStorage, and decodes and stores
 // the user data stored in the token
-const storeAuthInfo = (authToken, dispatch) => {
-    const decodedToken = jwtDecode(authToken);
-    dispatch(setAuthToken(authToken));
+const storeAuthInfo = (token, dispatch) => {
+    const decodedToken = jwtDecode(token);
+    dispatch(setAuthToken(token));
     dispatch(authSuccess(decodedToken.user));
-    saveAuthToken(authToken);
+    saveAuthToken(token);
 };
 
 export const login = (username, password) => dispatch => {
@@ -58,7 +58,7 @@ export const login = (username, password) => dispatch => {
             // errors which follow a consistent format
             .then(res => normalizeResponseErrors(res))
             .then(res => res.json())
-            .then(({authToken}) => storeAuthInfo(authToken, dispatch))
+            .then(({token}) => storeAuthInfo(token, dispatch))
             .catch(err => {
                 const {code} = err;
                 const message =
@@ -78,7 +78,7 @@ export const login = (username, password) => dispatch => {
 };
 
 export const registerUser = user => dispatch => {
-    return fetch(`${API_BASE_URL}/users`, {
+    return fetch(`${API_BASE_URL}/signup`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'
@@ -100,14 +100,15 @@ export const registerUser = user => dispatch => {
         });
 };
 
+
 export const refreshAuthToken = () => (dispatch, getState) => {
     dispatch(authRequest());
-    const authToken = getState().auth.authToken;
+    const token = getState().auth.token;
     return fetch(`${API_BASE_URL}/auth/refresh`, {
         method: 'POST',
         headers: {
             // Provide our existing token as credentials to get a new one
-            Authorization: `Bearer ${authToken}`
+            Authorization: `Bearer ${token}`
         }
     })
         .then(res => normalizeResponseErrors(res))
@@ -119,7 +120,6 @@ export const refreshAuthToken = () => (dispatch, getState) => {
             // them and sign us out
             dispatch(authError(err));
             dispatch(clearAuth());
-            clearAuthToken(authToken);
+            clearAuthToken(token);
         });
 };
-

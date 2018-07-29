@@ -1,11 +1,6 @@
 import React from 'react';
-import { Link, withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import Logo from './logo';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import Home from '@material-ui/icons/Home';
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
 import { DrawerItems_auth, DrawerItems_noauth } from './drawer-items';
 import List from '@material-ui/core/List';
@@ -49,24 +44,10 @@ class NavBar extends React.Component {
                 >
                     {drawerList}
                 </div>
-                <div className="nav-home">
-                    <Link to={`/`}>
-                        <ListItem button>
-                        <ListItemIcon>
-                            <Home />
-                        </ListItemIcon>
-                        <ListItemText primary="NousFood" />
-                        </ListItem>
-                    </Link>
-                </div>
                 </SwipeableDrawer>
             </nav>
         );
     }
 }
 
-const mapStateToProps = state => ({
-    right: state.app_state.appDrawer.right
-});
-
-export default withRouter(connect(mapStateToProps)(NavBar));
+export default withRouter(NavBar);

@@ -1,8 +1,6 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import Card from './card';
 
-// RENAME TO POPULAR STACKS
 
 export class TrendingStacks extends React.Component {
     isSaved = (code) => {
@@ -10,23 +8,41 @@ export class TrendingStacks extends React.Component {
         return isSaved ? true : false
     }
     render() {
-        console.log(this.props)
-        const stack = this.props.stackLibrary.map( (stack, index) => {
-            return (
-                <Card
-                  isSaved={this.isSaved(stack.code)}
-                  data={stack}
-                  type="stack"
-                  feedback={this.props.feedback}
-                  key={index}
-                />
-            )
-        })
+        if(this.props.hidden) {
+            return null
+        }
+        let stack;
+        if(!this.props.savedStacks) {
+            stack = this.props.stackLibrary.map( (stack, index) => {
+                return (
+                    <Card
+                      env="global"
+                      isPublic={true}
+                      isSaved={false}
+                      data={stack}
+                      type="stack"
+                      feedback={this.props.feedback}
+                      key={index}
+                    />
+                )
+            })
+        } else {
+            stack = this.props.stackLibrary.map( (stack, index) => {
+                return (
+                    <Card
+                      env="global"
+                      isPublic={true}
+                      isSaved={this.isSaved(stack.code)}
+                      data={stack}
+                      type="stack"
+                      feedback={this.props.feedback}
+                      key={index}
+                    />
+                )
+            })
+        }
         return (
             <div className="trending-stacks">
-                <header>
-                    <h2>Popular Stacks</h2>
-                </header>
                 <section className="grid">
                     {stack}
                 </section>

@@ -1,17 +1,13 @@
 .registration-form, .login-form {
     display: table;
     margin: auto;
-    text-align: -webkit-auto
+    position: relative;
+    width: 100%;
 }
 .registration-form input, .login-form input {
     display: table-cell;
 }
-.registration-form label, .login-form label {
-    display: table-cell;
-}
-.create-stack input {
-    min-width: 275px;
-}
+
 input {
     padding: .5rem 1rem;
     font-size: 1.25rem;
@@ -30,6 +26,7 @@ input {
 
 .form-error {
     color: red;
+    margin: 0;
 }
 .form-warning {
     color: orange;

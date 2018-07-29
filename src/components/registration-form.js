@@ -5,14 +5,15 @@ import { login } from '../actions/auth';
 import './styles/form-fields.css';
 import Input from './input';
 import { required, nonEmpty, matches, length, isTrimmed } from '../validators';
-const passwordLength = length({min: 10, max: 72});
+const passwordLength = length({min: 8, max: 72});
 const matchesPassword = matches('password');
 
 export class RegistrationForm extends React.Component {
     
     onSubmit(values) {
-        const {username, password, firstName, lastName} = values;
-        const user = {username, password, firstName, lastName};
+        const {email, username, password, firstname, lastname} = values;
+        const user = {email, username, password, firstname, lastname};
+        console.log(user)
         return this.props
             .dispatch(registerUser(user))
             .then(() => this.props.dispatch(login(username, password)));
@@ -27,14 +28,16 @@ export class RegistrationForm extends React.Component {
                 <Field 
                     component={Input} 
                     type="text" 
-                    name="firstName" 
+                    name="firstname" 
                     placeholder="First name"
+                    validate={[required, nonEmpty, isTrimmed]}
                 />
                 <Field 
                     component={Input} 
                     type="text" 
-                    name="lastName" 
+                    name="lastname" 
                     placeholder="Last name"    
+                    validate={[required, nonEmpty, isTrimmed]}
                 />
                 <Field
                     component={Input}
@@ -42,6 +45,12 @@ export class RegistrationForm extends React.Component {
                     name="email"
                     placeholder="Email"
                     validate={[required, nonEmpty, isTrimmed]}
+                />
+                <Field 
+                    component={Input} 
+                    type="text" 
+                    name="username" 
+                    placeholder="Username"
                 />
                 <Field
                     component={Input}

@@ -1,12 +1,13 @@
 
 nav {
-    background-color: #293035; /*#293035 #20232B*/
+    background-color: #293035; /*#293035 #20232B* rgb(52, 56, 62)*/
     color: #fff;
     width: 100%;
-    height: 85px;
+    height: 95px;
     z-index: 2;
     margin-bottom: 50px;
     border-bottom: 8px solid #46b0f0;
+    position: fixed;
 }
 h1 {
     color: black;
@@ -18,7 +19,9 @@ h1 {
     bottom: 0;
     width: 100%;
 }
-
+nav img {
+    padding-top: 5px;
+}
 nav img:hover {
     transform: scale(1.02);
 }
@@ -28,12 +31,19 @@ nav img:hover {
 }
 
 .drawer-items svg {
-    color: #46b0f0
+    color: #5c6266a8
 }
 
 .drawer-items span {
     color: black;
 }
-@media screen and (max-width: 850px) {
 
+div[class^="MuiPaper-root"] {
+    min-width: 250px;
+}
+
+@media screen and (max-width: 850px) {
+    div[class^="MuiPaper-root"] {
+        min-width: 150px;
+    }
 }

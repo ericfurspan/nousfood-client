@@ -1,7 +1,7 @@
 import React from 'react';
-import CloseBtn from '../assets/images/close-btn.svg';
 import { connect } from 'react-redux';
 import { dismissFeedback } from '../actions/user';
+import './styles/feedback.css';
 
 export class Feedback extends React.Component {
 

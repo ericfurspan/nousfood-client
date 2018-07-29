@@ -1,0 +1,36 @@
+.dashboard {
+    padding-top: 140px
+}
+
+.dashboard-intro { 
+    position: fixed;
+    right: 10px;
+    color: white;
+    top: 50px;
+    z-index: 2;
+}
+
+.dashboard-header {
+    margin-bottom: 20px;
+    user-select: none;
+}
+.dashboard-header h2 {
+    width: 300px;
+    margin: auto;
+    border-bottom: 2px solid #293035;
+    padding-bottom: 15px;
+}
+
+.dashboard-header:hover {
+    transform: scale(1.02);
+}
+
+#spinner {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    top: 50%;
+    left: 50%;
+    margin-left: -50px;
+    margin-top: -50px;
+}

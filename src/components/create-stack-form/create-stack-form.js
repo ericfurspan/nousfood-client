@@ -1,13 +1,8 @@
 import React from 'react';
 import StackNameInput from './stack-name-input';
 import StackDescInput from './stack-desc-input';
-import StackDirectiveInput from './stack-directive-input';
-import NootropicLibrary from '../nootropic-library';
 import StackContentsSelector from './stack-contents-selector';
 import ConfirmAndSubmit from './confirm-submit';
-import { addNoopToTempStack, saveValues } from '../../actions/user';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import '../styles/build-stack.css';
 
 let fieldValues = {
@@ -21,19 +16,26 @@ export class BuildStackForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            step: 1
+            step: 1,
+            tempStack: {
+                name: null,
+                description: null,
+                directive: null,
+                contents: []
+            }
         }
     }
     saveValues = (fields) => {
-        // update fieldValues object
         fieldValues = Object.assign({}, fieldValues, fields)
-
-        //dispatch action to save fieldValues to tempStack
-        this.props.dispatch(saveValues(fieldValues))
     }
     nextStep = () => { 
         this.setState({
             step: this.state.step + 1
+        })
+    }
+    resetCount = () => {
+        this.setState({
+            step: 1
         })
     }
     previousStep = () => {
@@ -46,22 +48,25 @@ export class BuildStackForm extends React.Component {
         this.nextStep()
     }
     addNoopToTempStack = (code) => {
-        // add nootropic code to 'contents' array
-        console.log(`adding ${code} to temp stack`);
-        fieldValues.contents.push(code);
+        // add nootropic to 'contents' array
+        // lookup nootropic data using code
+        let noopData = this.props.nootropics.find(noop => noop.code === code)
+        fieldValues.contents = [...fieldValues.contents, noopData]
         this.setState({
             tempStack: fieldValues
         })
     }
     removeNoopFromTempStack = (code) => {
-        console.log(`removed ${code} from temp stack`);
-        fieldValues.contents = fieldValues.contents.filter(e => e !== code);
+        fieldValues.contents = fieldValues.contents.filter(e => e.code !== code);
         this.setState({
             tempStack: fieldValues
         })
     }
     
     render() {
+        if(this.props.hidden) {
+            return null
+        }
         switch(this.state.step) {
             case 1 :
                 return (
@@ -74,7 +79,20 @@ export class BuildStackForm extends React.Component {
                         />
                     </form>
                 )
-            case 2: 
+            case 2 :
+                return (
+                    <StackContentsSelector
+                        nootropics={this.props.nootropics}
+                        saveAndContinue={this.saveAndContinue}
+                        tempStack={this.state.tempStack}
+                        addNoopToTempStack={this.addNoopToTempStack}
+                        removeNoopFromTempStack={this.removeNoopFromTempStack}
+                        previousStep={this.previousStep}
+                        nextStep={this.nextStep}
+                        saveValues={this.saveValues}
+                    />
+                )
+            case 3: 
                 return (
                     <form className="stack-desc-form">
                         <StackDescInput
@@ -86,57 +104,25 @@ export class BuildStackForm extends React.Component {
                         />
                     </form>
                 )
-            case 3 :
-                return (
-                    <form className="stack-directive-form">
-                        <StackDirectiveInput
-                            saveAndContinue={this.saveAndContinue}
-                            fieldValues={fieldValues}
-                            nextStep={this.nextStep}
-                            previousStep={this.previousStep}
-                            saveValues={this.saveValues}
-                        />
-                    </form>
-                )
             case 4 :
-                return (
-                    <StackContentsSelector
-                        saveAndContinue={this.saveAndContinue}
-                        tempStack={this.props.tempStack}
-                        addNoopToTempStack={this.addNoopToTempStack}
-                        removeNoopFromTempStack={this.removeNoopFromTempStack}
-                        previousStep={this.previousStep}
-                        nextStep={this.nextStep}
-                        saveValues={this.saveValues}
-                    />
-                )
-            case 5 :
                 return (
                     <div>
                         <ConfirmAndSubmit 
-                            tempStack={this.props.tempStack}
+                            tempStack={this.state.tempStack}
                             nextStep={this.nextStep}
                             previousStep={this.previousStep}
-                            saveValues={this.saveValues}                            
+                            saveValues={this.saveValues}  
+                            resetCount={this.resetCount}                          
                         />
                     </div>
-                )
-            case 6 :
-                return (
-                    // redirect to dashboard
-                    <Redirect to="/dashboard" />
                 )
             default : 
                 return (null)
         }
     }
 }
-    
-const mapStateToProps = state => ({
-    tempStack: state.user.tempStack
-});
 
-export default connect(mapStateToProps)(BuildStackForm);
+export default BuildStackForm;
 
 
 

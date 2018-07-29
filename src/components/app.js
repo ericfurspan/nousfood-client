@@ -2,38 +2,65 @@ import React, { Component } from 'react';
 import { withRouter, Route, Switch } from 'react-router-dom';
 import {connect} from 'react-redux';
 import LandingPage from './landing';
-import Footer from './footer';
 import Dashboard from './dashboard';
-import NootropicLibrary from './nootropic-library';
-import SavedStacks from './saved-stacks';
-import TrendingStacks from './trending-stacks';
 import NavBar from './navbar';
 import LoginPage from './login-page';
-import CreateStackPage from './create-stack-page';
 import About from './about';
 import NotFound from './notfound';
 import Feedback from './feedback';
+import { fetchNootropics, fetchTrendingStacks } from '../actions/global';
+import {refreshAuthToken} from '../actions/auth';
 import './styles/form-fields.css';
 import './styles/app.css';
+import Spinner from '../assets/images/spinner.gif';
 
 export class App extends Component {
-  render() {
+componentDidMount() {
+    this.props.dispatch(fetchNootropics());
+    this.props.dispatch(fetchTrendingStacks());
+}
+componentDidUpdate(prevProps) {
+    if (!prevProps.loggedIn && this.props.loggedIn) {
+      // When we are logged in, refresh the auth token periodically
+      this.startPeriodicRefresh();
+    } else if (prevProps.loggedIn && !this.props.loggedIn) {
+      // Stop refreshing when we log out
+      this.stopPeriodicRefresh();
+    }
+}
+
+componentWillUnmount() {
+    this.stopPeriodicRefresh();
+}
+
+startPeriodicRefresh() {
+    this.refreshInterval = setInterval(
+        () => this.props.dispatch(refreshAuthToken()),
+        60 * 60 * 1000 // One hour
+    );
+}
+
+stopPeriodicRefresh() {
+    if (!this.refreshInterval) {
+        return;
+    }
+    clearInterval(this.refreshInterval);
+}
+
+render() {
+    if(this.props.authenticating) {
+      return <img src={Spinner} id="spinner" alt="spinner"/>
+    }
     return (
       <div className="App">
         <NavBar loggedIn={this.props.loggedIn}/>
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/login" component={LoginPage} />
-          <Route exact path="/user/:id/create-stack" component={CreateStackPage} />
-          <Route exact path="/user/:id/saved" component={SavedStacks}/>
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/stacks" 
-                 render={(props) => <TrendingStacks {...props} savedStacks={this.props.savedStacks} stackLibrary={this.props.stackLibrary}/>} />
-          <Route exact path="/nootropics" component={NootropicLibrary} />
+          <Route path="/dashboard" component={Dashboard} />
           <Route exact path="/about" component={About} />
           <Route path="*" component={NotFound} />
         </Switch>
-        <Footer />
         <Feedback feedback={this.props.feedback}/>
       </div>
     );
@@ -41,10 +68,11 @@ export class App extends Component {
 }
 
 const mapStateToProps = state => ({
+  authenticating: state.auth.loading,
   feedback: state.user.feedback,
-  savedStacks: state.user.savedStacks,
   stackLibrary: state.global.stackLibrary,
-  hasAuthToken: state.auth.authToken !== null,
+  nootropics: state.global.nootropics,
+  hasAuthToken: state.auth.token !== null,
   loggedIn: state.auth.currentUser !== null
 });
 
