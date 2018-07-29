@@ -8,7 +8,8 @@ export class About extends React.Component {
             <div className="about">
                 <div id="please-note">
                     <p>Note: this app is currently in beta. The following is supported: 
-                    Registration, Sign in, Logout, Create stack, Save stack, Delete stack</p>
+                    Registration, Sign in, Logout, Create stack, Save stack, Delete stack, Make stack public,
+                    Delete public stack</p>
                 </div>
                 <section>
                     <header>
