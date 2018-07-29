@@ -1,109 +1,180 @@
 import {
+    EMPTY_USER_DATA,
     FETCH_USER_DATA_SUCCESS,
     FETCH_USER_DATA_ERROR,
     SAVE_VALUES,
-    BUILD_STACK_SUCCESS,
-    BUILD_STACK_ERROR,
+    CREATE_STACK_REQUEST,
+    CREATE_STACK_SUCCESS,
+    CREATE_STACK_ERROR,
+    SAVE_STACK_REQUEST,
     SAVE_STACK_SUCCESS,
     SAVE_STACK_ERROR,
     DELETE_STACK_SUCCESS,
     DELETE_STACK_ERROR,
-    DISMISS_FEEDBACK
+    DISMISS_FEEDBACK,
+    CREATE_PUBLIC_STACK_REQUEST,
+    CREATE_PUBLIC_STACK_SUCCESS,
+    CREATE_PUBLIC_STACK_ERROR,
+    DELETE_PUBLIC_STACK_REQUEST,
+    DELETE_PUBLIC_STACK_SUCCESS,
+    DELETE_PUBLIC_STACK_ERROR
 } from '../actions/user';
 
 const initialState = {
     account: {
-        username: "Quanda",
-        firstname: "Eric",
-        lastname: "Furspan",
-        email: "eric.furspan@gmail.com",
-        password: "wqejqnwejn1j3414"
+        username: null,
+        firstname: null,
+        lastname: null,
+        email: null,
+        password: null
     },
-    savedStacks: [
-        {
-            author: "Quanda",
-            code: "mmj",
-            name: "Monday morning jump",
-            contents: [
-                "L-Theanine",
-                "Caffeine",
-                "Adrafinil"
-            ],
-            description: "",
-            directive: ""
-        },
-        {
-            author: "",
-            code: "calm",
-            name: "Evening calm",
-            contents: [
-                "L-Theanine"
-            ],
-            description: "",
-            directive: ""
-        }
-    ],
+    savedStacks: null,
     tempStack: {
-        author: "",
-        name: "",
-        description: "",
-        directive: "",
-        contents: [],
-        code: ""
+        author: null,
+        name: null,
+        description: null,
+        directive: null,
+        contents: null,
+        code: null
     },
-    feedback: null
+    error: null,
+    feedback: null,
+    loading: true
 };
 
 export default (state = initialState, action) => {
     if (action.type === FETCH_USER_DATA_SUCCESS) {
+        console.log(action.data)
         return Object.assign({}, state, {
-            user: action.data,
-            error: null
+            account: {
+                username: action.data.username,
+                firstname: action.data.firstname,
+                lastname: action.data.lastname,
+                email: action.data.email,
+                password: action.data.password,
+            },
+            savedStacks: action.data.saved_stacks,
+            error: null,
+            loading: false
         });
-    } else if (action.type === FETCH_USER_DATA_ERROR) {
+    
+    } 
+    else if(action.type === EMPTY_USER_DATA) {
         return Object.assign({}, state, {
-            feedback: {type: 'error', message: action.error}
+            account: null,
+            savedStacks: null
+        });
+    }
+    else if (action.type === FETCH_USER_DATA_ERROR) {
+        return Object.assign({}, state, {
+            feedback: {type: 'error', message: action.error.message},
+            error: action.error.message
         });
     }else if(action.type === SAVE_VALUES) {
         return Object.assign({}, state, {
             tempStack: action.data
         });
     }
-    else if(action.type === BUILD_STACK_SUCCESS) {
-        
+    else if(action.type === CREATE_STACK_REQUEST) {
         return Object.assign({}, state, {
-            savedStacks: [...state.savedStacks, action.data],
-            feedback: {type: 'success', message: 'Stack created successfully'}
+            loading: true
         });
     }
-    else if(action.type === BUILD_STACK_ERROR) {
+    else if(action.type === CREATE_STACK_SUCCESS) {
+        let savedStacks;
+        if(state.saved_stacks) {
+            savedStacks = [...state.saved_stacks, action.data]
+        } else {
+            savedStacks = [action.data]
+        }
         return Object.assign({}, state, {
-            feedback: {type: 'error', message: action.error}
+            savedStacks,
+            feedback: {type: 'success', message: 'Stack created successfully'},
+            error: null,
+            loading: false
+        });
+    }
+    else if(action.type === CREATE_STACK_ERROR) {
+        return Object.assign({}, state, {
+            feedback: {type: 'error', message: action.error.message},
+            error: action.error.message,
+            loading: false
+        });
+    }
+    else if(action.type === SAVE_STACK_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true
         });
     }
     else if(action.type === SAVE_STACK_SUCCESS) {
         return Object.assign({}, state, {
-            feedback: {type: 'success', message: 'Saved Successfully'}
+            feedback: {type: 'success', message: 'Saved Successfully'},
+            loading: false,
+            error: null
         });
     }
     else if(action.type === SAVE_STACK_ERROR) {
         return Object.assign({}, state, {
-            feedback: {type: 'error', message: action.error}
+            feedback: {type: 'error', message: action.error.message},
+            error: action.error.message,
+            loading: false
         });
     }
     else if(action.type === DELETE_STACK_SUCCESS) {
         return Object.assign({}, state, {
-            feedback: {type: 'success', message: 'Deleted Successfully'}
+            feedback: {type: 'success', message: 'Deleted Successfully'},
+            loading: false,
+            error: null
         });
     }
     else if(action.type === DELETE_STACK_ERROR) {
         return Object.assign({}, state, {
-            feedback: {type: 'error', message: action.error}
+            feedback: {type: 'error', message: action.error.message},
+            error: action.error.message,
+            loading: false
         });
     }
     else if(action.type === DISMISS_FEEDBACK) {
         return Object.assign({}, state, {
             feedback: null
+        });
+    }
+    else if(action.type === CREATE_PUBLIC_STACK_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true
+        });
+    }
+    else if(action.type === CREATE_PUBLIC_STACK_SUCCESS) {
+        return Object.assign({}, state, {
+            feedback: {type: 'success', message: 'Stack made public'},
+            error: null,
+            loading: false
+        });
+    }
+    else if(action.type === CREATE_PUBLIC_STACK_ERROR) {
+        return Object.assign({}, state, {
+            feedback: {type: 'error', message: action.error.message},
+            error: action.error.message,
+            loading: false
+        });
+    }
+    else if(action.type === DELETE_PUBLIC_STACK_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true
+        });
+    }
+    else if(action.type === DELETE_PUBLIC_STACK_SUCCESS) {
+        return Object.assign({}, state, {
+            feedback: {type: 'success', message: 'Stack removed from public'},
+            error: null,
+            loading: false
+        });
+    }
+    else if(action.type === DELETE_PUBLIC_STACK_ERROR) {
+        return Object.assign({}, state, {
+            feedback: {type: 'error', message: action.error.message},
+            error: action.error.message,
+            loading: false
         });
     }
     return state;

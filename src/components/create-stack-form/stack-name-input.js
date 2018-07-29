@@ -28,7 +28,7 @@ class StackNameInput extends React.Component {
                     tabIndex="1"
                     type="text"
                     name="stackName"
-                    placeholder="Stack name"
+                    placeholder="Name"
                     defaultValue={this.props.fieldValues.name}
                     onChange={this.handleChange}
                     onKeyPress={this.handleChange}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { saveStack, deleteStack } from '../actions/user';
+import { saveStack, deleteStack, createPublicStack, deletePublicStack } from '../actions/user';
 import { connect } from 'react-redux';
 
 class Stack extends React.Component {
@@ -9,19 +9,46 @@ class Stack extends React.Component {
     saveStack = (code) => {
         this.props.dispatch(saveStack(this.props.data))
     }
+    forkStack = (code) => {
+        console.log(`forking ${code}`); 
+    }
+    publicizeStack = (code) => {
+        console.log(`making public ${code}`); 
+        this.props.dispatch(createPublicStack(this.props.data))
+    }
+    deletePublicStack = (code) => {
+        console.log(`deleting public stack ${code}`)
+        this.props.dispatch(deletePublicStack(code, this.props.data.author))
+    }
     render() {
+        console.log(this.props)
         const { code } = this.props.data;
-        let saveButton, deleteButton;
-        
-        if(this.props.saved) {
+        let saveButton, deleteButton, forkButton, makePublicButton, deleteFromPublicButton;
+        if(this.props.saved && this.props.env === 'user') {
             deleteButton = (
                 <button onClick={() => this.deleteStack(code)} id="delete-stack-btn">Delete</button>
             )
-        } else {
+        }
+        if(this.props.saved && this.props.env === 'user' && this.props.public) {
+            deleteFromPublicButton = (
+                <button onClick={() => this.deletePublicStack(code)} id="delete-stack-btn">Delete from Public</button>
+            )
+        }
+        if(!this.props.saved && this.props.env === 'global') {
             saveButton = (
                 <button onClick={() => this.saveStack(code)} id="save-stack-btn">Save</button>
             )
         }
+        if(!this.props.public && this.props.env === 'user') {
+            makePublicButton = (
+                <button onClick={() => this.publicizeStack(code)} id="publicize-stack-btn">Make public</button>
+            )
+        }
+        /*
+        forkButton = (
+            <button onClick={() => this.forkStack(code)} id="fork-stack-btn">Fork</button>
+        )*/
+        
         
         return (
             <div className="stack">
@@ -33,12 +60,17 @@ class Stack extends React.Component {
                     <p><span className="stack-header">Contents:</span> </p><br/>
                     <ul>
                         {this.props.data.contents.map( (element, index) => 
-                            <li key={index}>{element}</li>
+                            <li key={index}>{element.name}</li>
                         )}
                     </ul> 
                 </div>
-                {deleteButton}
-                {saveButton}
+                <div className="stack-btn-container">
+                    {forkButton}
+                    {deleteButton}
+                    {deleteFromPublicButton}
+                    {saveButton}
+                    {makePublicButton}
+                </div>
             </div>
         )
     }

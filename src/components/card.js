@@ -16,35 +16,34 @@ class Card extends React.Component {
     }
     
     render() {
-        let selectBtn, deselectBtn;
-
-        if(this.props.selectable) {
-            if(this.props.isSelected) {
-                deselectBtn = <button
-                className= "deselect-noop-btn" 
-                onClick={() => this.props.onDeSelectNoop(code)}>
-                remove from stack
-            </button>
-            } else {
-                selectBtn = <button
-                className="select-noop-btn" 
-                onClick={() => this.props.onSelectNoop(code)}>
-                add to stack
-                </button>
-            }
-        }
-
-        let name, code, data, type, saveable;
+        let name, code, data, type;
         if (this.props.type === 'nootropic') {
             code = this.props.data.code;
             name = this.props.data.name;
             data = this.props.data;
             type = 'nootropic';
-        } else {
+        } else if (this.props.type === 'stack') {
             code = this.props.data.code;
             name = this.props.data.name;
             data = this.props.data;
             type = 'stack';
+        }
+
+        let selectBtn, deselectBtn;
+        if(this.props.selectable) {
+            if(this.props.isSelected) {
+                deselectBtn = <button
+                className= "deselect-noop-btn" 
+                onClick={() => this.props.onDeSelectNoop(code)}>
+                deselect
+            </button>
+            } else {
+                selectBtn = <button
+                className="select-noop-btn" 
+                onClick={() => this.props.onSelectNoop(code)}>
+                select
+                </button>
+            }
         }
         return (
             <ReactCardFlipper width="200px" height="200px" levitate={true} behavior="click">
@@ -59,7 +58,9 @@ class Card extends React.Component {
                         onClose={this.onCloseModal}
                         center>
                         <ModalContent
+                            env={this.props.env}
                             saved={this.props.isSaved}
+                            public={this.props.isPublic}
                             type={type}
                             data={data}
                             onDelete={this.props.onDelete}

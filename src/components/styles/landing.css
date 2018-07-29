@@ -19,8 +19,8 @@
     background-color: #46b0f0;
 }
 
-.landing-left section {
-    margin-top: 75px;
+.landing-left div {
+    margin-top: 250px;
     text-align: left;
 }
 
@@ -34,7 +34,7 @@
 }
 
 .landing-right header {
-    margin-top: 75px;
+    margin-top: 150px;
 }
 
 .landing-login{
@@ -63,5 +63,11 @@
         position: static;
         top: auto;
         transform: none;
+    }
+    .landing-left div {
+        margin-top: 100px;
+    }
+    .landing-right header {
+        margin-top: 75px;
     }
 }

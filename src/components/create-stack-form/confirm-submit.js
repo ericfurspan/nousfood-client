@@ -1,20 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { buildStack } from '../../actions/user';
+import { createStack } from '../../actions/user';
 import ArrowBack from '../../assets/images/arrow-back.svg';
 import Checkmark from '../../assets/images/checkmark.svg';
 
 class ConfirmSubmit extends React.Component {
     confirmAndSubmitStack = () => {
         this.props.saveValues(this.props.tempStack)
-
-        // dispatch action to POST to /api/users/{userId}/stacks
-        this.props.dispatch(buildStack(this.props.tempStack))
-        setTimeout(() => {
-            alert('Mock POST made to /api/users/{userId}/stacks')
-        }, 2000)
-
-        this.props.nextStep()
+        this.props.dispatch(createStack(this.props.tempStack))
+        this.props.resetCount()
     }
     goBack = () => {
         this.props.previousStep()
@@ -31,7 +25,7 @@ class ConfirmSubmit extends React.Component {
                     <p><span>Contents:</span></p><br/>
                     <ul>
                         {this.props.tempStack.contents.map( (element, index) => 
-                            <li key={index}>{element}</li>
+                            <li key={index}>{element.name}</li>
                         )}
                     </ul>
                 </div>

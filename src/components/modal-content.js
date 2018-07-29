@@ -17,8 +17,10 @@ class ModalContent extends React.Component {
             return (
                 <div className="modal-content stack">
                     <Stack
+                      env={this.props.env}
                       data={this.props.data}
                       saved={this.props.saved}
+                      public={this.props.public}
                     />
                 </div> 
             )

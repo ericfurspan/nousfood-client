@@ -1,18 +1,27 @@
 import React from 'react';
 import LoginForm from './login-form';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 class LoginPage extends React.Component {
 
-    render(props) {
+    render() {
+        if(this.props.loggedIn) {
+            console.log('logged in...redirecting to dashboard')
+            return <Redirect to="/dashboard" />;
+        }
         return (
             <div className="login-page">
-            <LoginForm /><br/>
-            <Link to={"/"}>Or register here</Link>
+                <LoginForm /><br/>
+                <Link to={"/"}>Or register here</Link>
             </div>
         )
     }
 }
-      
-export default LoginPage;
+   
+const mapStateToProps = state => ({
+    loggedIn: state.user !== null
+});
+
+export default connect(mapStateToProps)(LoginPage);
 

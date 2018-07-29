@@ -7,7 +7,7 @@ import {
 } from '../actions/auth';
 
 const initialState = {
-    authToken: null, // authToken !== null does not mean it has been validated
+    token: null, // token !== null does not mean it has been validated
     currentUser: null,
     loading: false,
     error: null
@@ -16,11 +16,11 @@ const initialState = {
 export default function reducer(state = initialState, action) {
     if (action.type === SET_AUTH_TOKEN) {
         return Object.assign({}, state, {
-            authToken: action.authToken
+            token: action.token
         });
     } else if (action.type === CLEAR_AUTH) {
         return Object.assign({}, state, {
-            authToken: null,
+            token: null,
             currentUser: null
         });
     } else if (action.type === AUTH_REQUEST) {
@@ -31,7 +31,8 @@ export default function reducer(state = initialState, action) {
     } else if (action.type === AUTH_SUCCESS) {
         return Object.assign({}, state, {
             loading: false,
-            currentUser: action.currentUser
+            currentUser: action.currentUser,
+            error: null
         });
     } else if (action.type === AUTH_ERROR) {
         return Object.assign({}, state, {

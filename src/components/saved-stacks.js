@@ -1,29 +1,31 @@
 import React from 'react';
-import { connect } from 'react-redux';
-//import { Redirect } from 'react-router-dom';
 import Card from './card';
 
 export class SavedStacks extends React.Component {
-
+    isPublic = (code) => {
+        const isPublic = this.props.trendingStacks.find( stack => stack.code === code);
+        return isPublic ? true : false
+    }
     render() {
-        console.log(this.props)
-        if (!this.props.loggedIn) { // flip this bool after adding auth
-            //return <Redirect to="/login" />;
+        if(this.props.hidden) {
+            return null
+        }
+        if(!this.props.savedStacks) {
+            return <p>You have no saved stacks</p>
         }
         const savedStacks = this.props.savedStacks.map((savedStack, index) => (
             <Card
+                env="user"
                 type="stack"
                 data={savedStack}
                 key={index}
                 saveable={true}
+                isPublic={this.isPublic(savedStack.code)}
                 isSaved={true}
             />
         ))
         return (
             <div className="saved-stacks">
-                <header>
-                    <h2>Saved stacks</h2>
-                </header>
                 <section className="grid">
                     {savedStacks}
                 </section>
@@ -31,8 +33,5 @@ export class SavedStacks extends React.Component {
         );
     }
 }
-const mapStateToProps = state => ({
-    savedStacks: state.user.savedStacks
-});
 
-export default connect(mapStateToProps)(SavedStacks);
+export default SavedStacks;
