@@ -57,7 +57,7 @@ export class Dashboard extends React.Component {
 
         let savedStacks;
         if(!this.props.user.savedStacks) {
-            savedStacks = <SavedStacks hidden={this.state.savedStacks.hidden} />
+            savedStacks = <SavedStacks hidden={this.state.savedStacks.hidden} savedStacks={this.props.user.savedStacks}/>
         } else {
             savedStacks = <SavedStacks hidden={this.state.savedStacks.hidden} savedStacks={this.props.user.savedStacks} trendingStacks={this.props.stackLibrary}/>
         }
