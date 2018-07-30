@@ -16,7 +16,8 @@
     "redux": "^4.0.0",
     "redux-form": "^7.4.2",
     "redux-thunk": "^2.3.0",
-    "watchman": "^1.0.0"
+    "watchman": "^1.0.0",
+    "webpack": "^3.11.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -28,8 +29,6 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "jest": "^23.4.2",
-    "react-test-renderer": "^16.4.1",
-    "webpack": "^4.16.3",
-    "webpack-dev-server": "^3.1.5"
+    "react-test-renderer": "^16.4.1"
   }
 }
