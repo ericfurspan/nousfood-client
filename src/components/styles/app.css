@@ -24,22 +24,17 @@ section {
 .logo img {
   cursor: pointer;
 }
-
-.feedback {
-  position: fixed;
-  bottom: 0;
-  height: 10vh;
-  width: 100%;
-  z-index: 1001;
-  color: #fff;
+.btn-green {
+  background-color: #1ab81a
 }
-.success {
-  background-color: #30da30;
-
+button {
+  color: #FAFAFA
 }
-.error {
+.btn-red {
   background-color: red;
-
+}
+.btn-blue {
+  background-color: #46b0f0;
 }
 .login-page {
   padding-top: 140px;

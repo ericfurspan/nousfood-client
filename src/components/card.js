@@ -33,13 +33,13 @@ class Card extends React.Component {
         if(this.props.selectable) {
             if(this.props.isSelected) {
                 deselectBtn = <button
-                className= "deselect-noop-btn" 
+                className= "deselect-noop-btn btn-red" 
                 onClick={() => this.props.onDeSelectNoop(code)}>
                 deselect
             </button>
             } else {
                 selectBtn = <button
-                className="select-noop-btn" 
+                className="select-noop-btn btn-green" 
                 onClick={() => this.props.onSelectNoop(code)}>
                 select
                 </button>

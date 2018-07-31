@@ -6,19 +6,10 @@
 .modal-content button {
     margin: 2px;
 }
-#save-stack-btn {
-    background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
-}
-#delete-stack-btn {
-    background-color: red;
-}
 #fork-stack-btn {
     right: 0;
 }
-#publicize-stack-btn {
-    background-color: #49cf49;
-}
-.stack-btn-container {
+.modal-btn-container {
     position: absolute;
     bottom: 0
 }

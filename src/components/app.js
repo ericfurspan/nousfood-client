@@ -12,6 +12,7 @@ import { fetchNootropics, fetchTrendingStacks } from '../actions/global';
 import {refreshAuthToken} from '../actions/auth';
 import './styles/form-fields.css';
 import './styles/app.css';
+import './styles/feedback.css';
 import Spinner from '../assets/images/spinner.gif';
 
 export class App extends Component {

@@ -2,7 +2,7 @@ import React from 'react';
 
 class Nootropic extends React.Component {
 
-    render(props) {
+    render() {
         return (
             <div className="nootropic">
                 <h3>{this.props.data.name}</h3><br/>
@@ -25,6 +25,11 @@ class Nootropic extends React.Component {
                             <li key={index}>{element}</li>
                         )}
                     </ul>
+                </div>
+                <div className="modal-btn-container">
+                    <div className="follow-noop">
+                        <button className="btn-blue">Follow Nootropic</button><i>(coming soon)</i>
+                    </div>
                 </div>
             </div>
         )
