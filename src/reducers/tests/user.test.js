@@ -22,7 +22,6 @@ import {
     deletePublicStackError,
     
 } from '../../actions/user';
-import {toEqual} from 'chai'
 import { StackData } from '../../assets/data/stack-data';
 
 const mockError = {message: 'Failure'}
