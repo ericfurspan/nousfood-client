@@ -26,22 +26,22 @@ class Stack extends React.Component {
         let saveButton, deleteButton, forkButton, makePublicButton, deleteFromPublicButton;
         if(this.props.saved && this.props.env === 'user') {
             deleteButton = (
-                <button onClick={() => this.deleteStack(code)} id="delete-stack-btn">Delete</button>
+                <button onClick={() => this.deleteStack(code)} className="btn-red">Delete</button>
             )
         }
-        if(this.props.saved && this.props.env === 'user' && this.props.public) {
+        if(this.props.data.author === this.props.user.account.username && this.props.public) {
             deleteFromPublicButton = (
-                <button onClick={() => this.deletePublicStack(code)} id="delete-stack-btn">Delete from Public</button>
+                <button onClick={() => this.deletePublicStack(code)} className="btn-red">Delete from Public</button>
             )
         }
         if(!this.props.saved && this.props.env === 'global') {
             saveButton = (
-                <button onClick={() => this.saveStack(code)} id="save-stack-btn">Save</button>
+                <button onClick={() => this.saveStack(code)} className="btn-green">Save</button>
             )
         }
         if(!this.props.public && this.props.env === 'user') {
             makePublicButton = (
-                <button onClick={() => this.publicizeStack(code)} id="publicize-stack-btn">Make public</button>
+                <button onClick={() => this.publicizeStack(code)} className="btn-green">Make public</button>
             )
         }
         /*
@@ -64,7 +64,7 @@ class Stack extends React.Component {
                         )}
                     </ul> 
                 </div>
-                <div className="stack-btn-container">
+                <div className="modal-btn-container">
                     {forkButton}
                     {deleteButton}
                     {deleteFromPublicButton}
@@ -76,6 +76,9 @@ class Stack extends React.Component {
     }
 }
 
+const mapStateToProps = (state, props) => ({
+    user: state.user
+})
 
-export default connect()(Stack);
+export default connect(mapStateToProps)(Stack);
 

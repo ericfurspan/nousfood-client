@@ -35,9 +35,12 @@ export class LandingPage extends React.Component {
                                     Share with community.
                                 </span>
                             </li>
+                            <li id="about-link">
+                                <Link to="/about">About this app</Link>
+                            </li>
                         </ul>
                     </div>
-                </div>
+                </div> 
                 <div className="landing-right">
                     <header>
                         <img src={logo} alt="logo"/>
@@ -45,9 +48,6 @@ export class LandingPage extends React.Component {
                     </header>
                     <div className="landing-login">
                         <LoginForm />
-                    </div>
-                    <div id="link-to-about">
-                        <Link to="/about">About this app</Link>
                     </div>
                     <div className="landing-signup">
                         <h3>Join today.</h3>

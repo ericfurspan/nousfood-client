@@ -38,12 +38,6 @@ nav img:hover {
     color: black;
 }
 
-div[class^="MuiPaper-root"] {
-    min-width: 250px;
-}
-
 @media screen and (max-width: 850px) {
-    div[class^="MuiPaper-root"] {
-        min-width: 150px;
-    }
+
 }

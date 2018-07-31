@@ -9,6 +9,7 @@ import {
     createStackRequest,
     createStackSuccess,
     createStackError,
+    saveStackRequest,
     saveStackSuccess,
     saveStackError,
     deleteStackSuccess,
@@ -19,7 +20,7 @@ import {
     deletePublicStackRequest,
     deletePublicStackSuccess,
     deletePublicStackError,
-    saveStackRequest
+    
 } from '../../actions/user';
 import { StackData } from '../../assets/data/stack-data';
 
@@ -107,7 +108,140 @@ describe('createStackRequest', () => {
         expect(state).toEqual({
             loading: true
         });
-    });
+    }); 
 });
-
-
+describe('createStackSuccess', () => {
+    it('Should initiate stack success', () => {
+        let state = {
+            loading: true
+        }
+        state = userReducer(state, createStackSuccess());
+        expect(state.loading).toEqual(false)   
+        expect(state.error).toBeFalsy()
+        expect(state.feedback.message).toEqual('Stack created successfully')
+    }); 
+});
+describe('createStackError', () => {
+    it('Should initiate stack error', () => {
+        let state = {
+            loading: true
+        }
+        state = userReducer(state, createStackError(mockError));
+        expect(state.loading).toEqual(false)   
+        expect(state.error).not.toEqual(null)
+    }); 
+});
+describe('saveStackRequest', () => {
+    it('Should initiate save stack request', () => {
+        let state = {
+            loading: false
+        }
+        state = userReducer(state, saveStackRequest());
+        expect(state.loading).toEqual(true)   
+        expect(state.error).toBeFalsy()
+    }); 
+});
+describe('saveStackSuccess', () => {
+    it('Should initiate save stack success', () => {
+        let state = {
+            loading: true
+        }
+        state = userReducer(state, saveStackSuccess());
+        expect(state.loading).toEqual(false)   
+        expect(state.error).toBeFalsy()
+        expect(state.feedback.message).toEqual('Saved Successfully')
+    }); 
+});
+describe('saveStackError', () => {
+    it('Should initiate save stack error', () => {
+        let state = {
+            loading: true
+        }
+        state = userReducer(state, saveStackError(mockError));
+        expect(state.loading).toEqual(false)   
+        expect(state.error).not.toEqual(null)
+    }); 
+});
+describe('deleteStackSuccess', () => {
+    it('Should initiate delete stack success', () => {
+        let state = {
+            loading: true
+        }
+        state = userReducer(state, deleteStackSuccess());
+        expect(state.loading).toEqual(false)   
+        expect(state.error).toEqual(null)
+        expect(state.feedback.message).toEqual('Deleted Successfully')
+    }); 
+});
+describe('deleteStackError', () => {
+    it('Should initiate delete stack error', () => {
+        let state = {
+            loading: true
+        }
+        state = userReducer(state, deleteStackError(mockError));
+        expect(state.loading).toEqual(false)   
+        expect(state.error).not.toEqual(null)
+    }); 
+});
+describe('createPublicStackRequest', () => {
+    it('Should initiate create public stack request', () => {
+        let state = {
+            loading: false
+        }
+        state = userReducer(state, createPublicStackRequest());
+        expect(state.loading).toEqual(true)   
+        expect(state.error).toBeFalsy()
+    }); 
+});
+describe('createPublicStackSuccess', () => {
+    it('Should initiate create public stack success', () => {
+        let state = {
+            loading: true
+        }
+        state = userReducer(state, createPublicStackSuccess());
+        expect(state.loading).toEqual(false)   
+        expect(state.error).toBeFalsy()
+        expect(state.feedback.message).toEqual('Stack made public')
+    }); 
+});
+describe('createPublicStackError', () => {
+    it('Should initiate create public stack error', () => {
+        let state = {
+            loading: true
+        }
+        state = userReducer(state, createPublicStackError(mockError));
+        expect(state.loading).toEqual(false)   
+        expect(state.error).not.toEqual(null)
+    }); 
+});
+describe('deletePublicStackRequest', () => {
+    it('Should initiate delete public stack request', () => {
+        let state = {
+            loading: false
+        }
+        state = userReducer(state, deletePublicStackRequest());
+        expect(state.loading).toEqual(true)   
+        expect(state.error).toBeFalsy()
+    }); 
+});
+describe('deletePublicStackSuccess', () => {
+    it('Should initiate delete public stack success', () => {
+        let state = {
+            loading: true
+        }
+        state = userReducer(state, deletePublicStackSuccess());
+        expect(state.loading).toEqual(false)   
+        expect(state.error).toEqual(null)
+        expect(state.feedback.message).toEqual('Stack removed from public')
+    }); 
+});
+describe('deletePublicStackError', () => {
+    it('Should initiate delete public stack error', () => {
+        let state = {
+            loading: true
+        }
+        state = userReducer(state, deletePublicStackError(mockError));
+        expect(state.loading).toEqual(false)   
+        expect(state.error).not.toEqual(null)
+    }); 
+});

@@ -7,7 +7,6 @@ export class SavedStacks extends React.Component {
         return isPublic ? true : false
     }
     render() {
-        console.log(this.props)
         if(this.props.hidden) {
             return null
         }

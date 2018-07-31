@@ -91,7 +91,7 @@ export const createPublicStackError = error => ({
 })
 
 export const DELETE_PUBLIC_STACK_REQUEST = 'DELETE_PUBLIC_STACK_REQUEST';
-export const deletePublicStackRequest = () => ({
+export const deletePublicStackRequest = error => ({
     type: DELETE_PUBLIC_STACK_REQUEST
 });
 
@@ -160,6 +160,7 @@ export const deletePublicStack = (code, author) => (dispatch, getState) => {
         })
             .then(res => normalizeResponseErrors(res))
             .then(() => dispatch(deletePublicStackSuccess()))
+            .then(() => dispatch(fetchUserData()))
             .then(() => dispatch(fetchTrendingStacks()))
             .catch(err => dispatch(deletePublicStackError(err)));
     }
@@ -185,6 +186,7 @@ export const createStack = (data, code) => (dispatch, getState) => {
         .then(res => normalizeResponseErrors(res))
         .then(res => res.json())
         .then((data) => dispatch(createStackSuccess(data)))
+        .then(() => dispatch(fetchUserData()))
         .catch(err => dispatch(createStackError(err)));
 };
 

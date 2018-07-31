@@ -64,7 +64,7 @@ export class Dashboard extends React.Component {
         return (
             <div className="dashboard">
                 <div className="dashboard-intro">
-                    {this.props.username}
+                    {this.props.user.account.username}
                 </div>
                 <div className="dashboard-user-data">
                     <div className="dashboard-header" onClick={() => this.toggleHidden('savedStacks')}>
