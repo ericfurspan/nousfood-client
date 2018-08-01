@@ -27,6 +27,9 @@ export class BuildStackForm extends React.Component {
     }
     saveValues = (fields) => {
         fieldValues = Object.assign({}, fieldValues, fields)
+        this.setState({
+            tempStack: fieldValues
+        })
     }
     nextStep = () => { 
         this.setState({
@@ -62,7 +65,14 @@ export class BuildStackForm extends React.Component {
             tempStack: fieldValues
         })
     }
-    
+    clearFieldValues = () => {
+        fieldValues = {
+            name: null,
+            description: null,
+            directive: null,
+            contents: []
+        }
+    }
     render() {
         if(this.props.hidden) {
             return null
@@ -112,7 +122,8 @@ export class BuildStackForm extends React.Component {
                             nextStep={this.nextStep}
                             previousStep={this.previousStep}
                             saveValues={this.saveValues}  
-                            resetCount={this.resetCount}                          
+                            resetCount={this.resetCount}
+                            clearFieldValues={this.clearFieldValues}                       
                         />
                     </div>
                 )

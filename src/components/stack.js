@@ -5,23 +5,25 @@ import { connect } from 'react-redux';
 class Stack extends React.Component {
     deleteStack = (code) => {
         this.props.dispatch(deleteStack(this.props.data.code))
+        this.props.exit()
     }
     saveStack = (code) => {
         this.props.dispatch(saveStack(this.props.data))
+        this.props.exit()
     }
     forkStack = (code) => {
-        console.log(`forking ${code}`); 
+        console.log(`forking ${code}`);
+        this.props.exit()
     }
     publicizeStack = (code) => {
-        console.log(`making public ${code}`); 
         this.props.dispatch(createPublicStack(this.props.data))
+        this.props.exit()
     }
     deletePublicStack = (code) => {
-        console.log(`deleting public stack ${code}`)
         this.props.dispatch(deletePublicStack(code, this.props.data.author))
+        this.props.exit()
     }
     render() {
-        console.log(this.props)
         const { code } = this.props.data;
         let saveButton, deleteButton, forkButton, makePublicButton, deleteFromPublicButton;
         if(this.props.saved && this.props.env === 'user') {

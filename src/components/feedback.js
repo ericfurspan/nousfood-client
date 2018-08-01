@@ -4,7 +4,12 @@ import { dismissFeedback } from '../actions/user';
 import './styles/feedback.css';
 
 export class Feedback extends React.Component {
-
+    componentDidUpdate() {
+        this.setTimer = setInterval(
+            () => this.dismissFeedback(),
+            5 * 1000 // Five seconds
+        );
+    }
     dismissFeedback = () => {
         this.props.dispatch(dismissFeedback())
     }

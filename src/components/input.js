@@ -8,14 +8,14 @@ export default class Input extends React.Component {
     }
 
     render() {
-        let error;
-        if (this.props.meta.touched && this.props.meta.error) {
-            error = <div className="form-error" aria-live="polite">{this.props.meta.error}</div>;
-        }
-
-        let warning;
-        if (this.props.meta.touched && this.props.meta.warning) {
-            warning = <div className="form-warning" aria-live="polite">{this.props.meta.warning}</div>
+        let error, warning;
+        if(!this.props.meta.submitFailed) {
+            if (this.props.meta.touched && this.props.meta.error) {
+                error = <div className="form-error" aria-live="polite">{this.props.meta.error}</div>;
+            }
+            if (this.props.meta.touched && this.props.meta.warning) {
+                warning = <div className="form-warning" aria-live="polite">{this.props.meta.warning}</div>
+            }
         }
 
         return (

@@ -9,7 +9,10 @@ class ModalContent extends React.Component {
         if(this.props.type === 'nootropic') {
             return (
                 <div className="modal-content nootropic">
-                    <Nootropic data={this.props.data}/>
+                    <Nootropic 
+                      data={this.props.data}
+                      exit={this.props.onExit}
+                    />
                 </div>
             )
         }
@@ -21,6 +24,7 @@ class ModalContent extends React.Component {
                       data={this.props.data}
                       saved={this.props.saved}
                       public={this.props.public}
+                      exit={this.props.onExit}
                     />
                 </div> 
             )

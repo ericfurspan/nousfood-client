@@ -54,7 +54,7 @@ export class Dashboard extends React.Component {
         if(this.props.user.loading) {
             return <img src={Spinner} id="spinner" alt="spinner"/>
         }
-
+        console.log(this.props)
         let savedStacks;
         if(!this.props.user.savedStacks) {
             savedStacks = <SavedStacks hidden={this.state.savedStacks.hidden} savedStacks={this.props.user.savedStacks}/>
@@ -64,7 +64,7 @@ export class Dashboard extends React.Component {
         return (
             <div className="dashboard">
                 <div className="dashboard-intro">
-                    {this.props.user.account.username}
+                    {this.props.username}
                 </div>
                 <div className="dashboard-user-data">
                     <div className="dashboard-header" onClick={() => this.toggleHidden('savedStacks')}>
@@ -98,6 +98,7 @@ export class Dashboard extends React.Component {
 }
 
 const mapStateToProps = state => ({
+    username: state.auth.currentUser.username,
     user: state.user,
     stackLibrary: state.global.stackLibrary,
     trendingStacks: state.global.trendingStacks,

@@ -65,6 +65,7 @@ class Card extends React.Component {
                             data={data}
                             onDelete={this.props.onDelete}
                             onSave={this.props.onSave}
+                            onExit={this.onCloseModal}
                         >
                         </ModalContent>
                     </Modal>

@@ -22,8 +22,7 @@ class StackDescInput extends React.Component {
     render() {
         return (
             <div>
-                <p>As the author of this stack, please share a description of how you
-                   would characterize your experience with it.</p>
+                <p>As the author of this stack, please provide a brief description</p>
                 <input
                     tabIndex="1"
                     type="text" 

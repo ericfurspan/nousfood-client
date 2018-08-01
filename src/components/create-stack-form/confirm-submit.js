@@ -8,6 +8,7 @@ class ConfirmSubmit extends React.Component {
     confirmAndSubmitStack = () => {
         this.props.saveValues(this.props.tempStack)
         this.props.dispatch(createStack(this.props.tempStack))
+        this.props.clearFieldValues()
         this.props.resetCount()
     }
     goBack = () => {
@@ -20,8 +21,7 @@ class ConfirmSubmit extends React.Component {
                 <h5>You may edit this at a later time.</h5>
                 <div className="stack-confirm">
                     <p><span>Title:</span> <span className="confirmed-value">{this.props.tempStack.name}</span></p>
-                    <p><span>Description:</span> <span className="confirmed-value">{this.props.tempStack.description}</span></p>
-                    <p><span>Recommended Instructions:</span> <span className="confirmed-value">{this.props.tempStack.directive}</span></p>
+                    <p><span>Author Description:</span> <span className="confirmed-value">{this.props.tempStack.description}</span></p>
                     <p><span>Contents:</span></p><br/>
                     <ul>
                         {this.props.tempStack.contents.map( (element, index) => 
