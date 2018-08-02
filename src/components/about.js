@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './styles/about.css';
 
 export class About extends React.Component {
@@ -6,34 +7,28 @@ export class About extends React.Component {
     render() {
         return (
             <div className="about">
+
                 <div id="please-note">
                     <p>Note: this app is currently in beta. The following is supported: 
                     Registration, Sign in, Logout, Create stack, Save stack, Delete stack, Make stack public,
                     Delete public stack</p>
                 </div>
-                <section>
-                    <header>
-                        <h2>It's about cognitive enhancement</h2>
-                    </header><br/>
-                    <p>We could all benefit from a better functioning brain. NousFood aims to help get started
-                    with nootropics, commonly referred to as “smart drugs”.</p><br/>
 
-                    <p>Nootropics are a class of natural or synthetic compounds that enhance cognitive functions such as 
-                    intelligence, memory, and/or focus. These substances play a role in cognitive function and health
-                    by stimulating areas such as memory, focus, creativity, intellgence, motivation, neuro-transmittion 
-                    and overall brain health.</p>
-                </section>
                 <section>
                     <header>
-                        <h2>What's this do?</h2>
-                    </header><br/>
-                    <p>NousFood allows you to:</p><br/>
-                    <ul>
-                        <li>Follow nootropics to gain access to research studies from PubMed (coming soon)</li>
-                        <li>Access a news feed containing articles and tweets of followed nootropics (coming soon)</li>
-                        <li>Connect with the community. Save, Fork, and Share nootropic "stacks" (coming soon)</li>
-                    </ul>
+                        <h1>Welcome to NousFood</h1>
+                    </header>
+                    <p>This app is intended to help equip more people with a better understanding of the
+                        potential benefits of brain-boosting foods and supplements. In addition, this app strives to
+                        empower those already engaged and experimenting with "nootropics" by providing a platform
+                        where you can </p><br/>
+                        <ul>
+                            <li>Follow nootropics and curate a news feed</li>
+                            <li>Create and manage custom stacks</li>
+                            <li>Connect with the community. Save, Fork, and Share nootropic stacks</li>
+                        </ul>
                 </section>
+
                 <section>
                     <header>
                         <h2>A brief history</h2>
@@ -51,22 +46,45 @@ export class About extends React.Component {
                         <li>A nootropic may help protect the brain from various chemical or physical injuries such as the effects of barbiturates and anti-cholinergic substances.</li>
                         <li>A nootropic may increase the efficacy of cortical and subcortical neuronal firing mechanisms.</li>
                         <li>A nootropic must possess few or no side effects with very low toxicity.</li>
-                    </ul>
+                    </ul><br/>
+                    <p>In other words, nootropics are essentially a class of natural or synthetic compounds which have been shown
+                    to enhance or otherwise positively effect cognitive function in areas such as intelligence, memory, or focus.</p>
                 </section>
+
                 <section>
                     <header>
-                        <h2>More info</h2>
+                        <h2>It's about neurochemsitry</h2>
                     </header><br/>
-                    <h3>What's a 'stack'?</h3>
-                    <p>The term stack, in this context, refers to using compounding nootropics in effort to gain 
+                    <p>As research continues, our scientific understanding of these compounds continues to solidify and expand.
+                        It's really all about the functioning of the brain at a neuro chemical level, and suffice to say any substance could 
+                        be called a nootropic if it grants the user more control over their neurochemistry and the resulting behavioural and experiential outcomes</p>
+                </section>
+
+                <section>
+                    <header>
+                        <h2>What's a 'stack'?</h2>
+                    </header><br/>
+                    <p>The term stack in this context, refers to the compounding of nootropics in effort to gain 
                     synergistic cognitive enhancing effects</p>
                 </section>
                 <section>
                     <header>
-                        <h2>Recommended resources</h2>
+                        <h2>Get started</h2>
                     </header>
+                    <div>
+                        <Link to="/">Click here to Signup or Login!</Link>
+                    </div><br/>
+                    <div>
+                        <p><i>DEMO ACCOUNT:</i></p>
+                        <p>Username: Tester</p>
+                        <p>Password: nousfood</p>
+                    </div>
+                    <br/>
+                    <p>Also, to continue learning more, be sure to check out these recommended resources!</p>
+                    <p><a href="https://nootropics.com/introduction-to-nootropics/" target="_blank" rel="noopener noreferrer">Introduction to Nootropics</a></p>
                     <p><a href="https://www.reddit.com/r/nootropics/wiki/beginners" target="_blank" rel="noopener noreferrer">https://www.reddit.com/r/nootropics/wiki/beginners</a></p>
-                    <p><a href="https://darktka.github.io" target="_blank" rel="noopener noreferrer">https://darktka.github.io</a></p>
+                    <p><a href="https://www.webmd.com/diet/features/eat-smart-healthier-brain#1" target="_blank" rel="noopener noreferrer">Eat smart for a healhier brain</a></p>
+                    <p><a href="https://darktka.github.io" target="_blank" rel="noopener noreferrer">2017 Nootropics Survey on /r/Nootropics</a></p>
                     <p><a href="https://examine.com/supplements/cognitive-function/" target="_blank" rel="noopener noreferrer">https://examine.com/supplements/cognitive-function/</a></p>
                     <p><a href="https://www.youtube.com/watch?v=chbpnnZBziU" target="_blank" rel="noopener noreferrer">13 Nootropics to Unlock Your True Brain</a></p>
                 </section>
