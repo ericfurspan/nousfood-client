@@ -3,35 +3,7 @@
     border-radius: 10px;
     color: #293035;
     height: 120px;
-    margin: auto;
     border: 1px solid #293035;
-}
-
-.card-back {
-    position: relative;
-    background-color: #fff
-}
-.view-noop-btn {
-    margin-top: 25px;
-    font-style: italic;
-    background-color: #fff;
-    cursor: pointer;
-    font-size: 18px;
-    color: #293035;
-}
-.view-noop-btn:hover {
-    text-decoration: underline;
-    color: #7A00A5;
-}
-.select-noop-btn {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-}
-.deselect-noop-btn {
-    bottom: 0;
-    width: 100%;
 }
 .selected-card {
     border: 4px solid #1ab81a;
@@ -42,17 +14,9 @@
     transform: translateY(-50%)
 }
 
-.rcf-container {
-    margin: auto;
-}
-
-
 @media screen and (max-width: 850px) {
     .grid {
         grid-template-columns: 1fr;
     }
-    .rcf-front {
-        margin: 0 auto 0 auto;
-    }
-  
+
 }

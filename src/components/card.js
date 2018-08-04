@@ -9,9 +9,11 @@ class Card extends React.Component {
         open: false
     };
     onOpenModal = () => {
+        console.log('called onOpenModal')
         this.setState({ open: true });
     }
     onCloseModal = () => {
+        console.log('called onCloseModal')
         this.setState({ open: false });
     }
     
@@ -29,48 +31,35 @@ class Card extends React.Component {
             type = 'stack';
         }
 
-        let selectBtn, deselectBtn;
-        if(this.props.selectable) {
-            if(this.props.isSelected) {
-                deselectBtn = <button
-                className= "deselect-noop-btn btn-red" 
-                onClick={() => this.props.onDeSelectNoop(code)}>
-                deselect
-            </button>
-            } else {
-                selectBtn = <button
-                className="select-noop-btn btn-green" 
-                onClick={() => this.props.onSelectNoop(code)}>
-                select
-                </button>
-            }
-        }
         return (
-            <ReactCardFlipper width="200px" height="200px" levitate={true} behavior="click">
-                <div className={this.props.isSelected ? 'card-item card-front selected-card': 'card-item card-front'}>
+            <div>
+                <div 
+                type={this.props.type}
+                className={this.props.isSelected ? `card-item selected-card` : `card-item`}
+                onClick={() => this.onOpenModal()}>
                     <h4>{name}</h4>
                 </div>
-                <div className="card-item card-back" type={this.props.type}>
-                    <button className="view-noop-btn" onClick={() => this.onOpenModal()}>view more</button>
-                    {selectBtn}{deselectBtn}        
-                    <Modal
-                        open={this.state.open}
-                        onClose={this.onCloseModal}
-                        center>
-                        <ModalContent
-                            env={this.props.env}
-                            saved={this.props.isSaved}
-                            public={this.props.isPublic}
-                            type={type}
-                            data={data}
-                            onDelete={this.props.onDelete}
-                            onSave={this.props.onSave}
-                            onExit={this.onCloseModal}
-                        >
-                        </ModalContent>
-                    </Modal>
-                </div>
-            </ReactCardFlipper>
+                <Modal
+                    open={this.state.open}
+                    onClose={this.onCloseModal}
+                    center>
+                    <ModalContent
+                        env={this.props.env}
+                        saved={this.props.isSaved}
+                        public={this.props.isPublic}
+                        type={type}
+                        data={data}
+                        onDelete={this.props.onDelete}
+                        onSave={this.props.onSave}
+                        onExit={this.onCloseModal}
+                        selectable={this.props.selectable}
+                        isSelected={this.props.isSelected}
+                        onSelectNoop={this.props.onSelectNoop}
+                        onDeSelectNoop={this.props.onDeSelectNoop}
+                    >
+                    </ModalContent>
+                </Modal>
+            </div>
         );  
       }
 }
