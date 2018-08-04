@@ -9,6 +9,9 @@
     top: 50px;
     z-index: 2;
 }
+.dashboard > div {
+    margin-bottom: 40px
+}
 
 .dashboard-header {
     margin-bottom: 20px;
@@ -23,7 +26,6 @@
 .dashboard-header h2:hover {
     cursor: pointer;
     transform: scale(1.02);
-
 }
 
 #spinner {
