@@ -61,6 +61,7 @@ export class Dashboard extends React.Component {
         } else {
             savedStacks = <SavedStacks hidden={this.state.savedStacks.hidden} savedStacks={this.props.user.savedStacks} trendingStacks={this.props.stackLibrary}/>
         }
+
         return (
             <div className="dashboard">
                 <div className="dashboard-intro">

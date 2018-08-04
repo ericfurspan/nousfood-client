@@ -12,7 +12,7 @@ export class About extends React.Component {
                     <p>Note: this app is currently in beta. The following is supported: 
                     Registration, Sign in, Logout, Create stack, Save stack, Delete stack, Make stack public,
                     Delete public stack</p>
-                </div>
+                </div><br/>
 
                 <section>
                     <header>
@@ -47,13 +47,11 @@ export class About extends React.Component {
                         <li>A nootropic may increase the efficacy of cortical and subcortical neuronal firing mechanisms.</li>
                         <li>A nootropic must possess few or no side effects with very low toxicity.</li>
                     </ul><br/>
-                    <p>In other words, nootropics are essentially a class of natural or synthetic compounds which have been shown
-                    to enhance or otherwise positively effect cognitive function in areas such as intelligence, memory, or focus.</p>
                 </section>
 
                 <section>
                     <header>
-                        <h2>It's about neurochemsitry</h2>
+                        <h2>It's about neuro-chemistry</h2>
                     </header><br/>
                     <p>As research continues, our scientific understanding of these compounds continues to solidify and expand.
                         It's really all about the functioning of the brain at a neuro chemical level, and suffice to say any substance could 
@@ -70,22 +68,23 @@ export class About extends React.Component {
                 <section>
                     <header>
                         <h2>Get started</h2>
-                    </header>
-                    <div>
-                        <Link to="/">Click here to Signup or Login!</Link>
-                    </div><br/>
+                    </header><br/>
                     <div>
                         <p><i>DEMO ACCOUNT:</i></p>
                         <p>Username: Tester</p>
                         <p>Password: nousfood</p>
+                        <Link to="/">Login or Signup</Link>
                     </div>
-                    <br/>
-                    <p>Also, to continue learning more, be sure to check out these recommended resources!</p>
-                    <p><a href="https://nootropics.com/introduction-to-nootropics/" target="_blank" rel="noopener noreferrer">Introduction to Nootropics</a></p>
-                    <p><a href="https://www.reddit.com/r/nootropics/wiki/beginners" target="_blank" rel="noopener noreferrer">https://www.reddit.com/r/nootropics/wiki/beginners</a></p>
-                    <p><a href="https://www.webmd.com/diet/features/eat-smart-healthier-brain#1" target="_blank" rel="noopener noreferrer">Eat smart for a healhier brain</a></p>
-                    <p><a href="https://darktka.github.io" target="_blank" rel="noopener noreferrer">2017 Nootropics Survey on /r/Nootropics</a></p>
-                    <p><a href="https://examine.com/supplements/cognitive-function/" target="_blank" rel="noopener noreferrer">https://examine.com/supplements/cognitive-function/</a></p>
+                </section>
+                <section>
+                    <header>
+                        <h2>Recommended resources</h2>
+                    </header><br/>
+                    <p><a href="https://nootropics.com/introduction-to-nootropics/" target="_blank" rel="noopener noreferrer">Introduction to Nootropics</a></p><br/>
+                    <p><a href="https://www.reddit.com/r/nootropics/wiki/beginners" target="_blank" rel="noopener noreferrer">https://www.reddit.com/r/nootropics/wiki/beginners</a></p><br/>
+                    <p><a href="https://www.webmd.com/diet/features/eat-smart-healthier-brain#1" target="_blank" rel="noopener noreferrer">Eat smart for a healhier brain</a></p><br/>
+                    <p><a href="https://darktka.github.io" target="_blank" rel="noopener noreferrer">2017 Nootropics Survey on /r/Nootropics</a></p><br/>
+                    <p><a href="https://examine.com/supplements/cognitive-function/" target="_blank" rel="noopener noreferrer">https://examine.com/supplements/cognitive-function/</a></p><br/>
                     <p><a href="https://www.youtube.com/watch?v=chbpnnZBziU" target="_blank" rel="noopener noreferrer">13 Nootropics to Unlock Your True Brain</a></p>
                 </section>
             </div>
