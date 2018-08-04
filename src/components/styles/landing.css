@@ -50,7 +50,11 @@
 
 #about-link {
     padding-top: 50px;
-    
+}
+#about-link button {
+    color: #46b0f0;
+    font-weight: bold;
+    background-color: #fff
 }
 .icon {
     margin-right: 20px;

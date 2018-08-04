@@ -1,8 +1,33 @@
 import React from 'react';
 
 class Nootropic extends React.Component {
-
+    deSelectNoop = (code) => {
+        this.props.onDeSelectNoop(this.props.data.code)
+        this.props.exit()
+    }
+    selectNoop = (code) => {
+        this.props.onSelectNoop(this.props.data.code)
+        this.props.exit()
+    }
     render() {
+        let selectBtn, deselectBtn, followButton;
+        if(this.props.selectable) {
+            if(this.props.isSelected) {
+                deselectBtn = <button
+                className= "noop-select btn-red" 
+                onClick={() => this.deSelectNoop(this.props.data.code)}>
+                remove from stack
+            </button>
+            } else {
+                selectBtn = <button
+                className="noop-select btn-green" 
+                onClick={() => this.selectNoop(this.props.data.code)}>
+                add to stack
+                </button>
+            }
+        } else {
+            followButton = <button className="btn-blue">Follow Nootropic</button>
+        }
         return (
             <div className="nootropic">
                 <h3>{this.props.data.name}</h3><br/>
@@ -27,9 +52,7 @@ class Nootropic extends React.Component {
                     </ul>
                 </div>
                 <div className="modal-btn-container">
-                    <div className="follow-noop">
-                        <button className="btn-blue">Follow Nootropic</button><i>(coming soon)</i>
-                    </div>
+                    {followButton}{selectBtn}{deselectBtn}        
                 </div>
             </div>
         )

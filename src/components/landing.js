@@ -36,7 +36,7 @@ export class LandingPage extends React.Component {
                                 </span>
                             </li>
                             <li id="about-link">
-                                <Link to="/about">About this app</Link>
+                                <Link to="/about"><button>About this app</button></Link>
                             </li>
                         </ul>
                     </div>

@@ -12,6 +12,10 @@ class ModalContent extends React.Component {
                     <Nootropic 
                       data={this.props.data}
                       exit={this.props.onExit}
+                      selectable={this.props.selectable}
+                      isSelected={this.props.isSelected}
+                      onSelectNoop={this.props.onSelectNoop}
+                      onDeSelectNoop={this.props.onDeSelectNoop}
                     />
                 </div>
             )
