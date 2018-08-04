@@ -36,16 +36,28 @@ export class Dashboard extends React.Component {
             this.props.dispatch(emptyUserData());
         }
     }
-    toggleHidden = (component) => {
+    updateHidden = (component) => {
+        let newState = {};
+        newState[component] = {hidden: !this.state[component].hidden};
+        this.setState({component: {hidden: false}})
+        Object.keys(this.state).forEach(key => {
+            if(key !== component) {
+                newState[key] = {hidden: true}
+            }
+        });
+        this.setState(newState);
+    }
+
+    switchHidden = (component) => {
         switch (component) {
             case 'trendingStacks' : 
-                return this.setState({trendingStacks: {hidden: !this.state.trendingStacks.hidden}})
+                return this.updateHidden('trendingStacks')
             case 'nootropics' :
-                return this.setState({nootropics: {hidden: !this.state.nootropics.hidden}})
+                return this.updateHidden('nootropics')
             case 'stackBuilder' :
-                return this.setState({stackBuilder: {hidden: !this.state.stackBuilder.hidden}})
+                return this.updateHidden('stackBuilder')
             case 'savedStacks' :
-                return this.setState({savedStacks: {hidden: !this.state.savedStacks.hidden}})
+                return this.updateHidden('savedStacks')
             default :
                 return null
         }
@@ -54,7 +66,6 @@ export class Dashboard extends React.Component {
         if(this.props.user.loading) {
             return <img src={Spinner} id="spinner" alt="spinner"/>
         }
-        console.log(this.props)
         let savedStacks;
         if(!this.props.user.savedStacks) {
             savedStacks = <SavedStacks hidden={this.state.savedStacks.hidden} savedStacks={this.props.user.savedStacks}/>
@@ -68,13 +79,13 @@ export class Dashboard extends React.Component {
                     {this.props.username}
                 </div>
                 <div className="dashboard-user-data">
-                    <div className="dashboard-header" onClick={() => this.toggleHidden('savedStacks')}>
+                    <div className="dashboard-header" onClick={() => this.switchHidden('savedStacks')}>
                         <h2>Saved stacks</h2>
                     </div>
                     {savedStacks}
                 </div>
                 <div className="trending-stacks">
-                    <div className="dashboard-header" onClick={() => this.toggleHidden('trendingStacks')}>
+                    <div className="dashboard-header" onClick={() => this.switchHidden('trendingStacks')}>
                         <h2>Trending stacks</h2>
                     </div>
                     <TrendingStacks hidden={this.state.trendingStacks.hidden} savedStacks={this.props.user.savedStacks} stackLibrary={this.props.stackLibrary} />
@@ -82,13 +93,13 @@ export class Dashboard extends React.Component {
                 <div className="social-feed">
                 </div>
                 <div className="nootropics"> 
-                    <div className="dashboard-header" onClick={() => this.toggleHidden('nootropics')}>
+                    <div className="dashboard-header" onClick={() => this.switchHidden('nootropics')}>
                         <h2>Nootropics</h2>
                     </div>
                     <NootropicLibrary hidden={this.state.nootropics.hidden} nootropics={this.props.nootropics} />
                 </div>
                 <div className="create-stack" id="create-stack">
-                    <div className="dashboard-header" onClick={() => this.toggleHidden('stackBuilder')}>
+                    <div className="dashboard-header" onClick={() => this.switchHidden('stackBuilder')}>
                         <h2>Stack Builder</h2>
                     </div>
                     <CreateStackForm hidden={this.state.stackBuilder.hidden} nootropics={this.props.nootropics}/>

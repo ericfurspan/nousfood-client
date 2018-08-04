@@ -28,7 +28,7 @@ section {
   background-color: #1ab81a
 }
 button {
-  color: #FAFAFA
+  color: #FAFAFA;
 }
 .btn-red {
   background-color: red;
@@ -41,6 +41,12 @@ button {
 }
 .dashboard-username {
   margin-bottom: 0px
+}
+.not-found {
+  position: fixed;
+  top: 30%;
+  margin: auto;
+  width: 100%
 }
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
