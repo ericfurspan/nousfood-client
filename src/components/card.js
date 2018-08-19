@@ -9,11 +9,9 @@ class Card extends React.Component {
         open: false
     };
     onOpenModal = () => {
-        console.log('called onOpenModal')
         this.setState({ open: true });
     }
     onCloseModal = () => {
-        console.log('called onCloseModal')
         this.setState({ open: false });
     }
     
@@ -34,9 +32,10 @@ class Card extends React.Component {
         return (
             <div>
                 <div 
-                type={this.props.type}
-                className={this.props.isSelected ? `card-item selected-card` : `card-item`}
-                onClick={() => this.onOpenModal()}>
+                    type={this.props.type}
+                    className={this.props.isSelected ? `card-item selected-card` : `card-item`}
+                    onClick={() => this.onOpenModal()}
+                >
                     <h4>{name}</h4>
                 </div>
                 <Modal

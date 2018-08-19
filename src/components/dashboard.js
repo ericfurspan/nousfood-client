@@ -39,7 +39,6 @@ export class Dashboard extends React.Component {
     updateHidden = (component) => {
         let newState = {};
         newState[component] = {hidden: !this.state[component].hidden};
-        this.setState({component: {hidden: false}})
         Object.keys(this.state).forEach(key => {
             if(key !== component) {
                 newState[key] = {hidden: true}
