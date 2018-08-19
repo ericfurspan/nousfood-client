@@ -9,6 +9,13 @@
     top: 50px;
     z-index: 2;
 }
+.dashboard-version { 
+    position: fixed;
+    left: 10px;
+    color: white;
+    top: 50px;
+    z-index: 2;
+}
 .dashboard > div {
     margin-bottom: 40px
 }

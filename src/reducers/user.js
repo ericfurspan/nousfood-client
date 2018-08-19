@@ -44,7 +44,6 @@ const initialState = {
 
 export default (state = initialState, action) => {
     if (action.type === FETCH_USER_DATA_SUCCESS) {
-        console.log(action.data)
         return Object.assign({}, state, {
             account: {
                 username: action.data.username,

@@ -75,6 +75,7 @@ export class Dashboard extends React.Component {
 
         return (
             <div className="dashboard">
+                <div className="dashboard-version">v1.0</div>
                 <div className="dashboard-intro">
                     {this.props.username}
                 </div>

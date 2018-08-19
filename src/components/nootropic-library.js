@@ -10,9 +10,6 @@ export class NootropicLibrary extends React.Component {
         } 
         return false
     }
-    clickSave(type, code) {
-        // dispatch clickSave action 
-    }
     render() {
         if(this.props.hidden) {
             return null
@@ -24,7 +21,6 @@ export class NootropicLibrary extends React.Component {
               key={index}
               selectable={this.props.selectable}
               isSelected={this.existsInTempStack(nootropic.code)}
-              onSaveClick={(type, code) => this.clickSave(type, code)}
               onDeSelectNoop={this.props.deSelectNoop}
               onSelectNoop={this.props.selectNoop}
             />
