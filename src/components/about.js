@@ -7,7 +7,7 @@ export function About(props) {
     return (
         <div className="about">
 
-            <div id="please-note">
+            <div class="text-sm">
                 <p>Note: this app is currently in beta. The following is supported: 
                 Registration, Sign in, Logout, Create stack, Save stack, Delete stack, Make stack public,
                 Delete public stack</p>

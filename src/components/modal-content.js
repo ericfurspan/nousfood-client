@@ -42,6 +42,33 @@ export function ModalContent(props) {
                 </div>
             </div> 
         )
+    } else if(props.type === 'nootropicLibrary') {
+        return (
+            <div className="modal-content">
+                {props.nootropicLibrary}
+                <div className="modal-btn-container">
+                    <button onClick={() => props.closeModal()} className="modal-close btn-gray">Close</button>
+                </div>
+            </div> 
+        )
+    } else if(props.type === 'trendingStacks') {
+        return (
+            <div className="modal-content">
+                {props.trendingStacks}
+                <div className="modal-btn-container">
+                    <button onClick={() => props.closeModal()} className="modal-close btn-gray">Close</button>
+                </div>
+            </div> 
+        )
+    } else if(props.type === 'savedStacks') {
+        return (
+            <div className="modal-content">
+                {props.savedStacks}
+                <div className="modal-btn-container">
+                    <button onClick={() => props.closeModal()} className="modal-close btn-gray">Close</button>
+                </div>
+            </div> 
+        )
     }
 }
       

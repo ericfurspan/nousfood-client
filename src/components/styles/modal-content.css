@@ -1,14 +1,24 @@
 .modal-content {
-    min-width: 750px;
-    min-height: 500px;
+    min-width: 850px;
     position: relative;
+    margin-top: 75px;
+}
+.modal-header {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    right: 0;
+    left: 0;
+    background-color: #46b0f0;
+    color: #fff;
+    padding: 10px;
+    font-weight: 100;
 }
 #fork-stack-btn {
     right: 0;
 }
 .modal-btn-container {
     margin-top: 20px;
-    position: absolute;
     bottom: 0;
     right: 0;
     left: 0;
@@ -22,7 +32,8 @@
 }
 .styles_modal__gNwvD {
     margin-top: 25px;
-    border-top: 50px solid #46b0f0;
+    max-width: none;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.55);
 }
 
 .styles_closeIcon__1QwbI {

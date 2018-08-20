@@ -19,7 +19,7 @@ export class Dashboard extends React.Component {
         trendingStacks: {
             hidden: true
         },
-        nootropics: {
+        nootropicLibrary: {
             hidden: true
         },
         stackBuilder: {
@@ -53,8 +53,8 @@ export class Dashboard extends React.Component {
         switch (component) {
             case 'trendingStacks' : 
                 return this.updateHidden('trendingStacks')
-            case 'nootropics' :
-                return this.updateHidden('nootropics')
+            case 'nootropicLibrary' :
+                return this.updateHidden('nootropicLibrary')
             case 'stackBuilder' :
                 return this.updateHidden('stackBuilder')
             case 'savedStacks' :
@@ -64,7 +64,6 @@ export class Dashboard extends React.Component {
         }
     }
     render() {
-        console.log(this.state)
         if(this.props.user.loading) {
             return <img src={Spinner} id="spinner" alt="spinner"/>
         }
@@ -77,7 +76,7 @@ export class Dashboard extends React.Component {
 
         return (
             <div className="dashboard">
-                <div className="dashboard-version">v1.1</div>
+                <div className="dashboard-version">v1.2</div>
                 <div className="dashboard-intro">
                     {this.props.username}
                 </div>
@@ -85,21 +84,65 @@ export class Dashboard extends React.Component {
                     <div className="dashboard-header" onClick={() => this.switchHidden('savedStacks')}>
                         <h2>Saved stacks</h2>
                     </div>
-                    {savedStacks}
+                    <Modal
+                        open={!this.state.savedStacks.hidden}
+                        onClose={() => this.switchHidden('savedStacks')}
+                        center>
+                        <h3 className="modal-header">Saved Stacks</h3>
+                        <ModalContent 
+                            type="savedStacks"
+                            closeModal={() => this.switchHidden('savedStacks')}
+                            savedStacks={savedStacks}
+                        >
+                        </ModalContent>
+                    </Modal>
                 </div>
                 <div className="trending-stacks">
                     <div className="dashboard-header" onClick={() => this.switchHidden('trendingStacks')}>
                         <h2>Trending stacks</h2>
                     </div>
-                    <TrendingStacks hidden={this.state.trendingStacks.hidden} savedStacks={this.props.user.savedStacks} stackLibrary={this.props.stackLibrary} />
+                    <Modal
+                        open={!this.state.trendingStacks.hidden}
+                        onClose={() => this.switchHidden('trendingStacks')}
+                        center>
+                        <h3 className="modal-header">Trending Stacks</h3>
+                        <ModalContent 
+                            type="trendingStacks"
+                            closeModal={() => this.switchHidden('trendingStacks')}
+                            trendingStacks={
+                                <TrendingStacks 
+                                    hidden={this.state.trendingStacks.hidden}
+                                    savedStacks={this.props.user.savedStacks}
+                                    stackLibrary={this.props.stackLibrary}
+                                    closeModal={() => this.switchHidden('trendingStacks')}
+                                />}
+                        >
+                        </ModalContent>
+                    </Modal>
                 </div>
                 <div className="social-feed">
                 </div>
-                <div className="nootropics"> 
-                    <div className="dashboard-header" onClick={() => this.switchHidden('nootropics')}>
+                <div className="nootropicLibrary"> 
+                    <div className="dashboard-header" onClick={() => this.switchHidden('nootropicLibrary')}>
                         <h2>Nootropics</h2>
                     </div>
-                    <NootropicLibrary hidden={this.state.nootropics.hidden} nootropics={this.props.nootropics} />
+                    <Modal
+                        open={!this.state.nootropicLibrary.hidden}
+                        onClose={() => this.switchHidden('nootropicLibrary')}
+                        center>
+                        <h3 className="modal-header">Nootropics</h3>
+                        <ModalContent 
+                            type="nootropicLibrary"
+                            closeModal={() => this.switchHidden('nootropicLibrary')}
+                            nootropicLibrary={
+                                <NootropicLibrary 
+                                    hidden={this.state.nootropicLibrary.hidden}
+                                    nootropics={this.props.nootropics}
+                                    closeModal={() => this.switchHidden('nootropicLibrary')}
+                                />}
+                        >
+                        </ModalContent>
+                    </Modal>
                 </div>
                 <div className="create-stack" id="create-stack">
                     <div className="dashboard-header" onClick={() => this.switchHidden('stackBuilder')}>
@@ -109,6 +152,7 @@ export class Dashboard extends React.Component {
                         open={!this.state.stackBuilder.hidden}
                         onClose={() => this.switchHidden('stackBuilder')}
                         center>
+                        <h3 className="modal-header">Stack Builder</h3>
                         <ModalContent 
                             type="stackBuilder"
                             closeModal={() => this.switchHidden('stackBuilder')}

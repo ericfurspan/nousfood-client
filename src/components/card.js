@@ -16,7 +16,7 @@ class Card extends React.Component {
     }
     
     render() {
-        let name, code, data, type;
+        let name, code, data, type, headerText;
         if (this.props.type === 'nootropic') {
             code = this.props.data.code;
             name = this.props.data.name;
@@ -43,6 +43,7 @@ class Card extends React.Component {
                     open={this.state.open}
                     onClose={this.onCloseModal}
                     center>
+                    <h3 className="modal-header">{name}</h3>
                     <ModalContent
                         env={this.props.env}
                         saved={this.props.isSaved}
