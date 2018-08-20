@@ -58,6 +58,7 @@ button {
 }
 .br-yellow {
   background-color: #fdff66;
+  color: #444;
 }
 .italic {
   font-style: italic;
