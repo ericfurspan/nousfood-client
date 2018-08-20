@@ -22,8 +22,14 @@ export class BuildStackForm extends React.Component {
                 description: null,
                 directive: null,
                 contents: []
+            },
+            error: {
+                message: null
             }
         }
+    }
+    handleError = (message) => {
+        this.setState({error: {message}})
     }
     saveValues = (fields) => {
         fieldValues = Object.assign({}, fieldValues, fields)
@@ -74,10 +80,11 @@ export class BuildStackForm extends React.Component {
         }
     }
     render() {
+        console.log(`step is: ${this.state.step}`)
         if(this.props.hidden) {
             return null
         }
-        switch(this.state.step) {
+        switch(this.state.step) {            
             case 1 :
                 return (
                     <form className="stack-name-form">
@@ -86,6 +93,8 @@ export class BuildStackForm extends React.Component {
                             fieldValues={fieldValues}
                             nextStep={this.nextStep}
                             saveValues={this.saveValues}
+                            handleError={this.handleError}
+                            error={this.state.error.message}
                         />
                     </form>
                 )
@@ -100,6 +109,8 @@ export class BuildStackForm extends React.Component {
                         previousStep={this.previousStep}
                         nextStep={this.nextStep}
                         saveValues={this.saveValues}
+                        handleError={this.handleError}
+                        error={this.state.error.message}
                     />
                 )
             case 3: 
@@ -111,6 +122,8 @@ export class BuildStackForm extends React.Component {
                             nextStep={this.nextStep}
                             previousStep={this.previousStep}
                             saveValues={this.saveValues}
+                            handleError={this.handleError}
+                            error={this.state.error.message}
                         />
                     </form>
                 )
@@ -123,7 +136,8 @@ export class BuildStackForm extends React.Component {
                             previousStep={this.previousStep}
                             saveValues={this.saveValues}  
                             resetCount={this.resetCount}
-                            clearFieldValues={this.clearFieldValues}                       
+                            clearFieldValues={this.clearFieldValues}
+                            closeModal={this.props.closeModal}                   
                         />
                     </div>
                 )

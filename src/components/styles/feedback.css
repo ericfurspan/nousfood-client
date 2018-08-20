@@ -15,11 +15,3 @@
 .error {
     background-color: red;
 }
-
-@media screen and (max-width: 850px) {
-    .styles_closeButton__20ID4 {
-        top: 0;
-        right: 0;
-    }
-    
-}

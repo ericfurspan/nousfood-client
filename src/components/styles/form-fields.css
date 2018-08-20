@@ -8,7 +8,7 @@
     display: table-cell;
 }
 
-input {
+input, textarea {
     padding: .5rem 1rem;
     font-size: 1.25rem;
     line-height: 1.5;
@@ -62,7 +62,6 @@ form button:hover {
 
 .nav-item {
     width: 100px;
-    margin: auto;
+    margin: 20px 0px 70px 0px;
     display: inline-block;
-    margin: 20px 0px 30px 0px;
 }

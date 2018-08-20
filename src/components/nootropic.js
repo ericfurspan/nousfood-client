@@ -10,7 +10,7 @@ class Nootropic extends React.Component {
         this.props.exit()
     }
     render() {
-        let selectBtn, deselectBtn, followButton;
+        let selectBtn, deselectBtn, followButton, closeModalBtn;
         if(this.props.selectable) {
             if(this.props.isSelected) {
                 deselectBtn = <button
@@ -28,8 +28,10 @@ class Nootropic extends React.Component {
         } else {
             followButton = <button className="btn-blue">Follow Nootropic</button>
         }
+        closeModalBtn = <button onClick={() => this.props.closeModal()} className="btn-gray">Close</button>
+
         return (
-            <div className="nootropic">
+            <div className="nootropic align-left">
                 <h3>{this.props.data.name}</h3><br/>
                 <div className="how-to-take">
                     <h5>How to take:</h5>
@@ -52,7 +54,7 @@ class Nootropic extends React.Component {
                     </ul>
                 </div>
                 <div className="modal-btn-container">
-                    {followButton}{selectBtn}{deselectBtn}        
+                    {followButton}{selectBtn}{deselectBtn}{closeModalBtn}      
                 </div>
             </div>
         )

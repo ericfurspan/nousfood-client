@@ -11,6 +11,8 @@ import { emptyUserData } from '../actions/user';
 import {withRouter} from 'react-router-dom';
 import './styles/dashboard.css';
 import Spinner from '../assets/images/spinner.gif';
+import Modal from 'react-responsive-modal';
+import ModalContent from './modal-content';
 
 export class Dashboard extends React.Component {
     state = {
@@ -62,6 +64,7 @@ export class Dashboard extends React.Component {
         }
     }
     render() {
+        console.log(this.state)
         if(this.props.user.loading) {
             return <img src={Spinner} id="spinner" alt="spinner"/>
         }
@@ -74,7 +77,7 @@ export class Dashboard extends React.Component {
 
         return (
             <div className="dashboard">
-                <div className="dashboard-version">v1.0</div>
+                <div className="dashboard-version">v1.1</div>
                 <div className="dashboard-intro">
                     {this.props.username}
                 </div>
@@ -102,7 +105,22 @@ export class Dashboard extends React.Component {
                     <div className="dashboard-header" onClick={() => this.switchHidden('stackBuilder')}>
                         <h2>Stack Builder</h2>
                     </div>
-                    <CreateStackForm hidden={this.state.stackBuilder.hidden} nootropics={this.props.nootropics}/>
+                    <Modal
+                        open={!this.state.stackBuilder.hidden}
+                        onClose={() => this.switchHidden('stackBuilder')}
+                        center>
+                        <ModalContent 
+                            type="stackBuilder"
+                            closeModal={() => this.switchHidden('stackBuilder')}
+                            stackBuilder={
+                                <CreateStackForm 
+                                    hidden={this.state.stackBuilder.hidden}
+                                    nootropics={this.props.nootropics}
+                                    closeModal={() => this.switchHidden('stackBuilder')}
+                                />}
+                        >
+                        </ModalContent>
+                    </Modal>
                 </div>
             </div>
         );

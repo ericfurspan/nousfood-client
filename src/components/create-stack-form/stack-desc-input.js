@@ -5,8 +5,14 @@ import ArrowBack from '../../assets/images/arrow-back.svg';
 class StackDescInput extends React.Component {
     handleNext = () => {
         const description = this.state && this.state.description ? this.state.description : this.props.fieldValues.description || '';
-        let data = { description }
-        this.props.saveAndContinue(data)
+        let wordCount = description.split(' ');
+        if(wordCount.length < 3) {
+            this.props.handleError('Please enter a few words')
+        } else {
+            this.props.handleError(null);
+            let data = { description }
+            this.props.saveAndContinue(data)
+        }
     }
     handleChange = (e) => {
         if (e.key === 'Enter') {
@@ -20,18 +26,27 @@ class StackDescInput extends React.Component {
         this.props.previousStep()
     }
     render() {
+        let error;
+        if(this.props.error) {
+            error = <div className="form-error" aria-live="polite">
+                        {this.props.error}
+                    </div>
+        }
         return (
             <div>
                 <p>As the author of this stack, please provide a brief description</p>
-                <input
+                <br/>
+                {error}
+                <textarea 
                     tabIndex="1"
-                    type="text" 
-                    name="stackDescription"
-                    placeholder="Author description"
+                    rows="5"
+                    cols="25"
                     defaultValue={this.props.fieldValues.description}
-                    onChange={this.handleChange}
                     onKeyPress={this.handleChange}
-                /><br/>
+                    placeholder="Author description"
+                    name="stackDescription"
+                    onChange={this.handleChange} />
+                <br/>
                 <div className="nav-item">
                     <img 
                         onClick={this.goBack}

@@ -3,14 +3,18 @@
     min-height: 500px;
     position: relative;
 }
-.modal-content button {
-    margin: 2px;
-}
 #fork-stack-btn {
     right: 0;
 }
 .modal-btn-container {
-    margin-top: 20px
+    margin-top: 20px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+.modal-btn-container button {
+    width: 100%;
 }
 .styles_overlayCenter__YHoO7 {
     background: rgba(0, 0, 0, 0.5);
@@ -18,6 +22,11 @@
 }
 .styles_modal__gNwvD {
     margin-top: 25px;
+    border-top: 50px solid #46b0f0;
+}
+
+.styles_closeIcon__1QwbI {
+    display: none;
 }
 
 .stack-container ul {
@@ -28,6 +37,9 @@
     .modal-content {
         min-width: 650px;
         min-height: 420px;
+    }
+    .modal-btn-container {
+        position: static;
     }
 }
 
