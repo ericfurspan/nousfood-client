@@ -36,6 +36,9 @@ button {
 .btn-blue {
   background-color: #46b0f0;
 }
+.btn-gray {
+  background-color: #293035;
+}
 .login-page {
   padding-top: 140px;
 }
@@ -48,6 +51,12 @@ button {
   margin: auto;
   width: 100%
 }
+
+/* BASE classes */
+.align-left {
+  text-align: left;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

@@ -2,10 +2,16 @@ import React from 'react';
 import ArrowForward from '../../assets/images/arrow-forward.svg';
 
 class StackNameInput extends React.Component {
+    
     handleNext = () => {
         const name = this.state && this.state.name ? this.state.name : this.props.fieldValues.name || '';
-        let data = { name };
-        this.props.saveAndContinue(data);
+        if(name.length < 3) {
+            this.props.handleError('Please enter a longer name')
+        } else {
+            this.props.handleError(null);
+            let data = { name };
+            this.props.saveAndContinue(data);
+        }
     }
     handleChange = (e) => {
         if (e.key === 'Enter') {
@@ -16,14 +22,21 @@ class StackNameInput extends React.Component {
         })
     }
     handleKeyPress = (e) => {
-        console.log(e.key)
         if (e.key === 'Enter') {
             this.handleNext();
         }
     };
     render() {
+        let error;
+        if(this.props.error) {
+            error = <div className="form-error" aria-live="polite">
+                        {this.props.error}
+                    </div>
+        }
         return (
             <div>
+                <h4>Please enter a name for your stack</h4><br/>
+                {error}
                 <input 
                     tabIndex="1"
                     type="text"
@@ -32,7 +45,7 @@ class StackNameInput extends React.Component {
                     defaultValue={this.props.fieldValues.name}
                     onChange={this.handleChange}
                     onKeyPress={this.handleChange}
-                /><br/>
+                />
                 <div className="nav-item">
                     <img 
                         onClick={this.handleNext}

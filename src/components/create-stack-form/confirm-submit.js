@@ -10,6 +10,7 @@ class ConfirmSubmit extends React.Component {
         this.props.dispatch(createStack(this.props.tempStack))
         this.props.clearFieldValues()
         this.props.resetCount()
+        this.props.closeModal()
     }
     goBack = () => {
         this.props.previousStep()

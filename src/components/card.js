@@ -22,6 +22,7 @@ class Card extends React.Component {
             name = this.props.data.name;
             data = this.props.data;
             type = 'nootropic';
+
         } else if (this.props.type === 'stack') {
             code = this.props.data.code;
             name = this.props.data.name;
@@ -55,6 +56,7 @@ class Card extends React.Component {
                         isSelected={this.props.isSelected}
                         onSelectNoop={this.props.onSelectNoop}
                         onDeSelectNoop={this.props.onDeSelectNoop}
+                        closeModal={this.onCloseModal}
                     >
                     </ModalContent>
                 </Modal>

@@ -25,7 +25,7 @@ class Stack extends React.Component {
     }
     render() {
         const { code } = this.props.data;
-        let saveButton, deleteButton, forkButton, makePublicButton, deleteFromPublicButton;
+        let saveButton, deleteButton, forkButton, makePublicButton, deleteFromPublicButton, closeModalBtn;
         if(this.props.saved && this.props.env === 'user') {
             deleteButton = (
                 <button onClick={() => this.deleteStack(code)} className="btn-red">Delete</button>
@@ -46,6 +46,8 @@ class Stack extends React.Component {
                 <button onClick={() => this.publicizeStack(code)} className="btn-green">Make public</button>
             )
         }
+        closeModalBtn = <button onClick={() => this.props.closeModal()} className="btn-gray">Close</button>
+
         /*
         forkButton = (
             <button onClick={() => this.forkStack(code)} id="fork-stack-btn">Fork</button>
@@ -67,11 +69,12 @@ class Stack extends React.Component {
                     </ul> 
                 </div>
                 <div className="modal-btn-container">
+                    {saveButton}
                     {forkButton}
+                    {makePublicButton}
                     {deleteButton}
                     {deleteFromPublicButton}
-                    {saveButton}
-                    {makePublicButton}
+                    {closeModalBtn}
                 </div>
             </div>
         )
