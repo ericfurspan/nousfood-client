@@ -43,6 +43,7 @@ export class LandingPage extends React.Component {
                             </li>
                         </ul>
                     </div>
+                    <p className="italic br-yellow">username: demo <br/> password: demodemodemo</p>
                 </div> 
                 <div className="landing-right">
                     <header>
@@ -56,7 +57,6 @@ export class LandingPage extends React.Component {
                         <h3>Join today.</h3>
                         <RegistrationForm />
                     </div>
-                    <p className="italic br-yellow">username: demo <br/> password: demodemodemo</p>
                 </div> 
             </div>
         );
