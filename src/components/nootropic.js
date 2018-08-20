@@ -26,7 +26,7 @@ class Nootropic extends React.Component {
                 </button>
             }
         } else {
-            followButton = <button className="btn-blue">Follow Nootropic</button>
+            followButton = <button className="btn-blue">Follow (coming soon)</button>
         }
         closeModalBtn = <button onClick={() => this.props.closeModal()} className="btn-gray">Close</button>
 

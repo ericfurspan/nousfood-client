@@ -56,6 +56,15 @@ button {
 .align-left {
   text-align: left;
 }
+.br-yellow {
+  background-color: #fdff66;
+}
+.italic {
+  font-style: italic;
+}
+.text-sm {
+  font-size: .8em
+}
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }

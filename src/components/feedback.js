@@ -7,7 +7,7 @@ export class Feedback extends React.Component {
     componentDidUpdate() {
         this.setTimer = setInterval(
             () => this.dismissFeedback(),
-            5 * 1000 // Five seconds
+            8 * 1000 // eight seconds
         );
     }
     dismissFeedback = () => {
