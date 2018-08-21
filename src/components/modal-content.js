@@ -1,7 +1,6 @@
 import React from 'react';
 import Nootropic from './nootropic';
 import Stack from './stack';
-
 import './styles/modal-content.css';
 
 export function ModalContent(props) {
@@ -35,10 +34,10 @@ export function ModalContent(props) {
         )
     } else if(props.type === 'stackBuilder') {
         return (
-            <div className="modal-content stackBuilder">
+            <div className="modal-content align-center">
                 {props.stackBuilder}
                 <div className="modal-btn-container">
-                    <button onClick={() => props.closeModal()} className="modal-close btn-gray">Close</button>
+                    <i className="material-icons gray right" onClick={() => props.closeModal()}>cancel</i>
                 </div>
             </div> 
         )
@@ -47,7 +46,7 @@ export function ModalContent(props) {
             <div className="modal-content">
                 {props.nootropicLibrary}
                 <div className="modal-btn-container">
-                    <button onClick={() => props.closeModal()} className="modal-close btn-gray">Close</button>
+                    <i className="material-icons gray right" onClick={() => props.closeModal()}>cancel</i>
                 </div>
             </div> 
         )
@@ -56,7 +55,7 @@ export function ModalContent(props) {
             <div className="modal-content">
                 {props.trendingStacks}
                 <div className="modal-btn-container">
-                    <button onClick={() => props.closeModal()} className="modal-close btn-gray">Close</button>
+                    <i className="material-icons gray right" onClick={() => props.closeModal()}>cancel</i>
                 </div>
             </div> 
         )
@@ -65,7 +64,7 @@ export function ModalContent(props) {
             <div className="modal-content">
                 {props.savedStacks}
                 <div className="modal-btn-container">
-                    <button onClick={() => props.closeModal()} className="modal-close btn-gray">Close</button>
+                    <i className="material-icons gray right" onClick={() => props.closeModal()}>cancel</i>
                 </div>
             </div> 
         )

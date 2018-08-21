@@ -1,49 +1,97 @@
-html {
-  background-color: #FAFAFA;
-}
 * {
   box-sizing: border-box;
   margin: 0;
 }
-
+/* SEMANTIC elements */
+html {
+  background-color: #E5ECF0;
+}
 body {
   font-family: "Roboto"; 
   font-size: 20px;
   color: #444;
 }
-
-.App {
-  text-align: center;
-}
-
 section {
   min-height: 200px;
   padding: 3% 0;
 }
+button {
+  color: #fff;
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  margin-top: 10px;
+  white-space: nowrap;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  background-color: #46b0f0;
+  min-width: 35px;
+}
+input, textarea {
+  padding: .5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  border-radius: .3rem;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
 
+/* COLORS */
+.br-green, .success {
+  background-color: #1ab81a
+}
+.br-red, .error {
+  background-color: red;
+}
+.br-blue {
+  background-color: #46b0f0;
+}
+.br-gray {
+  background-color: #444;
+}
+.br-yellow {
+  background-color: #fdff66;
+}
+.blue {
+  color: #46b0f0;
+}
+.red {
+  color: red;
+}
+.orange {
+  color: orange;
+}
+.gray {
+  color: #444;
+}
+.gold {
+  color: gold;
+}
+
+/* CUSTOM classes */
+.App {
+  text-align: center;
+}
 .logo img {
   cursor: pointer;
 }
-.btn-green {
-  background-color: #1ab81a
-}
-button {
-  color: #FAFAFA;
-}
-.btn-red {
-  background-color: red;
-}
-.btn-blue {
-  background-color: #46b0f0;
-}
-.btn-gray {
-  background-color: #293035;
-}
 .login-page {
   padding-top: 140px;
-}
-.dashboard-username {
-  margin-bottom: 0px
 }
 .not-found {
   position: fixed;
@@ -51,20 +99,45 @@ button {
   margin: auto;
   width: 100%
 }
-
-/* BASE classes */
 .align-left {
   text-align: left;
 }
-.br-yellow {
-  background-color: #fdff66;
-  color: #444;
+.align-center {
+  text-align: center;
+}
+.right {
+  float: right;
 }
 .italic {
   font-style: italic;
 }
 .text-sm {
   font-size: .8em;
+}
+.full-width {
+  width: 100%;
+}
+.icon {
+  margin-right: 20px;
+}
+
+
+/* CUSTOM material UI styles*/
+.material-icons {
+  cursor: pointer;
+  font-size: 40px;
+  margin-left: 20px;
+}
+
+/* ID */
+#spinner {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
 }
 
 @keyframes App-logo-spin {

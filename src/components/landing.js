@@ -18,7 +18,7 @@ export class LandingPage extends React.Component {
         return (
             <div className="landing">
                 <div className="landing-left">
-                    <div>
+                    <div className="align-left">
                         <ul>
                             <li>
                                 <span> 
@@ -43,7 +43,7 @@ export class LandingPage extends React.Component {
                             </li>
                         </ul>
                     </div>
-                    <p className="italic br-yellow">username: demo <br/> password: demodemodemo</p>
+                    <p className="italic br-yellow gray">username: demo <br/> password: demodemodemo</p>
                 </div> 
                 <div className="landing-right">
                     <header>

@@ -68,7 +68,7 @@ export class RegistrationForm extends React.Component {
                     autoComplete="new-password"
                     validate={[required, nonEmpty, matchesPassword]}
                 />
-                <div className="center">
+                <div className="align-center">
                     <button
                         type="submit"
                         disabled={this.props.pristine || this.props.submitting}>

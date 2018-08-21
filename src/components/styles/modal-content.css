@@ -13,26 +13,23 @@
     color: #fff;
     padding: 10px;
     font-weight: 100;
-}
-#fork-stack-btn {
-    right: 0;
+    font-style: italic;
 }
 .modal-btn-container {
-    margin-top: 20px;
-    bottom: 0;
-    right: 0;
-    left: 0;
+    margin-top: 30px;
 }
 .modal-btn-container button {
-    width: 100%;
+    width: 250px;
+    display: block
 }
 .styles_overlayCenter__YHoO7 {
     background: rgba(0, 0, 0, 0.5);
     align-items: baseline;
 }
 .styles_modal__gNwvD {
+    background-color: #E5ECF0;
     margin-top: 25px;
-    max-width: none;
+    max-width: 1150px;
     box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.55);
 }
 
