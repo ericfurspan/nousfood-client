@@ -28,7 +28,7 @@ class StackDescInput extends React.Component {
     render() {
         let error;
         if(this.props.error) {
-            error = <div className="form-error" aria-live="polite">
+            error = <div className="red" aria-live="polite">
                         {this.props.error}
                     </div>
         }
@@ -41,6 +41,7 @@ class StackDescInput extends React.Component {
                     tabIndex="1"
                     rows="5"
                     cols="25"
+                    className="full-width"
                     defaultValue={this.props.fieldValues.description}
                     onKeyPress={this.handleChange}
                     placeholder="Author description"

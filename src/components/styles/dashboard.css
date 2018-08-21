@@ -1,46 +1,34 @@
-.dashboard {
-    padding-top: 140px
+.db {
+    padding-top: 140px;
 }
-
-.dashboard-intro { 
+.db-top {
+    color: white;
+    top: 50px;
+    z-index: 2;
     position: fixed;
+}
+.db-intro { 
     right: 10px;
-    color: white;
-    top: 50px;
-    z-index: 2;
 }
-.dashboard-version { 
-    position: fixed;
+.db-version { 
     left: 10px;
-    color: white;
-    top: 50px;
-    z-index: 2;
 }
 .dashboard > div {
     margin-bottom: 40px
 }
 
-.dashboard-header {
+.db-header {
     margin-bottom: 20px;
     user-select: none;
 }
-.dashboard-header h2 {
+.db-header h2 {
     width: 300px;
     margin: auto;
     border-bottom: 2px solid #293035;
     padding-bottom: 15px;
 }
-.dashboard-header h2:hover {
+.db-header h2:hover {
     cursor: pointer;
     transform: scale(1.02);
 }
 
-#spinner {
-    position: absolute;
-    height: 100px;
-    width: 100px;
-    top: 50%;
-    left: 50%;
-    margin-left: -50px;
-    margin-top: -50px;
-}

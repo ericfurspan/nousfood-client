@@ -1,4 +1,5 @@
 import React from 'react';
+import Tooltip from './tooltip';
 
 class Nootropic extends React.Component {
     deSelectNoop = (code) => {
@@ -14,21 +15,21 @@ class Nootropic extends React.Component {
         if(this.props.selectable) {
             if(this.props.isSelected) {
                 deselectBtn = <button
-                className= "noop-select btn-red" 
+                className= "noop-select br-red" 
                 onClick={() => this.deSelectNoop(this.props.data.code)}>
                 remove from stack
             </button>
             } else {
                 selectBtn = <button
-                className="noop-select btn-green" 
+                className="noop-select br-green" 
                 onClick={() => this.selectNoop(this.props.data.code)}>
                 add to stack
                 </button>
             }
         } else {
-            followButton = <button className="btn-blue">Follow (coming soon)</button>
+            followButton = <button className="br-blue unfollowed">Follow (coming soon)</button>
         }
-        closeModalBtn = <button onClick={() => this.props.closeModal()} className="btn-gray">Close</button>
+        closeModalBtn = <i className="material-icons gray right" onClick={() => this.props.closeModal()}>cancel</i>
 
         return (
             <div className="nootropic align-left">
@@ -36,7 +37,7 @@ class Nootropic extends React.Component {
                 <div className="how-to-take">
                     <h5>How to take:</h5>
                     <p>{this.props.data.how_to_take}</p>
-                </div>
+                </div><br/>
                 <div className="supports">
                     <h5>Supports:</h5>
                     <ul>
@@ -44,7 +45,7 @@ class Nootropic extends React.Component {
                             <li key={index}>{element}</li>
                         )}
                     </ul>
-                </div>
+                </div><br/>
                 <div className="notes">
                     <h5>Notes:</h5>
                     <ul>
@@ -54,7 +55,10 @@ class Nootropic extends React.Component {
                     </ul>
                 </div>
                 <div className="modal-btn-container">
-                    {followButton}{selectBtn}{deselectBtn}{closeModalBtn}      
+                    {followButton}
+                    {selectBtn}
+                    {deselectBtn}
+                    {closeModalBtn}      
                 </div>
             </div>
         )

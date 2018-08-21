@@ -12,7 +12,7 @@ export class LoginForm extends React.Component {
         let error;
         if (this.props.error) {
             error = (
-                <div className="form-error" aria-live="polite">
+                <div className="red" aria-live="polite">
                     {this.props.error}
                 </div>
             );
@@ -36,7 +36,7 @@ export class LoginForm extends React.Component {
                     placeholder="Password"
                     validate={[required, isTrimmed, nonEmpty]}
                 />
-                <div className="center">
+                <div className="align-center">
                     <button disabled={this.props.pristine || this.props.submitting}>
                         Log in
                     </button>

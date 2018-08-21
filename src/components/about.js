@@ -7,7 +7,7 @@ export function About(props) {
     return (
         <div className="about">
 
-            <div class="text-sm">
+            <div className="text-sm">
                 <p>Note: this app is currently in beta. The following is supported: 
                 Registration, Sign in, Logout, Create stack, Save stack, Delete stack, Make stack public,
                 Delete public stack</p>
@@ -21,7 +21,7 @@ export function About(props) {
                     potential benefits of brain-boosting foods and supplements. In addition, this app strives to
                     empower those already engaged and experimenting with "nootropics" by providing a platform
                     where you can </p><br/>
-                    <ul>
+                    <ul className="italic">
                         <li>Follow nootropics and curate a news feed</li>
                         <li>Create and manage custom stacks</li>
                         <li>Connect with the community. Save, Fork, and Share nootropic stacks</li>
@@ -39,7 +39,7 @@ export function About(props) {
                 Corneliu E. Giurgea, who synthesized Piracetam in 1964.</p><br/>
 
                 <p>According to Dr. Giurgea, a substance categorized as a nootropic meets the following criteria:</p>
-                <ul>
+                <ul className="italic">
                     <li>A nootropic may enhance learning and memory.</li>
                     <li>A nootropic may help protect the brain from disruptive conditions such as hypoxia (low oxygen) or electroconvulsive shock.</li>
                     <li>A nootropic may help protect the brain from various chemical or physical injuries such as the effects of barbiturates and anti-cholinergic substances.</li>

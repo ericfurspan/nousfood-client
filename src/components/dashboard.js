@@ -75,13 +75,13 @@ export class Dashboard extends React.Component {
         }
 
         return (
-            <div className="dashboard">
-                <div className="dashboard-version">v1.2</div>
-                <div className="dashboard-intro">
+            <div className="db">
+                <div className="db-top db-version">v1.2</div>
+                <div className="db-top db-intro">
                     {this.props.username}
                 </div>
-                <div className="dashboard-user-data">
-                    <div className="dashboard-header" onClick={() => this.switchHidden('savedStacks')}>
+                <div className="db-user-data">
+                    <div className="db-header" onClick={() => this.switchHidden('savedStacks')}>
                         <h2>Saved stacks</h2>
                     </div>
                     <Modal
@@ -98,7 +98,7 @@ export class Dashboard extends React.Component {
                     </Modal>
                 </div>
                 <div className="trending-stacks">
-                    <div className="dashboard-header" onClick={() => this.switchHidden('trendingStacks')}>
+                    <div className="db-header" onClick={() => this.switchHidden('trendingStacks')}>
                         <h2>Trending stacks</h2>
                     </div>
                     <Modal
@@ -123,7 +123,7 @@ export class Dashboard extends React.Component {
                 <div className="social-feed">
                 </div>
                 <div className="nootropicLibrary"> 
-                    <div className="dashboard-header" onClick={() => this.switchHidden('nootropicLibrary')}>
+                    <div className="db-header" onClick={() => this.switchHidden('nootropicLibrary')}>
                         <h2>Nootropics</h2>
                     </div>
                     <Modal
@@ -145,7 +145,7 @@ export class Dashboard extends React.Component {
                     </Modal>
                 </div>
                 <div className="create-stack" id="create-stack">
-                    <div className="dashboard-header" onClick={() => this.switchHidden('stackBuilder')}>
+                    <div className="db-header" onClick={() => this.switchHidden('stackBuilder')}>
                         <h2>Stack Builder</h2>
                     </div>
                     <Modal

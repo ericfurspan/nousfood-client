@@ -7,59 +7,10 @@
 .registration-form input, .login-form input {
     display: table-cell;
 }
-
-input, textarea {
-    padding: .5rem 1rem;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    border-radius: .3rem;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-}
-
-.form-error {
-    color: red;
-    margin: 0;
-}
-.form-warning {
-    color: orange;
-}
-.center {
-    text-align: center;
-}
-
-button {
-    color: #fff;
-    display: inline-block;
-    font-weight: 400;
-    text-align: center;
-    margin-top: 10px;
-    white-space: nowrap;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    border: 1px solid transparent;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
-    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    background-color: #46b0f0;
-    min-width: 35px;
-}
 form button:hover {
     transform: scale(1.02);
     cursor: pointer;
 }
-
 .nav-item {
     width: 100px;
     margin: 20px 0px 70px 0px;

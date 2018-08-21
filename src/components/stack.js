@@ -1,6 +1,8 @@
 import React from 'react';
 import { saveStack, deleteStack, createPublicStack, deletePublicStack } from '../actions/user';
 import { connect } from 'react-redux';
+import './styles/tooltip.css';
+import Tooltip from './tooltip';
 
 class Stack extends React.Component {
     deleteStack = (code) => {
@@ -24,29 +26,30 @@ class Stack extends React.Component {
         this.props.exit()
     }
     render() {
+        console.log(this.state)
         const { code } = this.props.data;
         let saveButton, deleteButton, forkButton, makePublicButton, deleteFromPublicButton, closeModalBtn;
         if(this.props.saved && this.props.env === 'user') {
             deleteButton = (
-                <button onClick={() => this.deleteStack(code)} className="btn-red">Delete</button>
+                <i className="material-icons red" onClick={() => this.deleteStack(code)}>delete_forever</i>
             )
         }
         if(this.props.data.author === this.props.user.account.username && this.props.public) {
             deleteFromPublicButton = (
-                <button onClick={() => this.deletePublicStack(code)} className="btn-red">Delete from Public</button>
+                <i className="material-icons red" onClick={() => this.deletePublicStack(code)}>cloud_off</i>
             )
         }
         if(!this.props.saved && this.props.env === 'global') {
             saveButton = (
-                <button onClick={() => this.saveStack(code)} className="btn-green">Save</button>
+                <button onClick={() => this.saveStack(code)}>Save</button>
             )
         }
         if(!this.props.public && this.props.env === 'user') {
             makePublicButton = (
-                <button onClick={() => this.publicizeStack(code)} className="btn-green">Make public</button>
+                <i className="material-icons blue" onClick={() => this.publicizeStack(code)}>share</i>
             )
         }
-        closeModalBtn = <button onClick={() => this.props.closeModal()} className="btn-gray">Close</button>
+        closeModalBtn = <i className="material-icons gray right" onClick={() => this.props.closeModal()}>cancel</i>
 
         /*
         forkButton = (
@@ -70,10 +73,10 @@ class Stack extends React.Component {
                 </div>
                 <div className="modal-btn-container">
                     {saveButton}
-                    {forkButton}
-                    {makePublicButton}
-                    {deleteButton}
-                    {deleteFromPublicButton}
+                    <Tooltip message={'Fork'} position={'top'}>{forkButton}</Tooltip>
+                    <Tooltip message={'Share with public'} position={'top'}>{makePublicButton}</Tooltip>
+                    <Tooltip message={'Delete'} position={'top'}>{deleteButton}</Tooltip>
+                    <Tooltip message={'Unshare with public'} position={'top'}>{deleteFromPublicButton}</Tooltip>
                     {closeModalBtn}
                 </div>
             </div>

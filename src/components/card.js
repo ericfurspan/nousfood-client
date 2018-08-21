@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactCardFlipper from 'react-card-flipper';
 import Modal from 'react-responsive-modal';
 import ModalContent from './modal-content';
 import './styles/card.css';
@@ -16,7 +15,7 @@ class Card extends React.Component {
     }
     
     render() {
-        let name, code, data, type, headerText;
+        let name, code, data, type;
         if (this.props.type === 'nootropic') {
             code = this.props.data.code;
             name = this.props.data.name;

@@ -21,8 +21,8 @@ class ConfirmSubmit extends React.Component {
                 <h3>Please confirm your stack.</h3>
                 <h5>You may edit this at a later time.</h5>
                 <div className="stack-confirm">
-                    <p><span>Title:</span> <span className="confirmed-value">{this.props.tempStack.name}</span></p>
-                    <p><span>Author Description:</span> <span className="confirmed-value">{this.props.tempStack.description}</span></p>
+                    <p><span>Title:</span> <span className="italic">{this.props.tempStack.name}</span></p>
+                    <p><span>Author Description:</span> <span className="italic">{this.props.tempStack.description}</span></p>
                     <p><span>Contents:</span></p><br/>
                     <ul>
                         {this.props.tempStack.contents.map( (element, index) => 

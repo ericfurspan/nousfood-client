@@ -11,10 +11,10 @@ export default class Input extends React.Component {
         let error, warning;
         if(!this.props.meta.submitFailed) {
             if (this.props.meta.touched && this.props.meta.error) {
-                error = <div className="form-error" aria-live="polite">{this.props.meta.error}</div>;
+                error = <div className="red" aria-live="polite">{this.props.meta.error}</div>;
             }
             if (this.props.meta.touched && this.props.meta.warning) {
-                warning = <div className="form-warning" aria-live="polite">{this.props.meta.warning}</div>
+                warning = <div className="orange" aria-live="polite">{this.props.meta.warning}</div>
             }
         }
 
