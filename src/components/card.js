@@ -33,7 +33,7 @@ class Card extends React.Component {
             <div>
                 <div 
                     type={this.props.type}
-                    className={this.props.isSelected ? `card-item selected-card` : `card-item`}
+                    className={this.props.isSelected ? `card-item light border selected-card` : `card-item light-border`}
                     onClick={() => this.onOpenModal()}
                 >
                     <h4>{name}</h4>

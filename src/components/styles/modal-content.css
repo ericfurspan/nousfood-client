@@ -18,6 +18,9 @@
 .modal-btn-container {
     margin-top: 30px;
     text-align: center;
+    border-top: 1px solid #e6e9ec;
+    padding-top: 15px;
+    text-align: -webkit-auto;
 }
 .modal-btn-container button {
     width: 250px;
@@ -28,10 +31,10 @@
     align-items: baseline;
 }
 .styles_modal__gNwvD {
-    background-color: #E5ECF0;
+    background-color: #f5f5f5;
     margin-top: 25px;
     max-width: 1150px;
-    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.55);
+    box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 2px 3px rgba(0,0,0,.2);
 }
 
 .styles_closeIcon__1QwbI {
