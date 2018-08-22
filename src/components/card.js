@@ -42,7 +42,7 @@ class Card extends React.Component {
                     open={this.state.open}
                     onClose={this.onCloseModal}
                     center>
-                    <h3 className="modal-header">{name}</h3>
+                    <div className="modal-header">{name}<i className="material-icons white right" onClick={() => this.onCloseModal()}>cancel</i></div>
                     <ModalContent
                         env={this.props.env}
                         saved={this.props.isSaved}

@@ -49,7 +49,6 @@ class Stack extends React.Component {
                 <i className="material-icons blue" onClick={() => this.publicizeStack(code)}>share</i>
             )
         }
-        closeModalBtn = <i className="material-icons gray right" onClick={() => this.props.closeModal()}>cancel</i>
 
         /*
         forkButton = (
@@ -59,7 +58,6 @@ class Stack extends React.Component {
         
         return (
             <div className="stack">
-                <h3>{this.props.data.name}</h3><br/>
                 <div className="stack-container">
                     <p><span className="stack-header">Author:</span> {this.props.data.author}</p><br/>
                     <p><span className="stack-header">Description:</span> {this.props.data.description}</p><br/>
@@ -77,7 +75,6 @@ class Stack extends React.Component {
                     <Tooltip message={'Share with public'} position={'top'}>{makePublicButton}</Tooltip>
                     <Tooltip message={'Delete'} position={'top'}>{deleteButton}</Tooltip>
                     <Tooltip message={'Unshare with public'} position={'top'}>{deleteFromPublicButton}</Tooltip>
-                    {closeModalBtn}
                 </div>
             </div>
         )

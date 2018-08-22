@@ -37,7 +37,6 @@ export function ModalContent(props) {
             <div className="modal-content align-center">
                 {props.stackBuilder}
                 <div className="modal-btn-container">
-                    <i className="material-icons gray right" onClick={() => props.closeModal()}>cancel</i>
                 </div>
             </div> 
         )
@@ -46,7 +45,6 @@ export function ModalContent(props) {
             <div className="modal-content">
                 {props.nootropicLibrary}
                 <div className="modal-btn-container">
-                    <i className="material-icons gray right" onClick={() => props.closeModal()}>cancel</i>
                 </div>
             </div> 
         )
@@ -55,7 +53,6 @@ export function ModalContent(props) {
             <div className="modal-content">
                 {props.trendingStacks}
                 <div className="modal-btn-container">
-                    <i className="material-icons gray right" onClick={() => props.closeModal()}>cancel</i>
                 </div>
             </div> 
         )
@@ -64,7 +61,6 @@ export function ModalContent(props) {
             <div className="modal-content">
                 {props.savedStacks}
                 <div className="modal-btn-container">
-                    <i className="material-icons gray right" onClick={() => props.closeModal()}>cancel</i>
                 </div>
             </div> 
         )
