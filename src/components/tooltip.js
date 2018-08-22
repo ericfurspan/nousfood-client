@@ -22,6 +22,7 @@ class Tooltip extends React.Component {
     render() {
       let message = this.props.message
       let position = this.props.position
+
       return (
         <span className='tooltip'
             onMouseLeave={this.hideTooltip}

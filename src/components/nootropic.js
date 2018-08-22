@@ -14,20 +14,12 @@ class Nootropic extends React.Component {
         let selectBtn, deselectBtn, followButton;
         if(this.props.selectable) {
             if(this.props.isSelected) {
-                deselectBtn = <button
-                className= "noop-select br-red" 
-                onClick={() => this.deSelectNoop(this.props.data.code)}>
-                remove from stack
-            </button>
+                deselectBtn = <div onClick={() => this.deSelectNoop(this.props.data.code)} className="pointer red-hover"><i className="material-icons noop-select">remove_circle_outline</i><span>Remove</span></div>   
             } else {
-                selectBtn = <button
-                className="noop-select br-green" 
-                onClick={() => this.selectNoop(this.props.data.code)}>
-                add to stack
-                </button>
+                selectBtn = <div onClick={() => this.selectNoop(this.props.data.code)} className="pointer green-hover"><i className="material-icons noop-select">add_circle_outline</i><span>Add</span></div>   
             }
         } else {
-            followButton = <button className="br-blue">Follow (coming soon)</button>
+            followButton = <div className="pointer gold-hover"><i className="material-icons">star</i><span>Follow</span></div>   
         }
 
         return (
@@ -54,7 +46,7 @@ class Nootropic extends React.Component {
                 </div>
                 <div className="modal-btn-container">
                     {followButton}
-                    {selectBtn}
+                    <Tooltip message={'Add'} position={'top'}>{selectBtn}</Tooltip>
                     {deselectBtn}
                 </div>
             </div>

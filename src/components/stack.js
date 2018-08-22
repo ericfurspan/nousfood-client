@@ -25,18 +25,21 @@ class Stack extends React.Component {
         this.props.dispatch(deletePublicStack(code, this.props.data.author))
         this.props.exit()
     }
+    isHovered = () => {
+        
+    }
     render() {
         console.log(this.state)
         const { code } = this.props.data;
         let saveButton, deleteButton, forkButton, makePublicButton, deleteFromPublicButton, closeModalBtn;
         if(this.props.saved && this.props.env === 'user') {
             deleteButton = (
-                <i className="material-icons red" onClick={() => this.deleteStack(code)}>delete_forever</i>
+                <div onClick={() => this.deleteStack(code)} className="pointer red-hover"><i className="material-icons">delete_forever</i><span>Delete</span></div>
             )
         }
         if(this.props.data.author === this.props.user.account.username && this.props.public) {
             deleteFromPublicButton = (
-                <i className="material-icons red" onClick={() => this.deletePublicStack(code)}>cloud_off</i>
+                <div onClick={() => this.deletePublicStack(code)} className="pointer red-hover"><i className="material-icons">cloud_off</i><span>Unshare with public</span></div>
             )
         }
         if(!this.props.saved && this.props.env === 'global') {
@@ -46,7 +49,7 @@ class Stack extends React.Component {
         }
         if(!this.props.public && this.props.env === 'user') {
             makePublicButton = (
-                <i className="material-icons blue" onClick={() => this.publicizeStack(code)}>share</i>
+                <div onClick={() => this.publicizeStack(code)} className="pointer green-hover"><i className="material-icons">cloud_queue</i><span>Share with public</span></div>
             )
         }
 
@@ -73,8 +76,8 @@ class Stack extends React.Component {
                     {saveButton}
                     <Tooltip message={'Fork'} position={'top'}>{forkButton}</Tooltip>
                     <Tooltip message={'Share with public'} position={'top'}>{makePublicButton}</Tooltip>
-                    <Tooltip message={'Delete'} position={'top'}>{deleteButton}</Tooltip>
                     <Tooltip message={'Unshare with public'} position={'top'}>{deleteFromPublicButton}</Tooltip>
+                    <Tooltip message={'Delete'} position={'top'}>{deleteButton}</Tooltip>
                 </div>
             </div>
         )
