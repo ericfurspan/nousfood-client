@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LoginForm from './login-form';
 import './styles/about.css';
 
 export function About(props) {
@@ -9,8 +10,8 @@ export function About(props) {
 
             <div className="text-sm">
                 <p>Note: this app is currently in beta. The following is supported: 
-                Registration, Sign in, Logout, Create stack, Save stack, Delete stack, Make stack public,
-                Delete public stack</p>
+                Registration, Sign in, Logout, Create stack, Save stack, Delete stack, Share stack with public,
+                Unshare stack with public</p>
             </div><br/>
 
             <section>
@@ -39,7 +40,7 @@ export function About(props) {
                 Corneliu E. Giurgea, who synthesized Piracetam in 1964.</p><br/>
 
                 <p>According to Dr. Giurgea, a substance categorized as a nootropic meets the following criteria:</p>
-                <ul className="italic">
+                <ul className="italic bold">
                     <li>A nootropic may enhance learning and memory.</li>
                     <li>A nootropic may help protect the brain from disruptive conditions such as hypoxia (low oxygen) or electroconvulsive shock.</li>
                     <li>A nootropic may help protect the brain from various chemical or physical injuries such as the effects of barbiturates and anti-cholinergic substances.</li>
@@ -69,10 +70,14 @@ export function About(props) {
                     <h2>Get started</h2>
                 </header><br/>
                 <div>
-                    <p><i>DEMO ACCOUNT:</i></p>
-                    <p>Username: Tester</p>
-                    <p>Password: nousfood</p>
-                    <Link to="/">Login or Signup</Link>
+                    <p>Check out this intro video and then login!</p>
+                    <iframe type="text/html" width="640" height="360"
+                        src="https://www.youtube.com/embed/chbpnnZBziU"
+                        frameBorder="0">
+                    </iframe>
+                    <h3>&nbsp;Login</h3>
+                    <LoginForm /><br/>
+                    <Link to={"/"}>Or register here</Link>
                 </div>
             </section>
             <section>

@@ -82,6 +82,9 @@ input, textarea {
 .gold {
   color: gold;
 }
+.white {
+  color: #fff;
+}
 
 /* CUSTOM classes */
 .App {
@@ -111,14 +114,14 @@ input, textarea {
 .italic {
   font-style: italic;
 }
+.bold {
+  font-weight: bold;
+}
 .text-sm {
   font-size: .8em;
 }
 .full-width {
   width: 100%;
-}
-.icon {
-  margin-right: 20px;
 }
 
 
@@ -127,6 +130,9 @@ input, textarea {
   cursor: pointer;
   font-size: 40px;
   margin-left: 20px;
+}
+.material-icons:hover {
+  transform: scale(1.02);
 }
 
 /* ID */

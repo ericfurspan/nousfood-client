@@ -88,7 +88,7 @@ export class Dashboard extends React.Component {
                         open={!this.state.savedStacks.hidden}
                         onClose={() => this.switchHidden('savedStacks')}
                         center>
-                        <h3 className="modal-header">Saved Stacks</h3>
+                        <div className="modal-header">Saved Stacks<i className="material-icons white right" onClick={() => this.switchHidden('savedStacks')}>cancel</i></div>
                         <ModalContent 
                             type="savedStacks"
                             closeModal={() => this.switchHidden('savedStacks')}
@@ -105,7 +105,7 @@ export class Dashboard extends React.Component {
                         open={!this.state.trendingStacks.hidden}
                         onClose={() => this.switchHidden('trendingStacks')}
                         center>
-                        <h3 className="modal-header">Trending Stacks</h3>
+                        <div className="modal-header">Trending Stacks<i className="material-icons white right" onClick={() => this.switchHidden('trendingStacks')}>cancel</i></div>
                         <ModalContent 
                             type="trendingStacks"
                             closeModal={() => this.switchHidden('trendingStacks')}
@@ -130,7 +130,7 @@ export class Dashboard extends React.Component {
                         open={!this.state.nootropicLibrary.hidden}
                         onClose={() => this.switchHidden('nootropicLibrary')}
                         center>
-                        <h3 className="modal-header">Nootropics</h3>
+                        <div className="modal-header">Nootropics<i className="material-icons white right" onClick={() => this.switchHidden('nootropicLibrary')}>cancel</i></div>
                         <ModalContent 
                             type="nootropicLibrary"
                             closeModal={() => this.switchHidden('nootropicLibrary')}
@@ -152,7 +152,7 @@ export class Dashboard extends React.Component {
                         open={!this.state.stackBuilder.hidden}
                         onClose={() => this.switchHidden('stackBuilder')}
                         center>
-                        <h3 className="modal-header">Stack Builder</h3>
+                        <div className="modal-header">Stack Builder<i className="material-icons white right" onClick={() => this.switchHidden('stackBuilder')}>cancel</i></div>
                         <ModalContent 
                             type="stackBuilder"
                             closeModal={() => this.switchHidden('stackBuilder')}
