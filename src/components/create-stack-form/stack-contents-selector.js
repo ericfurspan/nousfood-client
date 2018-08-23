@@ -32,6 +32,7 @@ class StackContentsSelector extends React.Component {
                 <h4>select nootropics</h4><br/>
                 {error}
                 <NootropicLibrary
+                    show={true}
                     nootropics={this.props.nootropics}
                     selectable={true}
                     selectedNoopCodes={selectedNoopCodes}

@@ -9,24 +9,24 @@ import { NootropicLibrary } from './nootropic-library';
 import { clearAuth } from '../actions/auth';
 import { emptyUserData } from '../actions/user';
 import {withRouter} from 'react-router-dom';
-import './styles/dashboard.css';
 import Spinner from '../assets/images/spinner.gif';
-import Modal from 'react-responsive-modal';
-import ModalContent from './modal-content';
+import Modal from './modal';
+import ModalContainer from './modal-container';
+import './styles/dashboard.css';
 
 export class Dashboard extends React.Component {
     state = {
         trendingStacks: {
-            hidden: true
+            show: false
         },
         nootropicLibrary: {
-            hidden: true
+            show: false
         },
         stackBuilder: {
-            hidden: true
+            show: false
         },
         savedStacks: {
-            hidden: true
+            show: false
         }
     };
     componentDidMount() {
@@ -38,27 +38,27 @@ export class Dashboard extends React.Component {
             this.props.dispatch(emptyUserData());
         }
     }
-    updateHidden = (component) => {
+    updateModal = (component) => {
         let newState = {};
-        newState[component] = {hidden: !this.state[component].hidden};
+        newState[component] = {show: !this.state[component].show};
         Object.keys(this.state).forEach(key => {
             if(key !== component) {
-                newState[key] = {hidden: true}
+                newState[key] = {show: false}
             }
         });
         this.setState(newState);
     }
 
-    switchHidden = (component) => {
+    toggleModal = (component) => {
         switch (component) {
             case 'trendingStacks' : 
-                return this.updateHidden('trendingStacks')
+                return this.updateModal('trendingStacks')
             case 'nootropicLibrary' :
-                return this.updateHidden('nootropicLibrary')
+                return this.updateModal('nootropicLibrary')
             case 'stackBuilder' :
-                return this.updateHidden('stackBuilder')
+                return this.updateModal('stackBuilder')
             case 'savedStacks' :
-                return this.updateHidden('savedStacks')
+                return this.updateModal('savedStacks')
             default :
                 return null
         }
@@ -69,9 +69,9 @@ export class Dashboard extends React.Component {
         }
         let savedStacks;
         if(!this.props.user.savedStacks) {
-            savedStacks = <SavedStacks hidden={this.state.savedStacks.hidden} savedStacks={this.props.user.savedStacks}/>
+            savedStacks = <SavedStacks show={this.state.savedStacks.show} savedStacks={this.props.user.savedStacks}/>
         } else {
-            savedStacks = <SavedStacks hidden={this.state.savedStacks.hidden} savedStacks={this.props.user.savedStacks} trendingStacks={this.props.stackLibrary}/>
+            savedStacks = <SavedStacks show={this.state.savedStacks.show} savedStacks={this.props.user.savedStacks} trendingStacks={this.props.stackLibrary}/>
         }
 
         return (
@@ -81,91 +81,86 @@ export class Dashboard extends React.Component {
                     {this.props.username}
                 </div>
                 <div className="db-user-data">
-                    <div className="db-header" onClick={() => this.switchHidden('savedStacks')}>
+                    <div className="db-header" onClick={() => this.toggleModal('savedStacks')}>
                         <h2>Saved stacks</h2>
                     </div>
-                    <Modal
-                        open={!this.state.savedStacks.hidden}
-                        onClose={() => this.switchHidden('savedStacks')}
-                        center>
-                        <div className="modal-header">Saved Stacks<i className="material-icons white right" onClick={() => this.switchHidden('savedStacks')}>cancel</i></div>
-                        <ModalContent 
+                    <Modal 
+                      show={this.state.savedStacks.show} 
+                      modalLevel="1"
+                    >
+                        <ModalContainer
+                            header={<div className="modal-header">Saved Stacks<i className="material-icons white right" onClick={() => this.toggleModal('savedStacks')}>cancel</i></div>}
                             type="savedStacks"
-                            closeModal={() => this.switchHidden('savedStacks')}
+                            closeModal={() => this.toggleModal('savedStacks')}
                             savedStacks={savedStacks}
-                        >
-                        </ModalContent>
+                        />
                     </Modal>
                 </div>
+                
                 <div className="trending-stacks">
-                    <div className="db-header" onClick={() => this.switchHidden('trendingStacks')}>
+                    <div className="db-header" onClick={() => this.toggleModal('trendingStacks')}>
                         <h2>Trending stacks</h2>
                     </div>
                     <Modal
-                        open={!this.state.trendingStacks.hidden}
-                        onClose={() => this.switchHidden('trendingStacks')}
-                        center>
-                        <div className="modal-header">Trending Stacks<i className="material-icons white right" onClick={() => this.switchHidden('trendingStacks')}>cancel</i></div>
-                        <ModalContent 
+                      show={this.state.trendingStacks.show} 
+                    >
+                        <ModalContainer
+                            header={<div className="modal-header">Trending Stacks<i className="material-icons white right" onClick={() => this.toggleModal('trendingStacks')}>cancel</i></div>}
                             type="trendingStacks"
-                            closeModal={() => this.switchHidden('trendingStacks')}
+                            closeModal={() => this.toggleModal('trendingStacks')}
                             trendingStacks={
                                 <TrendingStacks 
-                                    hidden={this.state.trendingStacks.hidden}
+                                    show={this.state.trendingStacks.show}
                                     savedStacks={this.props.user.savedStacks}
                                     stackLibrary={this.props.stackLibrary}
-                                    closeModal={() => this.switchHidden('trendingStacks')}
+                                    closeModal={() => this.toggleModal('trendingStacks')}
                                 />}
-                        >
-                        </ModalContent>
+                        />
                     </Modal>
                 </div>
                 <div className="social-feed">
                 </div>
                 <div className="nootropicLibrary"> 
-                    <div className="db-header" onClick={() => this.switchHidden('nootropicLibrary')}>
+                    <div className="db-header" onClick={() => this.toggleModal('nootropicLibrary')}>
                         <h2>Nootropics</h2>
                     </div>
                     <Modal
-                        open={!this.state.nootropicLibrary.hidden}
-                        onClose={() => this.switchHidden('nootropicLibrary')}
-                        center>
-                        <div className="modal-header">Nootropics<i className="material-icons white right" onClick={() => this.switchHidden('nootropicLibrary')}>cancel</i></div>
-                        <ModalContent 
+                        show={this.state.nootropicLibrary.show}
+                    >
+                        <ModalContainer 
+                            header={<div className="modal-header">Nootropics<i className="material-icons white right" onClick={() => this.toggleModal('nootropicLibrary')}>cancel</i></div>}
                             type="nootropicLibrary"
-                            closeModal={() => this.switchHidden('nootropicLibrary')}
+                            closeModal={() => this.toggleModal('nootropicLibrary')}
                             nootropicLibrary={
                                 <NootropicLibrary 
-                                    hidden={this.state.nootropicLibrary.hidden}
+                                    show={this.state.nootropicLibrary.show}
                                     nootropics={this.props.nootropics}
-                                    closeModal={() => this.switchHidden('nootropicLibrary')}
+                                    closeModal={() => this.toggleModal('nootropicLibrary')}
                                 />}
-                        >
-                        </ModalContent>
+                        />
                     </Modal>
                 </div>
                 <div className="create-stack" id="create-stack">
-                    <div className="db-header" onClick={() => this.switchHidden('stackBuilder')}>
+                    <div className="db-header" onClick={() => this.toggleModal('stackBuilder')}>
                         <h2>Stack Builder</h2>
                     </div>
                     <Modal
-                        open={!this.state.stackBuilder.hidden}
-                        onClose={() => this.switchHidden('stackBuilder')}
-                        center>
-                        <div className="modal-header">Stack Builder<i className="material-icons white right" onClick={() => this.switchHidden('stackBuilder')}>cancel</i></div>
-                        <ModalContent 
+                        show={this.state.stackBuilder.show}
+                    >
+                        <ModalContainer 
+                            header={<div className="modal-header">Stack Builder<i className="material-icons white right" onClick={() => this.toggleModal('stackBuilder')}>cancel</i></div>}
                             type="stackBuilder"
-                            closeModal={() => this.switchHidden('stackBuilder')}
+                            closeModal={() => this.toggleModal('stackBuilder')}
                             stackBuilder={
                                 <CreateStackForm 
-                                    hidden={this.state.stackBuilder.hidden}
+                                    show={this.state.stackBuilder.show}
                                     nootropics={this.props.nootropics}
-                                    closeModal={() => this.switchHidden('stackBuilder')}
+                                    closeModal={() => this.toggleModal('stackBuilder')}
                                 />}
-                        >
-                        </ModalContent>
+                        />
                     </Modal>
                 </div>
+        
             </div>
         );
     }

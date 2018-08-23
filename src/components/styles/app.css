@@ -7,7 +7,6 @@ html {
   background-color: #f5f5f5;
 }
 body {
-  /*font-family: "Roboto"; */
   font-family: 'Quicksand', sans-serif;
   font-size: 20px;
   color: #444;
@@ -58,7 +57,7 @@ input, textarea {
   background-color: #1ab81a
 }
 .br-red, .error {
-  background-color: red;
+  background-color: #e21809;
 }
 .br-blue {
   background-color: #46b0f0;
@@ -79,7 +78,7 @@ input, textarea {
   color: #1ab81a;
 }
 .red, .red-hover:hover {
-  color: red;
+  color: #e21809;
 }
 .orange {
   color: orange;
@@ -139,6 +138,12 @@ input, textarea {
   position: relative;
   bottom: 10px;
   margin-left: 5px;
+}
+.display-block {
+  display: block;
+}
+.display-none {
+  display: none;
 }
 
 /* CUSTOM material UI styles*/

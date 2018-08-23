@@ -8,7 +8,7 @@ export class TrendingStacks extends React.Component {
         return isSaved ? true : false
     }
     render() {
-        if(this.props.hidden) {
+        if(!this.props.show) {
             return null
         }
         let stack;

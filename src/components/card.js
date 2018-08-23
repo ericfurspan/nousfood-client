@@ -1,6 +1,6 @@
 import React from 'react';
-import Modal from 'react-responsive-modal';
-import ModalContent from './modal-content';
+import Modal from './modal';
+import ModalContainer from './modal-container';
 import './styles/card.css';
 
 class Card extends React.Component {
@@ -38,12 +38,13 @@ class Card extends React.Component {
                 >
                     <h4>{name}</h4>
                 </div>
-                <Modal
-                    open={this.state.open}
-                    onClose={this.onCloseModal}
-                    center>
-                    <div className="modal-header">{name}<i className="material-icons white right" onClick={() => this.onCloseModal()}>cancel</i></div>
-                    <ModalContent
+                <Modal 
+                      show={this.state.open} 
+                      onClose={this.onCloseModal}
+                      modalLevel="2"
+                    >
+                    <ModalContainer
+                        header={<div className="modal-header">{name}<i className="material-icons white right" onClick={() => this.onCloseModal()}>cancel</i></div>}
                         env={this.props.env}
                         saved={this.props.isSaved}
                         public={this.props.isPublic}
@@ -57,9 +58,8 @@ class Card extends React.Component {
                         onSelectNoop={this.props.onSelectNoop}
                         onDeSelectNoop={this.props.onDeSelectNoop}
                         closeModal={this.onCloseModal}
-                    >
-                    </ModalContent>
-                </Modal>
+                    />
+                    </Modal>
             </div>
         );  
       }

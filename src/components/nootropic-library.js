@@ -11,7 +11,7 @@ export class NootropicLibrary extends React.Component {
         return false
     }
     render() {
-        if(this.props.hidden) {
+        if(!this.props.show) {
             return null
         }
         const nootropics = this.props.nootropics.map((nootropic, index) => (

@@ -81,7 +81,7 @@ export class BuildStackForm extends React.Component {
     }
     render() {
         console.log(`step is: ${this.state.step}`)
-        if(this.props.hidden) {
+        if(!this.props.show) {
             return null
         }
         switch(this.state.step) {            
