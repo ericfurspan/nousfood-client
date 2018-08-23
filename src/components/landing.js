@@ -39,11 +39,11 @@ export class LandingPage extends React.Component {
                                 </span>
                             </li>
                             <li id="about-link">
-                                <Link to="/about"><button>About this app</button></Link>
+                                <Link to="/about"><button>Get Started</button></Link>
                             </li>
                         </ul>
                     </div>
-                    <p className="italic br-yellow gray">username: demo <br/> password: demodemodemo</p>
+                    <p className="italic br-white gray">username: <span>demo</span> <br/> password: <span>demodemodemo</span></p>
                 </div> 
                 <div className="landing-right">
                     <header>

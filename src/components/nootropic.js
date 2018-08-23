@@ -46,7 +46,7 @@ class Nootropic extends React.Component {
                 </div>
                 <div className="modal-btn-container">
                     {followButton}
-                    <Tooltip message={'Add'} position={'top'}>{selectBtn}</Tooltip>
+                    {selectBtn}
                     {deselectBtn}
                 </div>
             </div>

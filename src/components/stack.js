@@ -3,6 +3,7 @@ import { saveStack, deleteStack, createPublicStack, deletePublicStack } from '..
 import { connect } from 'react-redux';
 import './styles/tooltip.css';
 import Tooltip from './tooltip';
+import ConfirmAction from './confirm-action';
 
 class Stack extends React.Component {
     deleteStack = (code) => {
@@ -25,16 +26,16 @@ class Stack extends React.Component {
         this.props.dispatch(deletePublicStack(code, this.props.data.author))
         this.props.exit()
     }
-    isHovered = () => {
-        
-    }
+
     render() {
-        console.log(this.state)
         const { code } = this.props.data;
         let saveButton, deleteButton, forkButton, makePublicButton, deleteFromPublicButton, closeModalBtn;
         if(this.props.saved && this.props.env === 'user') {
             deleteButton = (
-                <div onClick={() => this.deleteStack(code)} className="pointer red-hover"><i className="material-icons">delete_forever</i><span>Delete</span></div>
+                <ConfirmAction
+                  children={<div className="pointer red-hover"><i className="material-icons">delete_forever</i><span>Delete</span></div>}
+                  confirmTrue={() => this.deleteStack(code)}
+                />
             )
         }
         if(this.props.data.author === this.props.user.account.username && this.props.public) {
@@ -44,7 +45,7 @@ class Stack extends React.Component {
         }
         if(!this.props.saved && this.props.env === 'global') {
             saveButton = (
-                <button onClick={() => this.saveStack(code)}>Save</button>
+                <div onClick={() => this.saveStack(code)} className="pointer blue-hover"><i className="material-icons">save</i><span>Save</span></div>
             )
         }
         if(!this.props.public && this.props.env === 'user') {
@@ -74,10 +75,10 @@ class Stack extends React.Component {
                 </div>
                 <div className="modal-btn-container">
                     {saveButton}
-                    <Tooltip message={'Fork'} position={'top'}>{forkButton}</Tooltip>
-                    <Tooltip message={'Share with public'} position={'top'}>{makePublicButton}</Tooltip>
-                    <Tooltip message={'Unshare with public'} position={'top'}>{deleteFromPublicButton}</Tooltip>
-                    <Tooltip message={'Delete'} position={'top'}>{deleteButton}</Tooltip>
+                    {forkButton}
+                    {makePublicButton}
+                    {deleteFromPublicButton}
+                    {deleteButton}
                 </div>
             </div>
         )
