@@ -1,6 +1,7 @@
 
 import React from 'react';
-import Modal from 'react-responsive-modal';
+import Modal from './modal';
+import ModalContainer from './modal-container';
 
 class ConfirmAction extends React.Component {
     state = {
@@ -13,17 +14,17 @@ class ConfirmAction extends React.Component {
         let modal;
         
         if(this.state.open) {
-            modal = <Modal
-                    open={this.state.open}
-                    onClose={() => {}}
-                    center>
-                    <div className="modal-header">Confirm<i className="material-icons white right" onClick={() => this.toggleOpen(false)}>cancel</i></div>
-                    <div className="confirm-dialog">
-                        <p>Are you sure?</p>
-                        <button onClick={() => this.props.confirmTrue()}>Yes</button>
-                        <button onClick={() => this.toggleOpen(false)}>No</button>
-                    </div>
-                  </Modal>
+            modal = <Modal 
+            show={this.state.open} 
+            modalLevel="3"
+          >
+            <ModalContainer
+                header={<div className="modal-header br-red">Confirm<i className="material-icons white right" onClick={() => this.toggleOpen(false)}>cancel</i></div>}
+                type="confirmAction"
+                confirmTrue={this.props.confirmTrue}
+                confirmFalse={() => this.toggleOpen(false)}
+            />
+          </Modal>
         }
         return (
             <div>
