@@ -1,5 +1,4 @@
 import React from 'react';
-import ArrowForward from '../../assets/images/arrow-forward.svg';
 
 class StackNameInput extends React.Component {
     
@@ -48,10 +47,8 @@ class StackNameInput extends React.Component {
                     onKeyPress={this.handleChange}
                 />
                 <div className="nav-item">
-                    <img 
-                        onClick={this.handleNext}
-                        src={ArrowForward} alt="arrow-forward" 
-                    />Next
+                <i className="material-icons icon-lg" onClick={this.handleNext}>arrow_forward</i>
+                    Next
                 </div>
             </div>
         )

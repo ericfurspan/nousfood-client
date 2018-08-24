@@ -1,7 +1,6 @@
 import React from 'react';
 import Nootropic from './nootropic';
 import Stack from './stack';
-import './styles/modal-container.css';
 
 export function ModalContainer(props) {
     if(props.type === 'nootropic') {

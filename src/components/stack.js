@@ -1,8 +1,6 @@
 import React from 'react';
 import { saveStack, deleteStack, createPublicStack, deletePublicStack } from '../actions/user';
 import { connect } from 'react-redux';
-import './styles/tooltip.css';
-import Tooltip from './tooltip';
 import ConfirmAction from './confirm-action';
 
 class Stack extends React.Component {
@@ -29,7 +27,7 @@ class Stack extends React.Component {
 
     render() {
         const { code } = this.props.data;
-        let saveButton, deleteButton, forkButton, makePublicButton, deleteFromPublicButton, closeModalBtn;
+        let saveButton, deleteButton, forkButton, makePublicButton, deleteFromPublicButton;
         if(this.props.saved && this.props.env === 'user') {
             deleteButton = (
                 <ConfirmAction
@@ -61,7 +59,7 @@ class Stack extends React.Component {
         
         
         return (
-            <div className="stack">
+            <div className="stack align-left">
                 <div className="stack-container">
                     <p><span className="stack-header">Author:</span> {this.props.data.author}</p><br/>
                     <p><span className="stack-header">Description:</span> {this.props.data.description}</p><br/>

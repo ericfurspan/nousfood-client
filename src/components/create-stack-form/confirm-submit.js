@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { createStack } from '../../actions/user';
-import ArrowBack from '../../assets/images/arrow-back.svg';
-import Checkmark from '../../assets/images/checkmark.svg';
 
 class ConfirmSubmit extends React.Component {
     confirmAndSubmitStack = () => {
@@ -18,7 +16,7 @@ class ConfirmSubmit extends React.Component {
     render() {
         return (
             <div>
-                <h3>Please confirm your stack.</h3>
+                <h3 className="bold">Please confirm your stack.</h3>
                 <h5>You may edit this at a later time.</h5>
                 <div className="stack-confirm">
                     <p><span>Title:</span> <span className="italic">{this.props.tempStack.name}</span></p>
@@ -31,16 +29,12 @@ class ConfirmSubmit extends React.Component {
                     </ul>
                 </div>
                 <div className="nav-item">
-                    <img 
-                        onClick={this.goBack}
-                        src={ArrowBack} alt="arrow-back" 
-                    />Back
+                    <i className="material-icons icon-lg" onClick={this.goBack}>arrow_back</i>
+                    Back
                 </div>
                 <div className="nav-item">
-                    <img 
-                        onClick={this.confirmAndSubmitStack}
-                        src={Checkmark} alt="checkmark" 
-                    />Create
+                    <i className="material-icons icon-lg" onClick={this.confirmAndSubmitStack}>checkmark</i>
+                    Create
                 </div>
             </div>
         )
