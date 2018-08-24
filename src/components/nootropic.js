@@ -1,5 +1,4 @@
 import React from 'react';
-import Tooltip from './tooltip';
 
 class Nootropic extends React.Component {
     deSelectNoop = (code) => {

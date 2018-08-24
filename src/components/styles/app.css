@@ -145,12 +145,14 @@ input, textarea {
 .display-none {
   display: none;
 }
-
+.icon-lg {
+  font-size: 3em !important;
+  width: 60px;
+}
 /* CUSTOM material UI styles*/
 .material-icons {
   cursor: pointer;
-  font-size: 35px;
-  margin-left: 25px;
+  font-size: 40px;
 }
 .material-icons:hover {
   transform: scale(1.02);

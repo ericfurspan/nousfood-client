@@ -1,7 +1,5 @@
 import React from 'react';
 import NootropicLibrary from '../nootropic-library';
-import ArrowForward from '../../assets/images/arrow-forward.svg';
-import ArrowBack from '../../assets/images/arrow-back.svg';
 
 class StackContentsSelector extends React.Component {
     handleNext = () => {
@@ -40,16 +38,12 @@ class StackContentsSelector extends React.Component {
                     deSelectNoop={(code) => {this.props.removeNoopFromTempStack(code)}}
                 />
                 <div className="nav-item">
-                    <img 
-                        onClick={this.goBack}
-                        src={ArrowBack} alt="arrow-back" 
-                    />Back
+                    <i className="material-icons icon-lg" onClick={this.goBack}>arrow_back</i>
+                    Back
                 </div>
                 <div className="nav-item">
-                    <img 
-                        onClick={this.handleNext}
-                        src={ArrowForward} alt="arrow-forward" 
-                    />Next
+                    <i className="material-icons icon-lg" onClick={this.handleNext}>arrow_forward</i>
+                    Next
                 </div>
             </div>
         )

@@ -71,7 +71,7 @@ export function About(props) {
                 </header><br/>
                 <div>
                     <p>Check out this intro video and then login!</p>
-                    <iframe type="text/html" width="640" height="360"
+                    <iframe type="text/html" width="640" height="360" title="intro"
                         src="https://www.youtube.com/embed/chbpnnZBziU"
                         frameBorder="0">
                     </iframe>
