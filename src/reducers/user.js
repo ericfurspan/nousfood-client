@@ -17,7 +17,10 @@ import {
     CREATE_PUBLIC_STACK_ERROR,
     DELETE_PUBLIC_STACK_REQUEST,
     DELETE_PUBLIC_STACK_SUCCESS,
-    DELETE_PUBLIC_STACK_ERROR
+    DELETE_PUBLIC_STACK_ERROR,
+    UPDATE_STACK_REQUEST,
+    UPDATE_STACK_SUCCESS,
+    UPDATE_STACK_ERROR
 } from '../actions/user';
 
 const initialState = {
@@ -170,6 +173,25 @@ export default (state = initialState, action) => {
         });
     }
     else if(action.type === DELETE_PUBLIC_STACK_ERROR) {
+        return Object.assign({}, state, {
+            feedback: {type: 'error', message: action.error.message},
+            error: action.error.message,
+            loading: false
+        });
+    }
+    else if(action.type === UPDATE_STACK_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true
+        });
+    }
+    else if(action.type === UPDATE_STACK_SUCCESS) {
+        return Object.assign({}, state, {
+            feedback: {type: 'success', message: 'Stack has been updated'},
+            error: null,
+            loading: false
+        });
+    }
+    else if(action.type === UPDATE_STACK_ERROR) {
         return Object.assign({}, state, {
             feedback: {type: 'error', message: action.error.message},
             error: action.error.message,

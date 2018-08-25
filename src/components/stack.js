@@ -2,8 +2,22 @@ import React from 'react';
 import { saveStack, deleteStack, createPublicStack, deletePublicStack } from '../actions/user';
 import { connect } from 'react-redux';
 import ConfirmAction from './confirm-action';
+import EditStack from './edit-stack';
 
 class Stack extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            mode: 'view'
+        }
+    }
+    switchMode = (type) => {
+        this.setState({mode: type})
+    }
+    onSubmitEdit(values) {
+        console.log('submitted stack edit');
+        //return this.props.dispatch(login(values.username, values.password));
+    }
     deleteStack = (code) => {
         this.props.dispatch(deleteStack(this.props.data.code))
         this.props.exit()
@@ -26,14 +40,27 @@ class Stack extends React.Component {
     }
 
     render() {
+
+        if(this.state.mode === 'edit') {
+            return (
+                <EditStack 
+                    stack={this.props.data}
+                    switchMode={() => this.switchMode()}
+                />
+            )
+        }   
+
         const { code } = this.props.data;
-        let saveButton, deleteButton, forkButton, makePublicButton, deleteFromPublicButton;
+        let editButton, saveButton, deleteButton, forkButton, makePublicButton, deleteFromPublicButton;
         if(this.props.saved && this.props.env === 'user') {
             deleteButton = (
                 <ConfirmAction
                   children={<div className="pointer red-hover"><i className="material-icons">delete_forever</i><span>Delete</span></div>}
                   confirmTrue={() => this.deleteStack(code)}
                 />
+            )
+            editButton = (
+                <div onClick={() => this.switchMode('edit')} className="pointer blue-hover"><i className="material-icons">edit</i><span>Edit</span></div>
             )
         }
         if(this.props.data.author === this.props.user.account.username && this.props.public) {
@@ -63,7 +90,6 @@ class Stack extends React.Component {
                 <div className="stack-container">
                     <p><span className="stack-header">Author:</span> {this.props.data.author}</p><br/>
                     <p><span className="stack-header">Description:</span> {this.props.data.description}</p><br/>
-                    <p><span className="stack-header">Recommendation:</span> {this.props.data.directive}</p><br/>
                     <p><span className="stack-header">Contents:</span> </p><br/>
                     <ul>
                         {this.props.data.contents.map( (element, index) => 
@@ -72,6 +98,7 @@ class Stack extends React.Component {
                     </ul> 
                 </div>
                 <div className="modal-btn-container">
+                    {editButton}
                     {saveButton}
                     {forkButton}
                     {makePublicButton}

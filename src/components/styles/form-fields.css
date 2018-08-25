@@ -1,15 +1,18 @@
-.registration-form, .login-form {
+.form {
     display: table;
     margin: auto;
     position: relative;
     width: 100%;
 }
-.registration-form input, .login-form input {
+.form input {
     display: table-cell;
 }
 form button:hover {
     transform: scale(1.02);
     cursor: pointer;
+}
+.stack form input, textarea {
+    display: table;
 }
 .nav-item {
     width: 100px;
