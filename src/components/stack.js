@@ -61,14 +61,18 @@ class Stack extends React.Component {
                   confirmTrue={() => this.deleteStack(code)}
                 />
             )
+        }
+        // If the user is the author
+        if(this.props.data.author === this.props.user.account.username) {
             editButton = (
                 <div onClick={() => this.switchMode('edit')} className="pointer blue-hover"><i className="material-icons">edit</i><span>Edit</span></div>
             )
-        }
-        if(this.props.data.author === this.props.user.account.username && this.props.public) {
-            deleteFromPublicButton = (
-                <div onClick={() => this.deletePublicStack(code)} className="pointer red-hover"><i className="material-icons">cloud_off</i><span>Unshare with public</span></div>
-            )
+            // If the stack is public
+            if(this.props.public) {
+                deleteFromPublicButton = (
+                    <div onClick={() => this.deletePublicStack(code)} className="pointer red-hover"><i className="material-icons">cloud_off</i><span>Unshare with public</span></div>
+                )
+            }
         }
         if(!this.props.saved && this.props.env === 'global') {
             saveButton = (
