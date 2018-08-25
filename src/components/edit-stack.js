@@ -1,11 +1,8 @@
 import React from 'react';
-import { saveStack } from '../actions/user';
 import { connect } from 'react-redux';
 import ConfirmAction from './confirm-action';
-import { Field, reduxForm, focus } from 'redux-form';
-import { required, nonEmpty, isTrimmed } from '../validators';
-import {updateStack} from '../actions/user'
-import Input from './input';
+import { reduxForm } from 'redux-form';
+import { updateStack, createStack } from '../actions/user'
 import NootropicLibrary from './nootropic-library';
 
 class EditStack extends React.Component {
@@ -29,6 +26,10 @@ class EditStack extends React.Component {
         return this.props
             .dispatch(updateStack(this.state.tempStack, this.props.stack.code))
     }
+    completeFork = () => {
+        return this.props
+            .dispatch(createStack(this.state.tempStack))
+    }
     handleChange = (e) => {
         const updatedStack = Object.assign({}, this.state.tempStack, {[e.target.name]: e.target.value})
         this.setState({
@@ -38,25 +39,43 @@ class EditStack extends React.Component {
     addNoopToTempStack = (code) => {
         // add nootropic to 'contents' array
         // lookup nootropic data using code
-        let noopData = this.props.nootropics.find(noop => noop.code === code)
+        const noopData = this.props.nootropics.find(noop => noop.code === code)
 
         const updatedNoops = [...this.state.tempStack.contents, noopData]
 
+        const updatedStack = Object.assign({}, this.state.tempStack, {contents: updatedNoops})
+
         this.setState({
-            tempStack: {contents: updatedNoops}
+            tempStack: updatedStack
         })
     }
     removeNoopFromTempStack = (code) => {
         const updatedNoops = this.state.tempStack.contents.filter(e => e.code !== code);
+        
+        const updatedStack = Object.assign({}, this.state.tempStack, {contents: updatedNoops})
 
         this.setState({
-            tempStack: {contents: updatedNoops}
+            tempStack: updatedStack
         })
     }
     render() {
-        console.log(this.props)
-        const saveButton = <div onClick={() => this.updateStack()} className="pointer blue-hover"><i className="material-icons">save</i><span>Save</span></div>
-        const cancelButton = <div onClick={() => this.switchMode('view')} className="pointer red-hover"><i className="material-icons">cancel</i><span>Cancel</span></div>
+
+        let saveButton, completeForkButton, cancelButton;
+
+        if(this.props.mode === 'fork') {
+            completeForkButton = ( <ConfirmAction
+                children={<div className="pointer blue-hover"><i className="material-icons">call_split</i><span>Complete Fork</span></div>}
+                confirmTrue={() => this.completeFork()}
+            /> )
+        } 
+        else if(this.props.mode === 'edit') {
+            saveButton = ( <ConfirmAction
+                children={<div className="pointer blue-hover"><i className="material-icons">save</i><span>Save</span></div>}
+                confirmTrue={() => this.updateStack()}
+            /> )
+        }
+
+        cancelButton = <div onClick={() => this.switchMode('view')} className="pointer red-hover"><i className="material-icons">cancel</i><span>Cancel</span></div>
         
         const selectedNoopCodes = this.state.tempStack.contents.map(x => x.code)
 
@@ -72,7 +91,7 @@ class EditStack extends React.Component {
         return (
             
             <div className="stack align-left">
-                <h2 className="align-center">Edit mode</h2>
+                <h2 className="align-center">{this.props.mode} mode</h2>
                 <div className="stack-container">
                     <form 
                         className="form"
@@ -105,18 +124,10 @@ class EditStack extends React.Component {
                         />
                         {error}
                     </form>  
-                    {/*
-                        <p><span className="stack-header">Contents:</span> </p><br/>
-                        <ul>
-                        {this.props.data.contents.map( (element, index) => 
-                            <li key={index}>{element.name}</li>
-                        )}
-                        </ul> 
-                    */}
-
                 </div>
                 <div className="modal-btn-container">
                     {saveButton}
+                    {completeForkButton}
                     {cancelButton}
                 </div>
             </div>
