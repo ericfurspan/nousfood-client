@@ -14,20 +14,12 @@ class Stack extends React.Component {
     switchMode = (type) => {
         this.setState({mode: type})
     }
-    onSubmitEdit(values) {
-        console.log('submitted stack edit');
-        //return this.props.dispatch(login(values.username, values.password));
-    }
     deleteStack = (code) => {
         this.props.dispatch(deleteStack(this.props.data.code))
         this.props.exit()
     }
     saveStack = (code) => {
         this.props.dispatch(saveStack(this.props.data))
-        this.props.exit()
-    }
-    forkStack = (code) => {
-        console.log(`forking ${code}`);
         this.props.exit()
     }
     publicizeStack = (code) => {
@@ -43,12 +35,22 @@ class Stack extends React.Component {
 
         if(this.state.mode === 'edit') {
             return (
-                <EditStack 
+                <EditStack
+                    mode="edit"
                     stack={this.props.data}
                     switchMode={() => this.switchMode()}
                 />
             )
-        }   
+        }
+        if(this.state.mode === 'fork') {
+            return (
+                <EditStack 
+                    mode="fork"
+                    stack={this.props.data}
+                    switchMode={() => this.switchMode()}
+                />
+            )
+        }
 
         const { code } = this.props.data;
         let editButton, saveButton, deleteButton, forkButton, makePublicButton, deleteFromPublicButton;
@@ -78,11 +80,9 @@ class Stack extends React.Component {
                 <div onClick={() => this.publicizeStack(code)} className="pointer green-hover"><i className="material-icons">cloud_queue</i><span>Share with public</span></div>
             )
         }
-
-        /*
         forkButton = (
-            <button onClick={() => this.forkStack(code)} id="fork-stack-btn">Fork</button>
-        )*/
+            <div onClick={() => this.switchMode('fork')} className="pointer blue-hover"><i className="material-icons">call_split</i><span>Fork</span></div>
+        )
         
         
         return (
