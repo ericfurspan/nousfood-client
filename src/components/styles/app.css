@@ -37,6 +37,8 @@ button {
   min-width: 35px;
 }
 input, textarea {
+  height: auto;
+  width: -webkit-fill-available;
   padding: .5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
