@@ -62,7 +62,22 @@ export const saveStackError = error => ({
     type: SAVE_STACK_ERROR,
     error
 })
+export const UPDATE_STACK_REQUEST = 'UPDATE_STACK_REQUEST';
+export const updateStackRequest = () => ({
+    type: UPDATE_STACK_REQUEST
+});
 
+export const UPDATE_STACK_SUCCESS = 'UPDATE_STACK_SUCCESS';
+export const updateStackSuccess = data => ({
+    type: UPDATE_STACK_SUCCESS,
+    data
+});
+
+export const UPDATE_STACK_ERROR = 'UPDATE_STACK_ERROR';
+export const updateStackError = error => ({
+    type: UPDATE_STACK_ERROR,
+    error
+})
 export const DELETE_STACK_SUCCESS = 'DELETE_STACK_SUCCESS';
 export const deleteStackSuccess = () => ({
     type: DELETE_STACK_SUCCESS
@@ -204,6 +219,26 @@ export const deleteStack = (code) => (dispatch, getState) => {
         .then(() => dispatch(deleteStackSuccess()))
         .then(() => dispatch(fetchUserData()))
         .catch(err => dispatch(deleteStackError(err)))
+}
+
+export const updateStack = (stack, code) => (dispatch, getState) => {
+    const token = getState().auth.token;
+    const username = getState().auth.currentUser.username;
+
+    dispatch(updateStackRequest());
+    return fetch(`${API_BASE_URL}/${username}/stacks/${code}`, {
+        method: 'PUT',
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(stack)
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then((data) => dispatch(updateStackSuccess()))
+        .then(() => dispatch(fetchUserData()))
+        .catch(err => dispatch(updateStackError(err))) 
 }
 
 export const fetchUserData = () => (dispatch, getState) => {

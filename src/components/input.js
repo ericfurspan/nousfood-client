@@ -8,6 +8,8 @@ export default class Input extends React.Component {
     }
 
     render() {
+    console.log(this.props)
+
         let error, warning;
         if(!this.props.meta.submitFailed) {
             if (this.props.meta.touched && this.props.meta.error) {
@@ -29,6 +31,7 @@ export default class Input extends React.Component {
                     {...this.props.input}
                     type={this.props.type}
                     placeholder={this.props.placeholder}
+                    value={this.props.defaultValue}
                     ref={input => (this.input = input)}
                 />
             </div>
