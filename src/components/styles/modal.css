@@ -49,6 +49,7 @@
     border-top: 1px solid #e6e9ec;
     padding-top: 15px;
     text-align: -webkit-auto;
+    float: right;
 }
 .modal-btn-container button {
     width: 250px;

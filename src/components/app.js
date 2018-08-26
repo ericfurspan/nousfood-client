@@ -10,6 +10,7 @@ import NotFound from './notfound';
 import Feedback from './feedback';
 import { fetchNootropics, fetchTrendingStacks } from '../actions/global';
 import {refreshAuthToken} from '../actions/auth';
+import StackView from './stack-view';
 import './styles/form-fields.css';
 import './styles/app.css';
 import './styles/feedback.css';
@@ -59,6 +60,9 @@ render() {
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/login" component={LoginPage} />
           <Route path="/dashboard" component={Dashboard} />
+
+          <Route exact path="/:username/stacks/:code" component={StackView} />
+
           <Route exact path="/about" component={About} />
           <Route path="*" component={NotFound} />
         </Switch>

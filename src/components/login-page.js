@@ -7,7 +7,6 @@ class LoginPage extends React.Component {
 
     render() {
         if(this.props.loggedIn) {
-            console.log('logged in...redirecting to dashboard')
             return <Redirect to="/dashboard" />;
         }
         return (

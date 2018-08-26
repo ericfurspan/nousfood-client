@@ -3,6 +3,9 @@ import {
     FETCH_USER_DATA_SUCCESS,
     FETCH_USER_DATA_ERROR,
     SAVE_VALUES,
+    FETCH_STACK_REQUEST,
+    FETCH_STACK_SUCCESS,
+    FETCH_STACK_ERROR,
     CREATE_STACK_REQUEST,
     CREATE_STACK_SUCCESS,
     CREATE_STACK_ERROR,
@@ -40,6 +43,9 @@ const initialState = {
         contents: null,
         code: null
     },
+    shared: {
+        stack: null
+    },
     error: null,
     feedback: null,
     loading: true
@@ -75,6 +81,25 @@ export default (state = initialState, action) => {
     }else if(action.type === SAVE_VALUES) {
         return Object.assign({}, state, {
             tempStack: action.data
+        });
+    }
+    else if(action.type === FETCH_STACK_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true
+        });
+    }
+    else if(action.type === FETCH_STACK_SUCCESS) {
+        return Object.assign({}, state, {
+            shared: {stack: action.data},
+            error: null,
+            loading: false
+        });
+    }
+    else if(action.type === FETCH_STACK_ERROR) {
+        return Object.assign({}, state, {
+            feedback: {type: 'error', message: action.error.message},
+            error: action.error.message,
+            loading: false
         });
     }
     else if(action.type === CREATE_STACK_REQUEST) {

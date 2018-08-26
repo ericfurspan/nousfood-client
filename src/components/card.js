@@ -59,7 +59,7 @@ class Card extends React.Component {
                         onDeSelectNoop={this.props.onDeSelectNoop}
                         closeModal={this.onCloseModal}
                     />
-                    </Modal>
+                </Modal>
             </div>
         );  
       }
