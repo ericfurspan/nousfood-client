@@ -126,6 +126,9 @@ input, textarea {
 .text-sm {
   font-size: .8em;
 }
+.text-lg {
+  font-size: 1.3em;
+}
 .full-width {
   width: 100%;
 }

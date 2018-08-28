@@ -32,13 +32,11 @@ export function About(props) {
             <section>
                 <header>
                     <h2>A brief history</h2>
-                </header><br/>
-                <h3>noh-ə-TROP-iks:</h3>
-                <p><i>nootropic</i>: from the Greek words 'nous' - meaning mind, and 'trepein' meaning to bend or turn.</p><br/>
-
+                </header><br/>                
+                <p><span className="text-lg italic">nootropic</span>: n, adj: dietary supplement that helps support certain brain functions, such as memory, mental speed, and focus</p><br/>
                 <p>The word nootropic was coined in 1972 by a Romanian psychologist and chemist,
                 Corneliu E. Giurgea, who synthesized Piracetam in 1964.</p><br/>
-
+                <p>from the Greek words 'nous' - meaning mind, and 'trepein' meaning to bend or turn</p><br/>
                 <p>According to Dr. Giurgea, a substance categorized as a nootropic meets the following criteria:</p>
                 <ul className="italic bold">
                     <li>A nootropic may enhance learning and memory.</li>
