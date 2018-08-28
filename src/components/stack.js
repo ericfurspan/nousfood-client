@@ -1,8 +1,13 @@
 import React from 'react';
-import { saveStack, deleteStack, createPublicStack, deletePublicStack } from '../actions/user';
+import { saveStack, deleteStack, createPublicStack, deletePublicStack, copyShareUrl } from '../actions/user';
 import { connect } from 'react-redux';
 import ConfirmAction from './confirm-action';
 import EditStack from './edit-stack';
+import LoginForm from './login-form';
+import {Link} from 'react-router-dom';
+import Clipboard from 'clipboard';
+import Tooltip from './tooltip';
+new Clipboard('div');
 
 class Stack extends React.Component {
     constructor(props) {
@@ -14,81 +19,108 @@ class Stack extends React.Component {
     switchMode = (type) => {
         this.setState({mode: type})
     }
+    // make 1 toggleSave instead of 2 funcs
     deleteStack = (code) => {
         this.props.dispatch(deleteStack(this.props.data.code))
         this.props.exit()
     }
     saveStack = (code) => {
         this.props.dispatch(saveStack(this.props.data))
-        this.props.exit()
+        //this.props.exit()
     }
-    publicizeStack = (code) => {
-        this.props.dispatch(createPublicStack(this.props.data))
-        this.props.exit()
-    }
-    deletePublicStack = (code) => {
-        this.props.dispatch(deletePublicStack(code, this.props.data.author))
-        this.props.exit()
+    togglePublic = (code) => {
+        if(this.props.public) {
+            this.props.dispatch(deletePublicStack(code, this.props.data.author))
+        } else {
+            this.props.dispatch(createPublicStack(this.props.data))
+        }
     }
 
     render() {
-
-        if(this.state.mode === 'edit') {
-            return (
-                <EditStack
-                    mode="edit"
-                    stack={this.props.data}
-                    switchMode={() => this.switchMode()}
-                />
-            )
-        }
-        if(this.state.mode === 'fork') {
-            return (
-                <EditStack 
-                    mode="fork"
-                    stack={this.props.data}
-                    switchMode={() => this.switchMode()}
-                />
-            )
-        }
-
+        console.log(this.props)
         const { code } = this.props.data;
-        let editButton, saveButton, deleteButton, forkButton, makePublicButton, deleteFromPublicButton;
-        if(this.props.saved && this.props.env === 'user') {
-            deleteButton = (
-                <ConfirmAction
-                  children={<div className="pointer red-hover"><i className="material-icons">delete_forever</i><span>Delete</span></div>}
-                  confirmTrue={() => this.deleteStack(code)}
-                />
-            )
-        }
-        // If the user is the author
-        if(this.props.data.author === this.props.user.account.username) {
-            editButton = (
-                <div onClick={() => this.switchMode('edit')} className="pointer blue-hover"><i className="material-icons">edit</i><span>Edit</span></div>
-            )
-            // If the stack is public
-            if(this.props.public) {
-                deleteFromPublicButton = (
-                    <div onClick={() => this.deletePublicStack(code)} className="pointer red-hover"><i className="material-icons">cloud_off</i><span>Unshare with public</span></div>
+        let editButton, saveButton, deleteButton, forkButton, togglePublicButton, copyUrlButton, loginLink;
+        let shareUrl = `${window.location.origin}/${this.props.auth.currentUser.username}/stacks/${code}`
+
+        // User is logged in
+        if(this.props.loggedIn) {
+        
+            if(this.state.mode === 'edit') {
+                return (
+                    <EditStack
+                        mode="edit"
+                        stack={this.props.data}
+                        switchMode={() => this.switchMode()}
+                    />
                 )
             }
-        }
-        if(!this.props.saved && this.props.env === 'global') {
-            saveButton = (
-                <div onClick={() => this.saveStack(code)} className="pointer blue-hover"><i className="material-icons">save</i><span>Save</span></div>
+            if(this.state.mode === 'fork') {
+                return (
+                    <EditStack 
+                        mode="fork"
+                        stack={this.props.data}
+                        switchMode={() => this.switchMode()}
+                    />
+                )
+            }
+            // if this.state.mode === 'view' 
+            // ....
+
+            if(this.props.saved && this.props.env === 'user') {
+                deleteButton = (
+                    <ConfirmAction
+                    children={<div className="pointer red-hover"><i className="material-icons">delete_forever</i><span></span></div>}
+                    confirmTrue={() => this.deleteStack(code)}
+                    />
+                )
+            }
+            // If the user is the author
+            if(this.props.data.author === this.props.user.account.username) {
+                editButton = (
+                    <div onClick={() => this.switchMode('edit')} className="pointer blue-hover"><i className="material-icons">edit</i><span></span></div>
+                )
+                // If the stack is public, 
+                if(this.props.public) {
+                    togglePublicButton = (
+                        <Tooltip
+                            position={'top'}
+                            message={'Unshare with public'}
+                        >
+                            <div onClick={() => this.togglePublic(code)} className="pointer red-hover green"><i className="material-icons">public</i><span></span></div>
+                        </Tooltip>
+                    )
+                } else {
+                    togglePublicButton = (
+                        <Tooltip
+                            position={'top'}
+                            message={'Share with public'}
+                        >
+                            <div onClick={() => this.togglePublic(code)} className="pointer green-hover red"><i className="material-icons">public</i><span></span></div>
+                        </Tooltip>
+                    )
+                }
+            }
+            if(!this.props.saved && this.props.env === 'global') {
+                saveButton = (
+                    <div onClick={() => this.saveStack(code)} className="pointer blue-hover"><i className="material-icons">save</i><span></span></div>
+                )
+                forkButton = (
+                    <div onClick={() => this.switchMode('fork')} className="pointer blue-hover"><i className="material-icons">call_split</i><span></span></div>
+                )
+            }
+
+            copyUrlButton = (
+                <div data-clipboard-text={shareUrl} onClick={() => {this.props.dispatch(copyShareUrl())}} className="pointer blue-hover"><i className="material-icons">link</i><span></span></div>
+            )
+        
+        } else { // User is not logged in
+            loginLink = (
+                <div className="align-center">
+                    <Link to={"/"}>Login</Link>
+                </div>
             )
         }
-        if(!this.props.public && this.props.env === 'user') {
-            makePublicButton = (
-                <div onClick={() => this.publicizeStack(code)} className="pointer green-hover"><i className="material-icons">cloud_queue</i><span>Share with public</span></div>
-            )
-        }
-        forkButton = (
-            <div onClick={() => this.switchMode('fork')} className="pointer blue-hover"><i className="material-icons">call_split</i><span>Fork</span></div>
-        )
-        
-        
+
         return (
             <div className="stack align-left">
                 <div className="stack-container">
@@ -101,12 +133,13 @@ class Stack extends React.Component {
                         )}
                     </ul> 
                 </div>
+                {loginLink}
                 <div className="modal-btn-container">
                     {editButton}
                     {saveButton}
                     {forkButton}
-                    {makePublicButton}
-                    {deleteFromPublicButton}
+                    {copyUrlButton}
+                    {togglePublicButton}
                     {deleteButton}
                 </div>
             </div>
@@ -115,7 +148,9 @@ class Stack extends React.Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    user: state.user
+    user: state.user,
+    loggedIn: state.auth.currentUser !== null,
+    auth: state.auth
 })
 
 export default connect(mapStateToProps)(Stack);

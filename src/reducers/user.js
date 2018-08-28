@@ -3,6 +3,9 @@ import {
     FETCH_USER_DATA_SUCCESS,
     FETCH_USER_DATA_ERROR,
     SAVE_VALUES,
+    FETCH_STACK_REQUEST,
+    FETCH_STACK_SUCCESS,
+    FETCH_STACK_ERROR,
     CREATE_STACK_REQUEST,
     CREATE_STACK_SUCCESS,
     CREATE_STACK_ERROR,
@@ -20,7 +23,8 @@ import {
     DELETE_PUBLIC_STACK_ERROR,
     UPDATE_STACK_REQUEST,
     UPDATE_STACK_SUCCESS,
-    UPDATE_STACK_ERROR
+    UPDATE_STACK_ERROR,
+    COPY_SHARE_URL
 } from '../actions/user';
 
 const initialState = {
@@ -39,6 +43,9 @@ const initialState = {
         directive: null,
         contents: null,
         code: null
+    },
+    shared: {
+        stack: null
     },
     error: null,
     feedback: null,
@@ -75,6 +82,25 @@ export default (state = initialState, action) => {
     }else if(action.type === SAVE_VALUES) {
         return Object.assign({}, state, {
             tempStack: action.data
+        });
+    }
+    else if(action.type === FETCH_STACK_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true
+        });
+    }
+    else if(action.type === FETCH_STACK_SUCCESS) {
+        return Object.assign({}, state, {
+            shared: {stack: action.data},
+            error: null,
+            loading: false
+        });
+    }
+    else if(action.type === FETCH_STACK_ERROR) {
+        return Object.assign({}, state, {
+            feedback: {type: 'error', message: action.error.message},
+            error: action.error.message,
+            loading: false
         });
     }
     else if(action.type === CREATE_STACK_REQUEST) {
@@ -196,6 +222,11 @@ export default (state = initialState, action) => {
             feedback: {type: 'error', message: action.error.message},
             error: action.error.message,
             loading: false
+        });
+    }
+    else if(action.type === COPY_SHARE_URL) {
+        return Object.assign({}, state, {
+            feedback: {type: 'notification', message: 'Copied to clipboard'},
         });
     }
     return state;

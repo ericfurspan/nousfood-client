@@ -41,7 +41,7 @@ class Card extends React.Component {
                 <Modal 
                       show={this.state.open} 
                       onClose={this.onCloseModal}
-                      modalLevel="2"
+                      modalLevel="1"
                     >
                     <ModalContainer
                         header={<div className="modal-header">{name}<i className="material-icons white right" onClick={() => this.onCloseModal()}>cancel</i></div>}
@@ -59,7 +59,7 @@ class Card extends React.Component {
                         onDeSelectNoop={this.props.onDeSelectNoop}
                         closeModal={this.onCloseModal}
                     />
-                    </Modal>
+                </Modal>
             </div>
         );  
       }

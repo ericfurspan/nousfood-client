@@ -12,6 +12,22 @@ export const dismissFeedback = () => ({
     type: DISMISS_FEEDBACK,
 })
 
+export const FETCH_STACK_REQUEST = 'FETCH_STACK_REQUEST';
+export const fetchStackRequest = () => ({
+    type: FETCH_STACK_REQUEST
+});
+
+export const FETCH_STACK_SUCCESS = 'FETCH_STACK_SUCCESS';
+export const fetchStackSuccess = data => ({
+    type: FETCH_STACK_SUCCESS,
+    data
+});
+
+export const FETCH_STACK_ERROR = 'FETCH_STACK_ERROR';
+export const fetchStackError = error => ({
+    type: FETCH_STACK_ERROR,
+    error
+});
 export const FETCH_USER_DATA_SUCCESS = 'FETCH_USER_DATA_SUCCESS';
 export const fetchUserDataSuccess = data => ({
     type: FETCH_USER_DATA_SUCCESS,
@@ -121,6 +137,22 @@ export const deletePublicStackError = error => ({
     error
 })
 
+export const COPY_SHARE_URL = 'COPY_SHARE_URL';
+export const copyShareUrl = () => ({
+    type: COPY_SHARE_URL
+})
+
+// GET stack from /api/:username/stacks/:code
+export const fetchStack = (code, username) => (dispatch, getState) => {
+    dispatch(fetchStackRequest());
+    return fetch(`${API_BASE_URL}/${username}/stacks/${code}`, {
+        method: 'GET'
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then((data) => dispatch(fetchStackSuccess(data)))
+        .catch(err => dispatch(fetchStackError(err)))
+}
 
 // GET stack from /api/stacks/${code}
 // then POST stack data to /api/{username}/stacks
