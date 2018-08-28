@@ -17,7 +17,7 @@ import './styles/feedback.css';
 import Spinner from '../assets/images/spinner.gif';
 
 export class App extends Component {
-componentDidMount() {
+componentDidMount(props) {
     this.props.dispatch(fetchNootropics());
     this.props.dispatch(fetchTrendingStacks());
 }
@@ -50,23 +50,35 @@ stopPeriodicRefresh() {
 }
 
 render() {
-    if(this.props.authenticating) {
+  const props = this.props;
+
+  const StackViewWithProps = (props) => {
+    return (
+      <StackView 
+        stackLibrary={props.stackLibrary}
+        {...props}
+      />
+    );
+  }
+    if(props.authenticating) {
       return <img src={Spinner} id="spinner" alt="spinner"/>
-    }
+    } 
+
+
     return (
       <div className="App">
-        <NavBar loggedIn={this.props.loggedIn}/>
+        <NavBar loggedIn={props.loggedIn}/>
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/login" component={LoginPage} />
           <Route path="/dashboard" component={Dashboard} />
 
-          <Route exact path="/:username/stacks/:code" component={StackView} />
+          <Route exact path="/:username/stacks/:code" render={StackViewWithProps} />
 
           <Route exact path="/about" component={About} />
           <Route path="*" component={NotFound} />
         </Switch>
-        <Feedback feedback={this.props.feedback}/>
+        <Feedback feedback={props.feedback}/>
       </div>
     );
   }
@@ -75,7 +87,7 @@ render() {
 const mapStateToProps = state => ({
   authenticating: state.auth.loading,
   feedback: state.user.feedback,
-  stackLibrary: state.global.stackLibrary,
+  stackLibrary: state.global.stacks,
   nootropics: state.global.nootropics,
   hasAuthToken: state.auth.token !== null,
   loggedIn: state.auth.currentUser !== null

@@ -15,8 +15,8 @@
     position: absolute;
 }
 .tooltip-top {
-    bottom: 190%;
-    left: 65%;
+    bottom: 130%;
+    left: 60%;
     padding-bottom: 9px;
     transform: translateX(-50%);
 }

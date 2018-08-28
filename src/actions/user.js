@@ -137,6 +137,11 @@ export const deletePublicStackError = error => ({
     error
 })
 
+export const COPY_SHARE_URL = 'COPY_SHARE_URL';
+export const copyShareUrl = () => ({
+    type: COPY_SHARE_URL
+})
+
 // GET stack from /api/:username/stacks/:code
 export const fetchStack = (code, username) => (dispatch, getState) => {
     dispatch(fetchStackRequest());

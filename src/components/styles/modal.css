@@ -50,6 +50,7 @@
     padding-top: 15px;
     text-align: -webkit-auto;
     float: right;
+    display: flex;
 }
 .modal-btn-container button {
     width: 250px;

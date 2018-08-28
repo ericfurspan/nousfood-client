@@ -9,9 +9,9 @@ export function About(props) {
         <div className="about">
 
             <div className="text-sm">
-                <p>Note: this app is currently in beta. The following is supported: 
-                Registration, Sign in, Logout, Create stack, Save stack, Delete stack, Share stack with public,
-                Unshare stack with public</p>
+                <p>Note: this app is currently under development. The following is supported: 
+                Registration, Sign in, Logout, Create stack, Save stack, Delete stack, Edit stack, 
+                Fork stack, Share stack with public, Unshare stack with public</p>
             </div><br/>
 
             <section>

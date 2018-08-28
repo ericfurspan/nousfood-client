@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/tooltip.css';
 
 class Tooltip extends React.Component {
     constructor(props) {

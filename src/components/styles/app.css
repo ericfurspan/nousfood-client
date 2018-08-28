@@ -61,7 +61,7 @@ input, textarea {
 .br-red, .error {
   background-color: #e21809;
 }
-.br-blue {
+.br-blue, .notification {
   background-color: #46b0f0;
 }
 .br-gray {

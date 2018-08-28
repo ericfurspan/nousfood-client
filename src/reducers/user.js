@@ -23,7 +23,8 @@ import {
     DELETE_PUBLIC_STACK_ERROR,
     UPDATE_STACK_REQUEST,
     UPDATE_STACK_SUCCESS,
-    UPDATE_STACK_ERROR
+    UPDATE_STACK_ERROR,
+    COPY_SHARE_URL
 } from '../actions/user';
 
 const initialState = {
@@ -221,6 +222,11 @@ export default (state = initialState, action) => {
             feedback: {type: 'error', message: action.error.message},
             error: action.error.message,
             loading: false
+        });
+    }
+    else if(action.type === COPY_SHARE_URL) {
+        return Object.assign({}, state, {
+            feedback: {type: 'notification', message: 'Copied to clipboard'},
         });
     }
     return state;
