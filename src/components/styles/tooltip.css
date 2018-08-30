@@ -1,9 +1,6 @@
 .tooltip {
     position: relative;
 }
-.tooltip-trigger {
-    display: inline-block;
-}
 .tooltip-bubble {
     min-width: 120px;
     max-width: 210px;
@@ -15,8 +12,8 @@
     position: absolute;
 }
 .tooltip-top {
-    bottom: 130%;
-    left: 60%;
+    bottom: 100%;
+    left: 50%;
     padding-bottom: 9px;
     transform: translateX(-50%);
 }

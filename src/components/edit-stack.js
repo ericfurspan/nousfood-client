@@ -64,18 +64,18 @@ class EditStack extends React.Component {
 
         if(this.props.mode === 'fork') {
             completeForkButton = ( <ConfirmAction
-                children={<div className="pointer blue-hover"><i className="material-icons">call_split</i><span>Complete Fork</span></div>}
+                children={<div className="pointer blue-hover"><i className="material-icons">call_split</i></div>}
                 confirmTrue={() => this.completeFork()}
             /> )
         } 
         else if(this.props.mode === 'edit') {
             saveButton = ( <ConfirmAction
-                children={<div className="pointer blue-hover"><i className="material-icons">save</i><span>Save</span></div>}
+                children={<div className="pointer blue-hover"><i className="material-icons">save</i></div>}
                 confirmTrue={() => this.updateStack()}
             /> )
         }
 
-        cancelButton = <div onClick={() => this.switchMode('view')} className="pointer red-hover"><i className="material-icons">cancel</i><span>Cancel</span></div>
+        cancelButton = <div onClick={() => this.switchMode('view')} className="pointer red-hover"><i className="material-icons">cancel</i></div>
         
         const selectedNoopCodes = this.state.tempStack.contents.map(x => x.code)
 

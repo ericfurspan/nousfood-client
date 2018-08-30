@@ -1,4 +1,5 @@
 import React from 'react';
+import TextField from '@material-ui/core/TextField';
 
 class StackNameInput extends React.Component {
     
@@ -36,7 +37,7 @@ class StackNameInput extends React.Component {
             <div>
                 <h4>Please enter a name for your stack</h4><br/>
                 {error}
-                <input 
+                <TextField 
                     tabIndex="1"
                     type="text"
                     name="stackName"

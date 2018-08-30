@@ -37,10 +37,9 @@ class Stack extends React.Component {
     }
 
     render() {
-        console.log(this.props)
         const { code } = this.props.data;
-        let editButton, saveButton, deleteButton, forkButton, togglePublicButton, copyUrlButton, loginLink;
-        let shareUrl = `${window.location.origin}/${this.props.auth.currentUser.username}/stacks/${code}`
+        let editButton, saveButton, deleteButton, forkButton, togglePublicButton, copyUrlButton, dashboardLink;
+        let shareUrl = `${window.location.origin}/${this.props.data.author}/stacks/${code}`
 
         // User is logged in
         if(this.props.loggedIn) {
@@ -68,17 +67,29 @@ class Stack extends React.Component {
 
             if(this.props.saved && this.props.env === 'user') {
                 deleteButton = (
-                    <ConfirmAction
-                    children={<div className="pointer red-hover"><i className="material-icons">delete_forever</i><span></span></div>}
-                    confirmTrue={() => this.deleteStack(code)}
-                    />
+                    <Tooltip
+                        position={'top'}
+                        message={'Delete'}
+                    >
+                        <ConfirmAction
+                            children={<div className="pointer red-hover"><i className="material-icons">delete_forever</i><span></span></div>}
+                            confirmTrue={() => this.deleteStack(code)}
+                        />                   
+                    </Tooltip>
                 )
+                if(this.props.data.author === this.props.user.account.username) {
+                    editButton = (
+                        <Tooltip
+                            position={'top'}
+                            message={'Edit'}
+                        >
+                            <div onClick={() => this.switchMode('edit')} className="pointer blue-hover"><i className="material-icons">edit</i><span></span></div>                   
+                        </Tooltip>
+                    )
+                }
             }
             // If the user is the author
             if(this.props.data.author === this.props.user.account.username) {
-                editButton = (
-                    <div onClick={() => this.switchMode('edit')} className="pointer blue-hover"><i className="material-icons">edit</i><span></span></div>
-                )
                 // If the stack is public, 
                 if(this.props.public) {
                     togglePublicButton = (
@@ -100,26 +111,47 @@ class Stack extends React.Component {
                     )
                 }
             }
-            if(!this.props.saved && this.props.env === 'global') {
+            if(!this.props.saved) {
                 saveButton = (
-                    <div onClick={() => this.saveStack(code)} className="pointer blue-hover"><i className="material-icons">save</i><span></span></div>
+                    <Tooltip
+                        position={'top'}
+                        message={'Save'}
+                    >
+                        <div onClick={() => this.saveStack(code)} className="pointer blue-hover"><i className="material-icons">save</i><span></span></div>
+                    </Tooltip>
                 )
+
                 forkButton = (
-                    <div onClick={() => this.switchMode('fork')} className="pointer blue-hover"><i className="material-icons">call_split</i><span></span></div>
+                    <Tooltip
+                        position={'top'}
+                        message={'Fork'}
+                    >
+                        <div onClick={() => this.switchMode('fork')} className="pointer blue-hover"><i className="material-icons">call_split</i><span></span></div>
+                    </Tooltip>                    
                 )
             }
 
             copyUrlButton = (
-                <div data-clipboard-text={shareUrl} onClick={() => {this.props.dispatch(copyShareUrl())}} className="pointer blue-hover"><i className="material-icons">link</i><span></span></div>
+                <Tooltip
+                    position={'top'}
+                    message={'Copy Link'}
+                >
+                    <div data-clipboard-text={shareUrl} onClick={() => {this.props.dispatch(copyShareUrl())}} className="pointer blue-hover"><i className="material-icons">link</i><span></span></div>
+                </Tooltip>  
             )
         
-        } else { // User is not logged in
-            loginLink = (
-                <div className="align-center">
-                    <Link to={"/"}>Login</Link>
-                </div>
-            )
         }
+
+        dashboardLink = (
+            <div className="align-center">
+                <Tooltip
+                    position={'top'}
+                    message={'Return to Dashboard'}
+                >
+                    <Link to={"/"}><div className="pointer blue-hover"><i className="material-icons">dashboard</i></div></Link>
+                </Tooltip>
+            </div>
+        )
 
         return (
             <div className="stack align-left">
@@ -133,8 +165,9 @@ class Stack extends React.Component {
                         )}
                     </ul> 
                 </div>
-                {loginLink}
+                
                 <div className="modal-btn-container">
+                {dashboardLink}
                     {editButton}
                     {saveButton}
                     {forkButton}
