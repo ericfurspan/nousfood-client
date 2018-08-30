@@ -1,4 +1,5 @@
 import React from 'react';
+import TextField from '@material-ui/core/TextField';
 
 class StackDescInput extends React.Component {
     handleNext = () => {
@@ -35,16 +36,17 @@ class StackDescInput extends React.Component {
                 <p>As the author of this stack, please provide a brief description</p>
                 <br/>
                 {error}
-                <textarea 
+                <TextField 
                     tabIndex="1"
-                    rows="5"
-                    cols="25"
+                    multiline
+                    rows="4"
                     className="full-width"
                     defaultValue={this.props.fieldValues.description}
                     onKeyPress={this.handleChange}
                     placeholder="Author description"
                     name="stackDescription"
-                    onChange={this.handleChange} />
+                    onChange={this.handleChange} 
+                />
                 <br/>
                 <div className="nav-item">
                     <i className="material-icons icon-lg" onClick={this.goBack}>arrow_back</i>
