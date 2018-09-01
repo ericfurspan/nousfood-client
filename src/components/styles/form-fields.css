@@ -1,8 +1,6 @@
 .form {
-    display: table;
     margin: auto;
     position: relative;
-    width: 100%;
 }
 .form input {
     display: table-cell;

@@ -24,7 +24,16 @@ import {
     UPDATE_STACK_REQUEST,
     UPDATE_STACK_SUCCESS,
     UPDATE_STACK_ERROR,
-    COPY_SHARE_URL
+    COPY_SHARE_URL,
+    FOLLOW_NOOTROPIC_REQUEST,
+    FOLLOW_NOOTROPIC_SUCCESS,
+    FOLLOW_NOOTROPIC_ERROR,
+    UNFOLLOW_NOOTROPIC_REQUEST,
+    UNFOLLOW_NOOTROPIC_SUCCESS,
+    UNFOLLOW_NOOTROPIC_ERROR,
+    FETCH_FOLLOWED_NOOTROPICS_REQUEST,
+    FETCH_FOLLOWED_NOOTROPICS_SUCCESS,
+    FETCH_FOLLOWED_NOOTROPICS_ERROR
 } from '../actions/user';
 
 const initialState = {
@@ -47,6 +56,7 @@ const initialState = {
     shared: {
         stack: null
     },
+    followedNootropics: null,
     error: null,
     feedback: null,
     loading: true
@@ -229,6 +239,69 @@ export default (state = initialState, action) => {
             feedback: {type: 'notification', message: 'Copied to clipboard'},
         });
     }
+    else if(action.type === FOLLOW_NOOTROPIC_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true
+        });
+    }
+    else if(action.type === FOLLOW_NOOTROPIC_SUCCESS) {
+        let followedNootropics;
+        if(state.followedNootropics) {
+            followedNootropics = [...state.followedNootropics, action.data]
+        } else {
+            followedNootropics = [action.data]
+        }
+
+        return Object.assign({}, state, {
+            followedNootropics,
+            feedback: {type: 'success', message: `Following ${action.data.name}`},
+            error: null,
+            loading: false
+        });
+    }
+    else if(action.type === FOLLOW_NOOTROPIC_ERROR) {
+        return Object.assign({}, state, {
+            feedback: {type: 'error', message: action.error.message},
+            error: action.error.message,
+            loading: false
+        });
+    }
+    else if(action.type === UNFOLLOW_NOOTROPIC_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true
+        });
+    }
+    else if(action.type === UNFOLLOW_NOOTROPIC_SUCCESS) {
+        let followedNootropics = state.followedNootropics.filter((nootropic) => {
+            return nootropic.code !== action.data.code
+        })
+        return Object.assign({}, state, {
+            followedNootropics,
+            feedback: {type: 'success', message: `Unfollowing ${action.data.name}`},
+            error: null,
+            loading: false
+        });
+    }
+    else if(action.type === UNFOLLOW_NOOTROPIC_ERROR) {
+        return Object.assign({}, state, {
+            feedback: {type: 'error', message: action.error.message},
+            error: action.error.message,
+            loading: false
+        });
+    }
+    else if (action.type === FETCH_FOLLOWED_NOOTROPICS_REQUEST) {
+        return Object.assign({}, state, {
+            loading: true
+        });
+    } 
+    else if (action.type === FETCH_FOLLOWED_NOOTROPICS_SUCCESS) {
+        return Object.assign({}, state, {
+            followedNootropics: action.data,
+            error: null,
+            loading: false
+        });
+    } 
+
     return state;
 }
 

@@ -11,7 +11,8 @@ export function About(props) {
             <div className="text-sm">
                 <p>Note: this app is currently under development. The following is supported: 
                 Registration, Sign in, Logout, Create stack, Save stack, Delete stack, Edit stack, 
-                Fork stack, Share stack with public, Unshare stack with public</p>
+                Fork stack, Share stack with public, Unshare stack with public, Follow stack, View
+                nootropic science.</p>
             </div><br/>
 
             <section>

@@ -88,7 +88,6 @@ export const updateStackSuccess = data => ({
     type: UPDATE_STACK_SUCCESS,
     data
 });
-
 export const UPDATE_STACK_ERROR = 'UPDATE_STACK_ERROR';
 export const updateStackError = error => ({
     type: UPDATE_STACK_ERROR,
@@ -136,10 +135,55 @@ export const deletePublicStackError = error => ({
     type: DELETE_PUBLIC_STACK_ERROR,
     error
 })
-
 export const COPY_SHARE_URL = 'COPY_SHARE_URL';
 export const copyShareUrl = () => ({
     type: COPY_SHARE_URL
+})
+export const FOLLOW_NOOTROPIC_REQUEST = 'FOLLOW_NOOTROPIC_REQUEST';
+export const followNootropicRequest = () => ({
+    type: FOLLOW_NOOTROPIC_REQUEST
+});
+
+export const FOLLOW_NOOTROPIC_SUCCESS = 'FOLLOW_NOOTROPIC_SUCCESS';
+export const followNootropicSuccess = data => ({
+    type: FOLLOW_NOOTROPIC_SUCCESS,
+    data
+});
+export const FOLLOW_NOOTROPIC_ERROR = 'FOLLOW_NOOTROPIC_ERROR';
+export const followNootropicError = error => ({
+    type: FOLLOW_NOOTROPIC_ERROR,
+    error
+})
+
+export const UNFOLLOW_NOOTROPIC_REQUEST = 'UNFOLLOW_NOOTROPIC_REQUEST';
+export const unFollowNootropicRequest = () => ({
+    type: UNFOLLOW_NOOTROPIC_REQUEST
+});
+
+export const UNFOLLOW_NOOTROPIC_SUCCESS = 'UNFOLLOW_NOOTROPIC_SUCCESS';
+export const unFollowNootropicSuccess = data => ({
+    type: UNFOLLOW_NOOTROPIC_SUCCESS,
+    data
+});
+export const UNFOLLOW_NOOTROPIC_ERROR = 'UNFOLLOW_NOOTROPIC_ERROR';
+export const unFollowNootropicError = error => ({
+    type: UNFOLLOW_NOOTROPIC_ERROR,
+    error
+})
+export const FETCH_FOLLOWED_NOOTROPICS_REQUEST = 'FETCH_FOLLOWED_NOOTROPICS_REQUEST';
+export const fetchFollowedNootropicsRequest = data => ({
+    type: FETCH_FOLLOWED_NOOTROPICS_REQUEST,
+    data
+})
+export const FETCH_FOLLOWED_NOOTROPICS_SUCCESS= 'FETCH_FOLLOWED_NOOTROPICS_SUCCESS';
+export const fetchFollowedNootropicsSuccess = data => ({
+    type: FETCH_FOLLOWED_NOOTROPICS_SUCCESS,
+    data
+})
+export const FETCH_FOLLOWED_NOOTROPICS_ERROR = 'FETCH_FOLLOWED_NOOTROPICS_ERROR';
+export const fetchFollowedNootropicsError = data => ({
+    type: FETCH_FOLLOWED_NOOTROPICS_ERROR,
+    data
 })
 
 // GET stack from /api/:username/stacks/:code
@@ -286,4 +330,57 @@ export const fetchUserData = () => (dispatch, getState) => {
         .then(res => res.json())
         .then((data) => dispatch(fetchUserDataSuccess(data)))
         .catch(err => dispatch(fetchUserDataError(err)));
+};
+
+export const fetchFollowedNootropics = () => (dispatch, getState) => {
+    dispatch(fetchFollowedNootropicsRequest());
+
+    const token = getState().auth.token;
+    const username = getState().auth.currentUser.username;
+    return fetch(`${API_BASE_URL}/${username}/nootropics`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then(data => dispatch(fetchFollowedNootropicsSuccess(data)))
+        .catch(err => dispatch(fetchFollowedNootropicsError(err)));
+};
+
+export const followNootropic = (nootropic) => (dispatch, getState) => {
+    dispatch(followNootropicRequest());
+
+    const token = getState().auth.token;
+    const username = getState().auth.currentUser.username;
+    return fetch(`${API_BASE_URL}/${username}/nootropics`, {
+        method: 'POST',
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(nootropic)
+    })
+        .then(res => normalizeResponseErrors(res))
+        .then(res => res.json())
+        .then((data) => dispatch(followNootropicSuccess(data)))
+        .catch(err => dispatch(followNootropicError(err)));
+};
+
+export const unFollowNootropic = (nootropic) => (dispatch, getState) => {
+    dispatch(unFollowNootropicRequest());
+
+    const token = getState().auth.token;
+    const username = getState().auth.currentUser.username;
+    return fetch(`${API_BASE_URL}/${username}/nootropics/${nootropic.code}`, {
+        method: 'DELETE',
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    })
+        .then(dispatch(unFollowNootropicSuccess({...nootropic})))
+        .catch(err => {
+            dispatch(unFollowNootropicError(err))
+        })
 };
