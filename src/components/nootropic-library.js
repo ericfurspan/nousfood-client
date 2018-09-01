@@ -3,6 +3,10 @@ import Card from './card';
 import './styles/grid.css';
 
 export class NootropicLibrary extends React.Component {
+    componentDidMount() {
+        const searchTerms = this.props.nootropics.map(noop => noop.name);
+        this.props.fetchNlmData(searchTerms)
+    }
     existsInTempStack = (code) => {
         if(this.props && this.props.selectedNoopCodes) {
             const exists = this.props.selectedNoopCodes.find( noopCode => noopCode === code)

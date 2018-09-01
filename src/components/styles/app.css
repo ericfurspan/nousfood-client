@@ -15,9 +15,13 @@ section {
   min-height: 200px;
   padding: 3% 0;
 }
+/*
 a {
   text-decoration: none;
   color: #444;
+}*/
+ul {
+  list-style-type: none;
 }
 button {
   color: #fff;
@@ -42,7 +46,6 @@ button {
 }
 input, textarea {
   height: auto;
-  width: -webkit-fill-available;
   padding: .5rem 1rem;
   font-size: 1.25rem;
   line-height: 1.5;
@@ -86,7 +89,7 @@ input, textarea {
 .orange {
   color: orange;
 }
-.gray {
+.gray, .gray-hover:hover {
   color: #444;
 }
 .gold, .gold-hover:hover {
@@ -114,6 +117,9 @@ input, textarea {
 }
 .align-center {
   text-align: center;
+}
+.align-right {
+  text-align: right;
 }
 .right {
   float: right;
@@ -154,6 +160,9 @@ input, textarea {
 .icon-lg {
   font-size: 3em !important;
   width: 60px;
+}
+.no-shadow {
+  text-shadow: none;
 }
 
 /* CUSTOM material UI styles*/

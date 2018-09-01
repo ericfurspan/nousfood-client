@@ -2,7 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import SavedStacks from './saved-stacks';
 import requiresLogin from './requires-login';
-import { fetchUserData } from '../actions/user';
+import { fetchUserData, fetchFollowedNootropics } from '../actions/user';
+import { fetchNootropicScience } from '../actions/nlm';
 import CreateStackForm from './create-stack-form/create-stack-form';
 import TrendingStacks from './trending-stacks';
 import { NootropicLibrary } from './nootropic-library';
@@ -31,6 +32,8 @@ export class Dashboard extends React.Component {
     };
     componentDidMount() {
         this.props.dispatch(fetchUserData());
+        this.props.dispatch(fetchFollowedNootropics());
+        this.fetchNlmData()
     }
     componentDidUpdate() {
         if(this.props.location.pathname === "/dashboard/logout") {
@@ -38,6 +41,21 @@ export class Dashboard extends React.Component {
             this.props.dispatch(emptyUserData());
         }
     }
+    fetchNlmData = (searchTerms) => {
+        if(!searchTerms) {
+            return null
+        }
+        // forEach searchTerm call fetchNootropicScience() after delay
+        let delayTime = 1000;
+        searchTerms.forEach((term) => {
+            delayTime += 1000;
+            setTimeout(() => {
+                console.log(`fetching ${term}`);
+                this.props.dispatch(fetchNootropicScience(term))
+            }, delayTime)
+        })
+    }
+
     updateModal = (component) => {
         let newState = {};
         newState[component] = {show: !this.state[component].show};
@@ -64,6 +82,7 @@ export class Dashboard extends React.Component {
         }
     }
     render() {
+
         if(this.props.user.loading) {
             return <img src={Spinner} id="spinner" alt="spinner"/>
         }
@@ -135,7 +154,9 @@ export class Dashboard extends React.Component {
                                 <NootropicLibrary 
                                     show={this.state.nootropicLibrary.show}
                                     nootropics={this.props.nootropics}
+                                    followedNootropics={this.props.user.followedNootropics}
                                     closeModal={() => this.toggleModal('nootropicLibrary')}
+                                    fetchNlmData={this.fetchNlmData}
                                 />}
                         />
                     </Modal>
@@ -173,7 +194,7 @@ const mapStateToProps = state => ({
     trendingStacks: state.global.trendingStacks,
     nootropics: state.global.nootropics,
     hasAuthToken: state.auth.token !== null,
-    loggedIn: state.auth.currentUser !== null
+    loggedIn: state.auth.currentUser !== null,
 });
 
 export default withRouter(requiresLogin()(connect(mapStateToProps)(Dashboard)));

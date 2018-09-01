@@ -92,6 +92,20 @@ export function ModalContainer(props) {
                 </div>
             </div>
         )
+    } else if(props.type === 'nlmAbstract') { 
+        return (
+            <div>
+                {props.header}
+                <div className="modal-content">
+                    <h3 className="align-right">{props.data.pubYear}</h3><br/>
+                    <h3>{props.data.journalTitle._text}</h3><br/>
+                    <p>{props.data.abstractText}</p><br/>
+                    <a href={props.data.refLink}>Source</a>
+                    <div className="modal-btn-container">
+                    </div>
+                </div> 
+            </div>
+        )
     }
 }
       
