@@ -6,7 +6,7 @@ import Feedback from './feedback';
 import Tooltip from './tooltip';
 import { NLMContainer } from './nlm-container';
 
-class Nootropic extends React.Component {
+export class Nootropic extends React.Component {
 
     deSelectNoop = (code) => {
         this.props.onDeSelectNoop(this.props.data.code)
