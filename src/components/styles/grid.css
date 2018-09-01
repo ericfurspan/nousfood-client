@@ -6,9 +6,15 @@
     grid-gap: 1em;
     grid-auto-rows: minmax(130px, auto);
 }
-
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0px 20px 0px 20px;
+    grid-gap: 1em;
+    grid-auto-rows: minmax(130px, auto);
+}
 @media screen and (max-width: 850px) {
-    .grid {
+    .grid, .grid-2{
         grid-template-columns: 1fr;
     }
 }

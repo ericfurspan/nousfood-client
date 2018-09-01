@@ -6,6 +6,7 @@ import {loadAuthToken} from './local-storage';
 import {setAuthToken, refreshAuthToken} from './actions/auth';
 import globalDataReducer from './reducers/global';
 import authReducer from './reducers/auth';
+import nlmReducer from './reducers/nlm';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
@@ -14,7 +15,8 @@ const store = createStore(
         form: formReducer,
         auth: authReducer,
         user: userDataReducer,
-        global: globalDataReducer
+        global: globalDataReducer,
+        nlm: nlmReducer
     }),
     composeEnhancers(
         applyMiddleware(thunk)
