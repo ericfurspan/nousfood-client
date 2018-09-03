@@ -1,13 +1,10 @@
 import React from 'react';
-import { followNootropic, followNootropicError, unFollowNootropic } from '../actions/user';
-import {fetchNootropicScience} from '../actions/nlm';
+import { followNootropic, unFollowNootropic } from '../actions/user';
 import { connect } from 'react-redux';
-import Feedback from './feedback';
 import Tooltip from './tooltip';
 import { NLMContainer } from './nlm-container';
 
 export class Nootropic extends React.Component {
-
     deSelectNoop = (code) => {
         this.props.onDeSelectNoop(this.props.data.code)
         this.props.exit()
@@ -16,19 +13,19 @@ export class Nootropic extends React.Component {
         this.props.onSelectNoop(this.props.data.code)
         this.props.exit()
     }
-    isNootropicFollowed = (code) => {
-        let isFollowing = false;
-        if(this.props.followedNootropics) {
-            isFollowing = this.props.followedNootropics.find( nootropic => nootropic.code === code);
-        }
-        return isFollowing ? true : false
-    }
     toggleFollow = (newNootropic) => {
         if(this.isNootropicFollowed(newNootropic.code)) {
             this.props.dispatch(unFollowNootropic(newNootropic))
         } else {
             this.props.dispatch(followNootropic(newNootropic))
         }
+    }
+    isNootropicFollowed = (code) => {
+        let isFollowing = false;
+        if(this.props.followedNootropics) {
+            isFollowing = this.props.followedNootropics.find( nootropic => nootropic.code === code);
+        }
+        return isFollowing ? true : false
     }
     render() {
         let selectBtn, deselectBtn, toggleFollowButton, abstractContainer;
@@ -38,7 +35,7 @@ export class Nootropic extends React.Component {
             } else {
                 selectBtn = <div onClick={() => this.selectNoop(this.props.data.code)} className="pointer green-hover"><i className="material-icons noop-select">add_circle_outline</i></div>   
             }
-        } else {
+        } else {    
             // if nootropic is already being followed, render followButton as highlighted
             if(this.isNootropicFollowed(this.props.data.code)) {
                 toggleFollowButton = 

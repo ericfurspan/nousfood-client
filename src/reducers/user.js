@@ -301,6 +301,13 @@ export default (state = initialState, action) => {
             loading: false
         });
     } 
+    else if(action.type === FETCH_FOLLOWED_NOOTROPICS_ERROR) {
+        return Object.assign({}, state, {
+            feedback: {type: 'error', message: action.error.message},
+            error: action.error.message,
+            loading: false
+        });
+    }
 
     return state;
 }

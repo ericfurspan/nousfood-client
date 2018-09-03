@@ -50,7 +50,6 @@ export class Dashboard extends React.Component {
         searchTerms.forEach((term) => {
             delayTime += 1000;
             setTimeout(() => {
-                console.log(`fetching ${term}`);
                 this.props.dispatch(fetchNootropicScience(term))
             }, delayTime)
         })
@@ -95,7 +94,7 @@ export class Dashboard extends React.Component {
 
         return (
             <div className="db">
-                <div className="db-top db-version">v1.2</div>
+                <div className="db-top db-version">v1.3</div>
                 <div className="db-top db-intro">
                     {this.props.username}
                 </div>

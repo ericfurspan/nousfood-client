@@ -1,17 +1,16 @@
 import React from 'react';
 import Modal from './modal';
 import ModalContainer from './modal-container';
+
 import './styles/nlm.css';
 
 export class NLMAbstract extends React.Component {
     state = {
         show: false
     }
-
     toggleAbstract = () => {
         this.setState({show: !this.state.show})
     }
-
     render() {
         let toggleVisbilityBtn;
 

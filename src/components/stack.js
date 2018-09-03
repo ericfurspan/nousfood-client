@@ -3,7 +3,6 @@ import { saveStack, deleteStack, createPublicStack, deletePublicStack, copyShare
 import { connect } from 'react-redux';
 import ConfirmAction from './confirm-action';
 import EditStack from './edit-stack';
-import LoginForm from './login-form';
 import {Link} from 'react-router-dom';
 import Clipboard from 'clipboard';
 import Tooltip from './tooltip';

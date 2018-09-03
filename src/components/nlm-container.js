@@ -5,12 +5,12 @@ import './styles/nlm.css';
 export class NLMContainer extends React.Component {
 
     render() {
-
-        let abstracts, toggleAbstractBtn, currentAbstract;
+        console.log(this)
+        let abstracts;
         if(!this.props.data.nootropics) {
             return null
         } else {
-            abstracts = this.props.data.nootropics.find(noop => Object.keys(noop)[0] == this.props.name)
+            abstracts = this.props.data.nootropics.find(noop => Object.keys(noop)[0] === this.props.name)
             if(!abstracts) {
                 return null
             }
@@ -18,8 +18,8 @@ export class NLMContainer extends React.Component {
 
         return (
             <div className="nlm-container">
-                <h2>The science</h2><br/>
-                <ul className="grid-2">
+                <h2>Science</h2><br/>
+                <ul>
                     {abstracts[this.props.name].map( (element, index) => 
                         <li key={index}>
                             <div className="nlm-cover">
