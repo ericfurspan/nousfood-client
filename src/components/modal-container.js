@@ -16,6 +16,7 @@ export function ModalContainer(props) {
                         onSelectNoop={props.onSelectNoop}
                         onDeSelectNoop={props.onDeSelectNoop}
                         closeModal={props.closeModal}
+                        isFollowed={props.isFollowed}
                     />
                 </div>
             </div>
@@ -97,10 +98,10 @@ export function ModalContainer(props) {
             <div>
                 {props.header}
                 <div className="modal-content">
-                    <h3 className="align-right">{props.data.pubYear}</h3><br/>
-                    <h3>{props.data.journalTitle._text}</h3><br/>
+                    <h3>{props.data.pubYear} - {props.data.journalTitle._text}</h3><br/>
+                    <h3>{props.data.abstractTitle._text}</h3><br/>
                     <p>{props.data.abstractText}</p><br/>
-                    <a href={props.data.refLink}>Source</a>
+                    <a href={props.data.refLink} target="_blank">Source</a>
                     <div className="modal-btn-container">
                     </div>
                 </div> 

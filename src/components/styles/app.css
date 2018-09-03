@@ -164,6 +164,11 @@ input, textarea {
 .no-shadow {
   text-shadow: none;
 }
+.top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
 
 /* CUSTOM material UI styles*/
 .material-icons {

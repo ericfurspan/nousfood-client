@@ -4,8 +4,10 @@ import './styles/grid.css';
 
 export class NootropicLibrary extends React.Component {
     componentDidMount() {
-        const searchTerms = this.props.nootropics.map(noop => noop.name);
-        this.props.fetchNlmData(searchTerms)
+        if(!this.props.selectable) {
+            const searchTerms = this.props.nootropics.map(noop => noop.name);
+            this.props.fetchNlmData(searchTerms)
+        }
     }
     existsInTempStack = (code) => {
         if(this.props && this.props.selectedNoopCodes) {
@@ -15,6 +17,7 @@ export class NootropicLibrary extends React.Component {
         return false
     }
     render() {
+        console.log(this.props)
         if(!this.props.show) {
             return null
         }

@@ -15,15 +15,13 @@ class Card extends React.Component {
     }
     
     render() {
-        let name, code, data, type;
+        let name, data, type;
         if (this.props.type === 'nootropic') {
-            code = this.props.data.code;
             name = this.props.data.name;
             data = this.props.data;
             type = 'nootropic';
 
         } else if (this.props.type === 'stack') {
-            code = this.props.data.code;
             name = this.props.data.name;
             data = this.props.data;
             type = 'stack';
@@ -39,10 +37,10 @@ class Card extends React.Component {
                     <h4>{name}</h4>
                 </div>
                 <Modal 
-                      show={this.state.open} 
-                      onClose={this.onCloseModal}
-                      modalLevel="1"
-                    >
+                    show={this.state.open} 
+                    onClose={this.onCloseModal}
+                    modalLevel="1"
+                >
                     <ModalContainer
                         header={<div className="modal-header">{name}<i className="material-icons white right" onClick={() => this.onCloseModal()}>cancel</i></div>}
                         env={this.props.env}
