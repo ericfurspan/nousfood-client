@@ -20,7 +20,7 @@
     color: #fff;
     background-color: #46b0f0;
 }
-.landing input, textarea {
+.landing input {
     width: auto !important;
 }
 .landing-left div {

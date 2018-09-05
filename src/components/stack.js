@@ -96,7 +96,7 @@ class Stack extends React.Component {
                             position={'top'}
                             message={'Unshare with public'}
                         >
-                            <div onClick={() => this.togglePublic(code)} className="pointer red-hover green"><i className="material-icons">public</i><span></span></div>
+                            <div onClick={() => this.togglePublic(code)} className="pointer red-hover"><i className="material-icons">public</i><span></span></div>
                         </Tooltip>
                     )
                 } else {
@@ -105,7 +105,7 @@ class Stack extends React.Component {
                             position={'top'}
                             message={'Share with public'}
                         >
-                            <div onClick={() => this.togglePublic(code)} className="pointer green-hover red"><i className="material-icons">public</i><span></span></div>
+                            <div onClick={() => this.togglePublic(code)} className="pointer green-hover"><i className="material-icons">public</i><span></span></div>
                         </Tooltip>
                     )
                 }
@@ -147,7 +147,7 @@ class Stack extends React.Component {
                     position={'top'}
                     message={'Return to Dashboard'}
                 >
-                    <Link to={"/"}><div className="pointer blue-hover"><i className="material-icons">dashboard</i></div></Link>
+                    <Link to={"/"}><div className="pointer blue-hover gray"><i className="material-icons">dashboard</i></div></Link>
                 </Tooltip>
             </div>
         )
@@ -166,7 +166,7 @@ class Stack extends React.Component {
                 </div>
                 
                 <div className="modal-btn-container">
-                {dashboardLink}
+                    {dashboardLink}
                     {editButton}
                     {saveButton}
                     {forkButton}
