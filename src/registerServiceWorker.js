@@ -26,7 +26,7 @@ export default function register() {
       // Our service worker won't work if PUBLIC_URL is on a different origin
       // from what our page is served on. This might happen if a CDN is used to
       // serve assets; see https://github.com/facebookincubator/create-react-app/issues/2374
-      console.error(`Service worker error. ${PUBLIC_URL} on a different origin`);
+      console.error(`Service worker error. ${process.env.PUBLIC_URL} on a different origin`);
       return;
     }
 
