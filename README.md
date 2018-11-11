@@ -19,11 +19,3 @@ A recent area of interest of mine lately has been trying to learn more about how
 * Express
 * MongoDB with Mongoose
 * See package.json for more
-
-[Landing page](https://postimg.cc/image/uhqna2b75/)
-
-[Dashboard](https://postimg.cc/image/4apgdkarl/)
-
-[Nootropic view](https://postimg.cc/image/h23mk3uu9/)
-
-[Stack view](https://postimg.cc/image/3l6o197o1/)
