@@ -9,8 +9,7 @@ import About from './about';
 import NotFound from './notfound';
 import Feedback from './feedback';
 import { fetchNootropics, fetchTrendingStacks } from '../actions/global';
-import {refreshAuthToken} from '../actions/auth';
-import StackView from './stack-view';
+import { refreshAuthToken } from '../actions/auth';
 import './styles/form-fields.css';
 import './styles/app.css';
 import './styles/feedback.css';
@@ -30,18 +29,15 @@ componentDidUpdate(prevProps) {
       this.stopPeriodicRefresh();
     }
 }
-
 componentWillUnmount() {
     this.stopPeriodicRefresh();
 }
-
 startPeriodicRefresh() {
     this.refreshInterval = setInterval(
         () => this.props.dispatch(refreshAuthToken()),
         60 * 60 * 1000 // One hour
     );
 }
-
 stopPeriodicRefresh() {
     if (!this.refreshInterval) {
         return;
@@ -51,19 +47,9 @@ stopPeriodicRefresh() {
 
 render() {
   const props = this.props;
-
-  const StackViewWithProps = (props) => {
-    return (
-      <StackView 
-        stackLibrary={props.stackLibrary}
-        {...props}
-      />
-    );
-  }
     if(props.authenticating) {
       return <img src={Spinner} id="spinner" alt="spinner"/>
     } 
-
 
     return (
       <div className="App">
@@ -72,9 +58,6 @@ render() {
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/login" component={LoginPage} />
           <Route path="/dashboard" component={Dashboard} />
-
-          <Route exact path="/:username/stacks/:code" render={StackViewWithProps} />
-
           <Route exact path="/about" component={About} />
           <Route path="*" component={NotFound} />
         </Switch>

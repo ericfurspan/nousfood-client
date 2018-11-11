@@ -200,13 +200,7 @@ div[class^='MuiTabs-flexContainer'] {
   font-style: italic;
   font-size: .9em;
 }
-::-moz-placeholder { /* Firefox 19+ */
-  font-style: italic;
-}
-:-ms-input-placeholder { /* IE 10+ */
-  font-style: italic;
-}
-:-moz-placeholder { /* Firefox 18- */
+::-moz-placeholder, :-ms-input-placeholder, :-moz-placeholder  { /* Firefox 19+ */
   font-style: italic;
 }
 

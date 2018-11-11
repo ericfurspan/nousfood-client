@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 import ConfirmAction from './confirm-action';
 import EditStack from './edit-stack';
 import {Link} from 'react-router-dom';
-import Clipboard from 'clipboard';
 import Tooltip from './tooltip';
-new Clipboard('div');
 
 class Stack extends React.Component {
     constructor(props) {
@@ -37,8 +35,7 @@ class Stack extends React.Component {
 
     render() {
         const { code } = this.props.data;
-        let editButton, saveButton, deleteButton, forkButton, togglePublicButton, copyUrlButton, dashboardLink;
-        let shareUrl = `${window.location.origin}/${this.props.data.author}/stacks/${code}`
+        let editButton, saveButton, deleteButton, forkButton, togglePublicButton;
 
         // User is logged in
         if(this.props.loggedIn) {
@@ -129,28 +126,7 @@ class Stack extends React.Component {
                     </Tooltip>                    
                 )
             }
-
-            copyUrlButton = (
-                <Tooltip
-                    position={'top'}
-                    message={'Copy Link'}
-                >
-                    <div data-clipboard-text={shareUrl} onClick={() => {this.props.dispatch(copyShareUrl())}} className="pointer blue-hover"><i className="material-icons">link</i><span></span></div>
-                </Tooltip>  
-            )
-        
         }
-
-        dashboardLink = (
-            <div className="align-center">
-                <Tooltip
-                    position={'top'}
-                    message={'Return to Dashboard'}
-                >
-                    <Link to={"/"}><div className="pointer blue-hover gray"><i className="material-icons">dashboard</i></div></Link>
-                </Tooltip>
-            </div>
-        )
 
         return (
             <div className="stack align-left">
@@ -166,11 +142,9 @@ class Stack extends React.Component {
                 </div>
                 
                 <div className="modal-btn-container">
-                    {dashboardLink}
                     {editButton}
                     {saveButton}
                     {forkButton}
-                    {copyUrlButton}
                     {togglePublicButton}
                     {deleteButton}
                 </div>

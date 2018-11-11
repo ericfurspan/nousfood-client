@@ -8,11 +8,6 @@ nav {
     margin-bottom: 50px;
     position: fixed;
 }
-h1 {
-    color: black;
-    margin: 10px 0px 50px 0px;
-}
-
 .nav-home {
     position: absolute;
     bottom: 0;

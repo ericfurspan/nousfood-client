@@ -12,8 +12,7 @@
     overflow-x: hidden;
     z-index: 1000;
     padding: 1.2rem;
-  }
-  
+}
 .modal-main {
     position: relative;
     padding: 1.2rem;
@@ -22,7 +21,6 @@
     margin: 25px auto auto auto;
     max-width: 1150px;
 }
-
 .modal-header {
     position: absolute;
     top: 0px;
@@ -36,7 +34,6 @@
     text-align: left;
     font-size: 25px
 }
-
 .modal-content {
     min-width: 850px;
     margin-top: 75px;
@@ -45,7 +42,6 @@
     margin-left: auto;
     margin-right: auto;
 }
-
 .modal-btn-container {
     margin-top: 30px;
     border-top: 1px solid #e6e9ec;
@@ -58,7 +54,6 @@
     width: 250px;
     display: block
 }
-
 .confirm-dialog {
     min-width: 215px;
     min-height: 200px;
@@ -69,7 +64,6 @@
     margin-left: auto;
     margin-right: auto;
 }
-
 .modal-level-1 {
     top: 0;
 }
@@ -89,7 +83,6 @@
         position: static;
     }
 }
-
 @media screen and (max-width: 700px) {
     .modal-content {
         min-width: 250px;
