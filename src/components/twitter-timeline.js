@@ -11,7 +11,11 @@ export class TwitterTimeline extends React.Component {
     render() {
         return (
             <div className="twitter-view">
-                <a className="twitter-timeline" href="https://twitter.com/nous_food/lists/nousfood?ref_src=twsrc%5Etfw"> </a>
+                <a className="twitter-timeline" 
+                   href="https://twitter.com/nous_food/lists/nousfood?ref_src=twsrc%5Etfw"
+                   data-chrome="noheader"            
+                >
+                </a>
             </div>
         )
     }
