@@ -1,5 +1,5 @@
 .db {
-    padding-top: 140px;
+    padding-top: 95px;
 }
 .db-top {
     color: white;
@@ -31,4 +31,6 @@
     cursor: pointer;
     transform: scale(1.02);
 }
-
+.social-feed {
+    display: inline-block;
+}

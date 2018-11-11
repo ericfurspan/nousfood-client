@@ -1,14 +1,15 @@
 import React from 'react';
 import NLMAbstract from './nlm-abstract';
+import Spinner from '../assets/images/spinner.gif';
 import './styles/nlm.css';
 
 export class NLMContainer extends React.Component {
 
     render() {
-        console.log(this)
         let abstracts;
         if(!this.props.data.nootropics) {
-            return null
+            return <img src={Spinner} id="spinner" alt="spinner"/>
+
         } else {
             abstracts = this.props.data.nootropics.find(noop => Object.keys(noop)[0] === this.props.name)
             if(!abstracts) {
@@ -18,7 +19,7 @@ export class NLMContainer extends React.Component {
 
         return (
             <div className="nlm-container">
-                <h2>Science</h2><br/>
+                <h2>Scientific articles (PubMed)</h2><br/>
                 <ul>
                     {abstracts[this.props.name].map( (element, index) => 
                         <li key={index}>

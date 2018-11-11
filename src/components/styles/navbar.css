@@ -6,7 +6,6 @@ nav {
     height: 95px;
     z-index: 2;
     margin-bottom: 50px;
-    border-bottom: 8px solid #46b0f0;
     position: fixed;
 }
 h1 {
@@ -36,8 +35,4 @@ nav img:hover {
 
 .drawer-items span {
     color: black;
-}
-
-@media screen and (max-width: 850px) {
-
 }

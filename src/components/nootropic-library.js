@@ -17,7 +17,6 @@ export class NootropicLibrary extends React.Component {
         return false
     }
     render() {
-        console.log(this.props)
         if(!this.props.show) {
             return null
         }

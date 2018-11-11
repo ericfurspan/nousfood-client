@@ -8,26 +8,16 @@ export function About(props) {
     return (
         <div className="about">
 
-            <div className="text-sm">
-                <p>Note: this app is currently under development. The following is supported: 
-                Registration, Sign in, Logout, Create stack, Save stack, Delete stack, Edit stack, 
-                Fork stack, Share stack with public, Unshare stack with public, Follow stack, View
-                nootropic science.</p>
-            </div><br/>
-
             <section>
                 <header>
                     <h1>Welcome to NousFood</h1>
                 </header>
-                <p>This app is intended to help equip more people with a better understanding of the
-                    potential benefits of brain-boosting foods and supplements. In addition, this app strives to
-                    empower those already engaged and experimenting with "nootropics" by providing a platform
-                    where you can </p><br/>
-                    <ul className="italic">
-                        <li>Follow nootropics and curate a news feed</li>
-                        <li>Create and manage custom stacks</li>
-                        <li>Connect with the community. Save, Fork, and Share nootropic stacks</li>
-                    </ul>
+                <p>This application is geared toward those interested in following the
+                    potential benefits of brain-boosting foods and supplements. You can Follow any of the 
+                    nootropics in the library, and thereby gain access to PubMed hosted scholarly articles. 
+                    In addition, the News feed integrates Twitter activity from top community sources right
+                    into your dashboard. Other features include curating custom brain-boosting "stacks" which
+                    you can then Share back to the NousFood community. NousFood also supports Forking stacks.</p>
             </section>
 
             <section>
@@ -38,8 +28,8 @@ export function About(props) {
                 <p>The word nootropic was coined in 1972 by a Romanian psychologist and chemist,
                 Corneliu E. Giurgea, who synthesized Piracetam in 1964.</p><br/>
                 <p>from the Greek words 'nous' - meaning mind, and 'trepein' meaning to bend or turn</p><br/>
-                <p>According to Dr. Giurgea, a substance categorized as a nootropic meets the following criteria:</p>
-                <ul className="italic bold">
+                <p>According to Dr. Giurgea, a substance categorized as a nootropic meets the following criteria:</p><br/>
+                <ul className="italic bold" style={{listStyleType: "decimal"}}>
                     <li>A nootropic may enhance learning and memory.</li>
                     <li>A nootropic may help protect the brain from disruptive conditions such as hypoxia (low oxygen) or electroconvulsive shock.</li>
                     <li>A nootropic may help protect the brain from various chemical or physical injuries such as the effects of barbiturates and anti-cholinergic substances.</li>

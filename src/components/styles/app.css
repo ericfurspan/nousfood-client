@@ -180,6 +180,10 @@ input, textarea {
   transform: scale(1.02);
 }
 
+div[class^='MuiTabs-flexContainer'] {
+  display: inline-flex
+}
+
 /* ID */
 #spinner {
   position: absolute;

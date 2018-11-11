@@ -30,11 +30,9 @@ class ConfirmSubmit extends React.Component {
                 </div>
                 <div className="nav-item">
                     <i className="material-icons icon-lg" onClick={this.goBack}>arrow_back</i>
-                    Back
                 </div>
                 <div className="nav-item">
                     <i className="material-icons icon-lg" onClick={this.confirmAndSubmitStack}>checkmark</i>
-                    Create
                 </div>
             </div>
         )
