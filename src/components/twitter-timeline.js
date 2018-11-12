@@ -5,12 +5,13 @@ export class TwitterTimeline extends React.Component {
 
     componentDidMount() {
         window.twttr.ready( () => {
-            window.twttr.widgets.load()
+            window.twttr.widgets.load(document.getElementById("twtr"))
         })
     }
     render() {
         return (
-            <div className="twitter-view">
+            <div id="twtr" className="twitter-view modal-content">
+                <h3>News Feed</h3><br/>
                 <a className="twitter-timeline" 
                    href="https://twitter.com/nous_food/lists/nousfood?ref_src=twsrc%5Etfw"
                    data-chrome="noheader"            

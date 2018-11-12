@@ -33,6 +33,7 @@ export class NootropicLibrary extends React.Component {
           ));
         return (
             <div className="nootropics">
+                <h3>Nootropic Library</h3><br/>
                 <section className="grid">
                     {nootropics}
                 </section>

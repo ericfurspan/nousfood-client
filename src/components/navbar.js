@@ -12,6 +12,7 @@ class NavBar extends React.Component {
     };
 
     toggleDrawer = (open) => () => {
+        window.scrollTo(0, 0);
         this.setState({
           right: open
         });

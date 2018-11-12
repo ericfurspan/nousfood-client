@@ -43,6 +43,7 @@ export class TrendingStacks extends React.Component {
         }
         return (
             <div className="trending-stacks">
+                <h3>Trending Stacks</h3><br/>
                 <section className="grid">
                     {stack}
                 </section>

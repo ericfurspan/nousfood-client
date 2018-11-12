@@ -1,18 +1,18 @@
-import React from 'react';
+import React, {Suspense} from 'react';
 import { connect } from 'react-redux';
-import SavedStacks from './saved-stacks';
+//import SavedStacks from './saved-stacks';
 import requiresLogin from './requires-login';
 import { fetchUserData, fetchFollowedNootropics } from '../actions/user';
 import { fetchNootropicScience } from '../actions/nlm';
 import CreateStackForm from './create-stack-form/create-stack-form';
-import TrendingStacks from './trending-stacks';
-import { NootropicLibrary } from './nootropic-library';
+//import TrendingStacks from './trending-stacks';
+//import { NootropicLibrary } from './nootropic-library';
 import { clearAuth } from '../actions/auth';
 import { emptyUserData } from '../actions/user';
 import { withRouter } from 'react-router-dom';
 import Spinner from '../assets/images/spinner.gif';
 import ModalContainer from './modal-container';
-import TwitterTimeline from './twitter-timeline';
+//import TwitterTimeline from './twitter-timeline';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -20,6 +20,10 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 import './styles/dashboard.css';
+const NootropicLibrary = React.lazy(() => import('./nootropic-library'));
+const TwitterTimeline = React.lazy(() => import('./twitter-timeline'));
+const SavedStacks = React.lazy(() => import('./saved-stacks'));
+const TrendingStacks = React.lazy(() => import('./trending-stacks'));
 
 function TabContainer(props) {
     return (
@@ -90,7 +94,7 @@ export class Dashboard extends React.Component {
                 <div className="db-top db-version">v2.0</div>
                 <div className="db-top db-intro">{this.props.username}</div>
                 <div className="db-content">
-                    <AppBar position="static" style={ {backgroundColor: '#46B0F0', padding: "5px 0px 5px 0px"} }>
+                    <AppBar position="static" style={ {backgroundColor: '#46B0F0', padding: "14px 0px 5px 0px"} }>
                         <Tabs
                             value={this.state.selectedView}
                             fullWidth
@@ -106,25 +110,20 @@ export class Dashboard extends React.Component {
                             />
                             <Tab 
                                 classes={{label: classes.tabsRoot}}                            
-                                label="Saved" 
-                            />
-                            <Tab 
-                                classes={{label: classes.tabsRoot}}                            
-                                label="Trending" 
-                            />
-                            <Tab 
-                                classes={{label: classes.tabsRoot}}
-                                label="Stack Builder" 
+                                label="Stacks" 
                             />
                         </Tabs>
                     </AppBar>
                     {this.state.selectedView === 0 && 
                         <TabContainer>
-                            <TwitterTimeline />
+                            <Suspense fallback={<img src={Spinner} id="spinner" alt="spinner"/>}>
+                                <TwitterTimeline />
+                            </Suspense>
                         </TabContainer>
                     }
                     {this.state.selectedView === 1 && 
                         <TabContainer>
+                            <Suspense fallback={<img src={Spinner} id="spinner" alt="spinner"/>}>
                             <ModalContainer 
                                 type="nootropicLibrary"
                                 nootropicLibrary={
@@ -135,18 +134,18 @@ export class Dashboard extends React.Component {
                                         fetchNlmData={this.fetchNlmData}
                                     />}
                             />
+                            </Suspense>
                         </TabContainer>
                     }
                     {this.state.selectedView === 2 && 
                         <TabContainer>
+                            <Suspense fallback={<img src={Spinner} id="spinner" alt="spinner"/>}>
                             <ModalContainer
                                 type="savedStacks"
                                 savedStacks={savedStacks}
                             />
-                        </TabContainer>
-                    }
-                    {this.state.selectedView === 3 && 
-                        <TabContainer> 
+                            </Suspense>
+                            <Suspense fallback={<img src={Spinner} id="spinner" alt="spinner"/>}>
                             <ModalContainer
                                 type="trendingStacks"
                                 trendingStacks={
@@ -157,10 +156,8 @@ export class Dashboard extends React.Component {
                                     />
                                 }
                             />
-                        </TabContainer>
-                    }
-                    {this.state.selectedView === 4 && 
-                        <TabContainer>
+                            </Suspense>
+                            <Suspense fallback={<img src={Spinner} id="spinner" alt="spinner"/>}>
                             <ModalContainer 
                                 type="stackBuilder"
                                 stackBuilder={
@@ -169,6 +166,7 @@ export class Dashboard extends React.Component {
                                         nootropics={this.props.nootropics}
                                     />}
                             />
+                            </Suspense>
                         </TabContainer>
                     }
                 </div>

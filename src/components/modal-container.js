@@ -101,7 +101,7 @@ export function ModalContainer(props) {
                     <h3>{props.data.pubYear} - {props.data.journalTitle._text}</h3><br/>
                     <h3>{props.data.abstractTitle._text}</h3><br/>
                     <p>{props.data.abstractText}</p><br/>
-                    <a href={props.data.refLink} target="_blank">Source</a>
+                    <a href={props.data.refLink} target="_blank" rel="noopener noreferrer">Source</a>
                     <div className="modal-btn-container">
                     </div>
                 </div> 

@@ -15,14 +15,7 @@ section {
   min-height: 200px;
   padding: 3% 0;
 }
-/*
-a {
-  text-decoration: none;
-  color: #444;
-}*/
-ul {
-  list-style-type: none;
-}
+
 button {
   color: #fff;
   display: inline-block;
@@ -181,7 +174,7 @@ input, textarea {
 }
 
 div[class^='MuiTabs-flexContainer'] {
-  display: inline-flex
+  display: flex;
 }
 
 /* ID */
@@ -211,4 +204,3 @@ div[class^='MuiTabs-flexContainer'] {
 
 /* CSS imports */
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
-@import url('https://fonts.googleapis.com/css?family=Roboto');

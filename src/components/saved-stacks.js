@@ -11,7 +11,7 @@ export class SavedStacks extends React.Component {
             return null
         }
         if(this.props.savedStacks.length === 0) {
-            return <div><p>You have no saved stacks</p><br/><br/></div>
+            return <div><h3>You have no saved stacks</h3><br/><br/></div>
         }
         const savedStacks = this.props.savedStacks.map((savedStack, index) => (
             <Card
@@ -26,7 +26,7 @@ export class SavedStacks extends React.Component {
         ))
         return (
             <div className="saved-stacks">
-                <p>You have {this.props.savedStacks.length} saved stacks</p><br/>
+                <h3>You have {this.props.savedStacks.length} saved stacks</h3><br/>
                 <section className="grid">
                     {savedStacks}
                 </section>

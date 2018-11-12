@@ -1,9 +1,8 @@
 import React from 'react';
-import { saveStack, deleteStack, createPublicStack, deletePublicStack, copyShareUrl } from '../actions/user';
+import { saveStack, deleteStack, createPublicStack, deletePublicStack } from '../actions/user';
 import { connect } from 'react-redux';
 import ConfirmAction from './confirm-action';
 import EditStack from './edit-stack';
-import {Link} from 'react-router-dom';
 import Tooltip from './tooltip';
 
 class Stack extends React.Component {
