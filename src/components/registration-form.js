@@ -50,6 +50,7 @@ export class RegistrationForm extends React.Component {
                     component={Input} 
                     type="text" 
                     name="username" 
+                    autoComplete="username"
                     placeholder="Username"
                 />
                 <Field

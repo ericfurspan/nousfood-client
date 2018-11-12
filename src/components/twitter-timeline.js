@@ -13,7 +13,7 @@ export class TwitterTimeline extends React.Component {
             <div id="twtr" className="twitter-view modal-content">
                 <h3>News Feed</h3><br/>
                 <a className="twitter-timeline" 
-                   href="https://twitter.com/nous_food/lists/nousfood?ref_src=twsrc%5Etfw"
+                   href="https://twitter.com/nous_food/lists/nousfood"
                    data-chrome="noheader"            
                 >
                 </a>

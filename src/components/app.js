@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withRouter, Route, Switch } from 'react-router-dom';
 import {connect} from 'react-redux';
 import LandingPage from './landing';
 import Dashboard from './dashboard';
 import NavBar from './navbar';
-import LoginPage from './login-page';
 import About from './about';
 import NotFound from './notfound';
 import Feedback from './feedback';
@@ -15,10 +14,10 @@ import './styles/app.css';
 import './styles/feedback.css';
 import Spinner from '../assets/images/spinner.gif';
 
-export class App extends Component {
-componentDidMount(props) {
-    this.props.dispatch(fetchNootropics());
-    this.props.dispatch(fetchTrendingStacks());
+export class App extends React.Component {
+componentDidMount() {
+  this.props.dispatch(fetchNootropics());
+  this.props.dispatch(fetchTrendingStacks());
 }
 componentDidUpdate(prevProps) {
     if (!prevProps.loggedIn && this.props.loggedIn) {
@@ -56,7 +55,6 @@ render() {
         <NavBar loggedIn={props.loggedIn}/>
         <Switch>
           <Route exact path="/" component={LandingPage} />
-          <Route exact path="/login" component={LoginPage} />
           <Route path="/dashboard" component={Dashboard} />
           <Route exact path="/about" component={About} />
           <Route path="*" component={NotFound} />

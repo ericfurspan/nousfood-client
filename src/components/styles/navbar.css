@@ -19,15 +19,12 @@ nav img {
 nav img:hover {
     transform: scale(1.02);
 }
-
 .drawer-items a {
     text-decoration: none;
 }
-
 .drawer-items svg {
     color: #5c6266a8
 }
-
 .drawer-items span {
     color: black;
 }

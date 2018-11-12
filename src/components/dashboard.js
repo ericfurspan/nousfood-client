@@ -56,7 +56,6 @@ export class Dashboard extends React.Component {
     componentDidMount() {
         this.props.dispatch(fetchUserData());
         this.props.dispatch(fetchFollowedNootropics());
-        this.fetchNlmData()
     }
     componentDidUpdate() {
         if(this.props.location.pathname === "/dashboard/logout") {
@@ -91,7 +90,7 @@ export class Dashboard extends React.Component {
 
         return (
             <div className="db">
-                <div className="db-top db-version">v2.0</div>
+                <div className="db-top db-version">v1.9</div>
                 <div className="db-top db-intro">{this.props.username}</div>
                 <div className="db-content">
                     <AppBar position="static" style={ {backgroundColor: '#46B0F0', padding: "14px 0px 5px 0px"} }>

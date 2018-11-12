@@ -22,9 +22,9 @@ export default function reducer(state = initialState, action) {
             //if nootropic already exists, do not add to state
             let duplicate = state.nootropics.find(noop => Object.keys(noop)[0] === Object.keys(action.data)[0])
             if(duplicate) {
-                nootropics = [...state.nootropics]
+                nootropics = [...state.nootropics];
             } else {
-                nootropics = [...state.nootropics, action.data]
+                nootropics = [...state.nootropics, action.data];
             }
         } else {
             nootropics = [action.data]

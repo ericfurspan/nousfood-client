@@ -29,6 +29,7 @@ export default class Input extends React.Component {
                 <input
                     {...this.props.input}
                     type={this.props.type}
+                    autoComplete={this.props.autoComplete}
                     placeholder={this.props.placeholder}
                     value={this.props.defaultValue}
                     ref={input => (this.input = input)}

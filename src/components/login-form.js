@@ -27,6 +27,7 @@ export class LoginForm extends React.Component {
                     type="text"
                     name="username"
                     placeholder="Email or Username"
+                    autoComplete="email"
                     validate={[required, isTrimmed, nonEmpty]}
                 />
                 <Field
@@ -34,6 +35,7 @@ export class LoginForm extends React.Component {
                     type="password"
                     name="password"
                     placeholder="Password"
+                    autoComplete="password"
                     validate={[required, isTrimmed, nonEmpty]}
                 />
                 <div>
