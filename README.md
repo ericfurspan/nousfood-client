@@ -2,7 +2,7 @@
 [Live app](https://nousfood-client.herokuapp.com)
 
 ## Summary
-A Progressive Web App (PWA), NousFood app is geared toward those interested in following the potential benefits of brain-boosting foods and supplements. You can Follow any of the nootropics in the library, and thereby gain access to PubMed hosted scholarly articles. In addition, the News feed integrates Twitter activity from top community sources right into your dashboard. Other features include curating custom brain-boosting "stacks" which you can then Share back to the NousFood community. NousFood also supports Forking stacks.
+A Progressive Web App (PWA), NousFood is geared toward those interested in following the potential benefits of brain-boosting foods and supplements. You can Follow any of the nootropics in the library, and thereby gain access to PubMed hosted scholarly articles. In addition, the News feed integrates Twitter activity from top community sources right into your dashboard. Other features include curating custom brain-boosting "stacks" which you can then Share back to the NousFood community. NousFood also supports Forking stacks.
 
 Backend supported by [NousFood API](https://github.com/Quanda/nousfood-api)
 

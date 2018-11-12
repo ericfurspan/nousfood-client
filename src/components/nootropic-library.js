@@ -5,7 +5,7 @@ import './styles/grid.css';
 export class NootropicLibrary extends React.Component {
     componentDidMount() {
         if(!this.props.selectable) {
-            const searchTerms = this.props.followedNootropics.map(noop => noop.name);
+            const searchTerms = this.props.nootropics.map(noop => noop.name);
             this.props.fetchNlmData(searchTerms);
         }
     }
