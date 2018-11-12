@@ -83,9 +83,9 @@ export class Dashboard extends React.Component {
     render() {
         const { classes } = this.props;
 
-        if(this.props.user.loading) {
+        /*if(this.props.user.loading) {
             return <img src={Spinner} id="spinner" alt="spinner"/>
-        }
+        }*/
         let savedStacks = <SavedStacks show={true} savedStacks={this.props.user.savedStacks} trendingStacks={this.props.stackLibrary}/>
 
         return (
