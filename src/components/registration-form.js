@@ -28,7 +28,7 @@ export class RegistrationForm extends React.Component {
                 <Field 
                     component={Input} 
                     type="text" 
-                    name="firstname" 
+                    name="firstname"
                     placeholder="First name"
                     validate={[required, nonEmpty, isTrimmed]}
                 />
@@ -49,14 +49,14 @@ export class RegistrationForm extends React.Component {
                 <Field 
                     component={Input} 
                     type="text" 
-                    name="username" 
+                    name="regusername" 
                     autoComplete="username"
                     placeholder="Username"
                 />
                 <Field
                     component={Input}
                     type="password"
-                    name="password"
+                    name="regpassword"
                     placeholder="Password"
                     autoComplete="new-password"
                     validate={[required, passwordLength, isTrimmed]}

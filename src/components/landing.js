@@ -5,9 +5,9 @@ import LoginForm from './login-form';
 import RegistrationForm from './registration-form';
 import './styles/landing.css';
 import logo from '../assets/images/blue-brain.png';
-import MagGlass from '../assets/images/mag-glass.svg';
-import Ribbon from '../assets/images/ribbon.svg';
-import Share from '../assets/images/share.svg';
+import {ReactComponent as MagGlass} from '../assets/images/mag-glass.svg';
+import {ReactComponent as Ribbon} from '../assets/images/ribbon.svg';
+import {ReactComponent as Share} from '../assets/images/share.svg';
 
 export class LandingPage extends React.Component {
 
@@ -22,19 +22,25 @@ export class LandingPage extends React.Component {
                         <ul>
                             <li>
                                 <span> 
-                                    <img src={MagGlass} className="icon" alt="magnifying-glass icon"/>
+                                    <span className="icon">
+                                        <MagGlass />
+                                    </span>
                                     Follow Nootropics.
                                 </span>
                             </li>
                             <li>
                                 <span>
-                                    <img src={Ribbon} className="icon" alt="ribbon icon"/>
+                                    <span className="icon">
+                                        <Ribbon />
+                                    </span>
                                     Save and curate stacks.
                                 </span>
                             </li>
                             <li>
                                 <span>
-                                    <img src={Share} className="icon" alt="share icon"/>
+                                    <span className="icon">
+                                        <Share />
+                                    </span>
                                     Share with community.
                                 </span>
                             </li>

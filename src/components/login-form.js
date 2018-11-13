@@ -35,7 +35,7 @@ export class LoginForm extends React.Component {
                     type="password"
                     name="password"
                     placeholder="Password"
-                    autoComplete="password"
+                    autoComplete="current-password"
                     validate={[required, isTrimmed, nonEmpty]}
                 />
                 <div>
