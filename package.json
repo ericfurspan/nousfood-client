@@ -16,6 +16,7 @@
     "redux": "^4.0.1",
     "redux-form": "^7.4.2",
     "redux-thunk": "^2.3.0",
+    "source-map-explorer": "^1.6.0",
     "watchman": "^1.0.0",
     "xml-js": "^1.6.8"
   },
@@ -23,7 +24,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "analyze": "source-map-explorer build/static/js/main.*"
   },
   "devDependencies": {
     "enzyme": "^3.7.0",

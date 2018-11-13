@@ -7,7 +7,7 @@ deploy:
   provider: heroku
   api_key:
     secure: fCymPs2pcrcDQ5oIgWoAW8Pv0Pj6uKfmEFBpARVeAIDCl5pL/OIReD5eU2zjZDuNF1RDS6bpVvJYp+l/6eIenXDR038ko07ZNlo/Bd82Aq1LixaVaSF1k6jy1vJFgTdLSfcN5fGFrWi9FsBaVjuaavyVtJ42g3mj5ibNXlsTx3GC4d4Y6GKRvl0q13DrtdYIoCpjEEdlZsuQtcEGYCXnpSTlyhtbWOEBbRLAjAEQ7iUR3FlSXqTvF+GtcTnZvJqkQVv2jiwKqcTyk4WczSYci9OFSZ5G9kBy4YoJGmRkn5rLN3w4/4TzfLnnwhTDJl33hoA/2WevJT+dush1w+8V13kObotd054uK9stLSgSQ0KdtYNlRZVuB1fnfiKXqfTRPNpANJtmRKujoX50CKOFfVTIzvZJilQpnm66vFOoFXO6DUJVn4uQTJY5e6gV0zJiwjtXxopHq/2k0sAzDuTWkvCqlrPOpZ3MyHV3Qk5VvQYwUzmQ7u4Ix+chF1OpjYf0RQ/dnuj+wP+aiYRr4hEzO+o8nF1XMyd/FKa3o/9JnZm0UrihpycA29mbCsD96PPXagBnWDNgS1XE5zJ0xonSAuDn/US5cn2NVOAScT8QxFDEJX2BNApOH1Ej4gmuF59Pe3He6R30WNaXFmrB25o5Vz7ZLYHK4sC9A5lqExxD7ts=
-  app: nousfood-client
+  app: nousfood
   on:
     repo: Quanda/nousfood-client
     branch: master
