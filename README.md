@@ -6,6 +6,9 @@ A Progressive Web App (PWA), NousFood is geared toward those interested in follo
 
 Backend supported by [NousFood API](https://github.com/Quanda/nousfood-api)
 
+## Quality Ratings (via Google Lighthouse)
+[![Lighthouse Quality Ratings](https://i.postimg.cc/y8kFwVvC/Screen-Shot-2018-11-12-at-11-47-02-PM.png)](https://postimg.cc/LJFYPFcx)
+
 ## Motivation
 In Summer 2018 I became very intrigued to learn more about how different food compounds affect our brains through their influence on neurotransmitters. Specifically, I wanted to know more about cases where cognition, focus, and/or attention were shown to be positively impacted outside the margin of placebo. The timing of this intrigue along with having to choose on what to build for my Thinkful final capstone lent me an opportunity for the taking. To tackle both at once - together.
 
