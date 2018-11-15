@@ -163,7 +163,18 @@ input, textarea {
   top: 0;
   right: 0;
 }
-
+.full-height {
+  height: 100vh;
+}
+.force-center {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  top: 50%;
+  left: 50%;
+  margin-left: -50px;
+  margin-top: -50px;
+}
 /* CUSTOM material UI styles*/
 .material-icons {
   cursor: pointer;

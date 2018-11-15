@@ -15,6 +15,7 @@ import ModalContainer from './modal-container';
 //import TwitterTimeline from './twitter-timeline';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
+import { Link } from 'react-router-dom';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
@@ -90,7 +91,12 @@ export class Dashboard extends React.Component {
 
         return (
             <div className="db">
-                <div className="db-top db-version">v1.9</div>
+                {/*<div className="db-top db-version">v1.9</div>*/}
+                <div className="db-top">
+                <Link to={`/dashboard/logout`}>
+                    <i className="material-icons white">exit_to_app</i>
+                </Link>
+                </div>                
                 <div className="db-top db-intro">{this.props.username}</div>
                 <div className="db-content">
                     <AppBar position="static" style={ {backgroundColor: '#46B0F0', padding: "14px 0px 5px 0px"} }>

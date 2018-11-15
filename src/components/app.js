@@ -12,7 +12,7 @@ import { refreshAuthToken } from '../actions/auth';
 import './styles/form-fields.css';
 import './styles/app.css';
 import './styles/feedback.css';
-import Spinner from '../assets/images/spinner.gif';
+import LoadingPage from './loading-page';
 
 export class App extends React.Component {
 componentDidMount() {
@@ -47,7 +47,7 @@ stopPeriodicRefresh() {
 render() {
   const props = this.props;
     if(props.authenticating) {
-      return <img src={Spinner} id="spinner" alt="spinner"/>
+      return <LoadingPage />
     } 
 
     return (
