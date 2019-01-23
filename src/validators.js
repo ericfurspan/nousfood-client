@@ -11,7 +11,10 @@ export const length = length => value => {
         return `Must be at most ${length.max} characters long`;
     }
 };
-export const matches = field => (value, allValues) =>
-    field in allValues && value.trim() === allValues[field].trim()
-        ? undefined
-        : 'Does not match';
+export const matches = field => (value, allValues) => {
+    if(field in allValues && value.trim() === allValues[field].trim()) {
+        return undefined;
+    } else {
+        return 'Does not match';
+    }   
+}

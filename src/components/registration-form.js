@@ -1,29 +1,36 @@
 import React from 'react';
-import { Field, reduxForm, focus } from 'redux-form';
+import { Field, reduxForm, SubmissionError } from 'redux-form';
 import { registerUser } from '../actions/auth';
 import { login } from '../actions/auth';
 import './styles/form-fields.css';
 import Input from './input';
 import { required, nonEmpty, matches, length, isTrimmed } from '../validators';
 const passwordLength = length({min: 8, max: 72});
-const matchesPassword = matches('password');
+const matchesPassword = matches('regpassword');
 
 export class RegistrationForm extends React.Component {
     
     onSubmit(values) {
-        const {email, username, password, firstname, lastname} = values;
+        const {email, username, firstname, lastname} = values;
+        const password = values.regpassword;
         const user = {email, username, password, firstname, lastname};
         console.log(user)
         return this.props
             .dispatch(registerUser(user))
-            .then(() => this.props.dispatch(login(username, password)));
+            .then(() => this.props.dispatch(login(username || email, password)))
+            .catch((e) => {
+                throw new SubmissionError({
+                    _error: e.errors._error
+                  })
+            })
     }
 
     render() {
+        const { error, handleSubmit, pristine, submitting } = this.props;
         return (
             <form 
               className="form"
-              onSubmit={this.props.handleSubmit(values => this.onSubmit(values))}
+              onSubmit={handleSubmit(values => this.onSubmit(values))}
             >
                 <Field 
                     component={Input} 
@@ -51,7 +58,7 @@ export class RegistrationForm extends React.Component {
                     type="text" 
                     name="regusername" 
                     autoComplete="username"
-                    placeholder="Username"
+                    placeholder="Username (optional)"
                 />
                 <Field
                     component={Input}
@@ -69,10 +76,12 @@ export class RegistrationForm extends React.Component {
                     autoComplete="new-password"
                     validate={[required, nonEmpty, matchesPassword]}
                 />
+                {error && <strong className='red'>{error}</strong>}
                 <div className="align-center">
                     <button
                         type="submit"
-                        disabled={this.props.pristine || this.props.submitting}>
+                        disabled={pristine || submitting}
+                    >
                         Register
                     </button>
                 </div>
@@ -82,8 +91,6 @@ export class RegistrationForm extends React.Component {
 }
 
 export default reduxForm({
-    form: 'registration',
-    onSubmitFail: (errors, dispatch) =>
-        dispatch(focus('registration', Object.keys(errors)[0]))
+    form: 'registration'
 })(RegistrationForm);
 
