@@ -1,35 +1,25 @@
 .db {
     padding-top: 95px;
 }
-.db-top {
+.db a {
+    text-decoration: none;
+    color: white;
+}
+.db-header { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
     color: white;
     top: 50px;
     z-index: 2;
     position: fixed;
-}
-.db-intro { 
-    right: 10px;
+    width: 100%;
 }
 .db-version { 
     left: 10px;
 }
 .dashboard > div {
     margin-bottom: 40px
-}
-
-.db-header {
-    margin-bottom: 20px;
-    user-select: none;
-}
-.db-header h2 {
-    width: 300px;
-    margin: auto;
-    border-bottom: 2px solid #293035;
-    padding-bottom: 15px;
-}
-.db-header h2:hover {
-    cursor: pointer;
-    transform: scale(1.02);
 }
 .social-feed {
     display: inline-block;
