@@ -14,11 +14,11 @@ export class RegistrationForm extends React.Component {
         const {email, username, firstname, lastname} = values;
         const password = values.regpassword;
         const user = {email, username, password, firstname, lastname};
-        console.log(user)
         return this.props
             .dispatch(registerUser(user))
             .then(() => this.props.dispatch(login(username || email, password)))
             .catch((e) => {
+                console.error(e);
                 throw new SubmissionError({
                     _error: e.errors._error
                   })
